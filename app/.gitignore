@@ -1,0 +1,9 @@
+*.iml
+.idea/
+/.gradle
+gradle/
+gradlew
+gradlew.bat
+local.properties
+# 各个模块下build文件夹
+app/build/
