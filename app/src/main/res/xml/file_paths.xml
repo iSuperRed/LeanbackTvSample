@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <paths>
+        <external-path path="" name="files" />
+        <cache-path path="" name="upgrade_apk" />
+    </paths>
+</resources>
