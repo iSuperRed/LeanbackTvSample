@@ -1,14 +1,19 @@
-package com.github.isuperred.content;
+package com.github.isuperred.main;
 
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.leanback.widget.ArrayObjectAdapter;
+import androidx.leanback.widget.FocusHighlight;
+import androidx.leanback.widget.FocusHighlightHelper;
 import androidx.leanback.widget.HorizontalGridView;
+import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
 import com.github.isuperred.title.Title;
+import com.github.isuperred.title.TitlePresenter;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 
 import java.util.List;
@@ -16,6 +21,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    private final ArrayObjectAdapter mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mHorizontalGridView = findViewById(R.id.hg_title);
         mViewPager = findViewById(R.id.vp_content);
+        mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
+
+        ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
+        mHorizontalGridView.setAdapter(itemBridgeAdapter);
+        FocusHighlightHelper.setupBrowseItemFocusHighlight(itemBridgeAdapter, FocusHighlight.ZOOM_FACTOR_MEDIUM, false);
     }
 
     private void initData() {
@@ -47,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 //                    dataBeans.get(i).getName();
                     Log.e(TAG, "run: " + dataBeans.get(i).getName());
                 }
+                mArrayObjectAdapter.addAll(0, dataBeans);
             }
         }).start();
     }
