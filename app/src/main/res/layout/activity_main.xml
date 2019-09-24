@@ -12,12 +12,14 @@
     <androidx.leanback.widget.HorizontalGridView
         android:id="@+id/hg_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/px50"
         android:layout_marginTop="@dimen/px134"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingStart="@dimen/px100"
         android:paddingEnd="@dimen/px100"
+        app:focusOutEnd="true"
+        app:focusOutFront="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +27,6 @@
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/px222"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

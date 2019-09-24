@@ -1,6 +1,8 @@
 package com.github.isuperred.main;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,16 +14,64 @@ import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
+import com.github.isuperred.content.ContentViewPagerAdapter;
 import com.github.isuperred.title.Title;
 import com.github.isuperred.title.TitlePresenter;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private final ArrayObjectAdapter mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
+    private static final int MSG_NOTIFY_TITLE = 100;
+//    private static final int MSG_NOTIFY_TITLE = 1;
+
+    private ArrayObjectAdapter mArrayObjectAdapter;
+    private ContentViewPagerAdapter mViewPagerAdapter;
+
+    private int mCurrentPageIndex;
+
+    public ArrayObjectAdapter getArrayObjectAdapter() {
+        return mArrayObjectAdapter;
+    }
+
+    private Handler mHandler = new MyHandler(this);
+
+
+    private static class MyHandler extends Handler {
+
+        private final WeakReference<MainActivity> mActivity;
+
+        MyHandler(MainActivity activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            MainActivity activity = mActivity.get();
+            if (activity != null) {
+                switch (msg.what) {
+                    case MSG_NOTIFY_TITLE:
+                        @SuppressWarnings("unchecked")
+                        List<Title.DataBean> dataBeans = (List<Title.DataBean>) msg.obj;
+                        ArrayObjectAdapter adapter = activity.getArrayObjectAdapter();
+                        if (adapter != null) {
+                            adapter.addAll(0, dataBeans);
+                            activity.initViewPager(dataBeans);
+                        }
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
         initData();
     }
 
+    @Override
+    protected void onDestroy() {
+        mHandler.removeCallbacksAndMessages(null);
+        super.onDestroy();
+    }
+
     private HorizontalGridView mHorizontalGridView;
     private ViewPager mViewPager;
 
@@ -38,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         mHorizontalGridView = findViewById(R.id.hg_title);
         mViewPager = findViewById(R.id.vp_content);
         mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
-
+        mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
         mHorizontalGridView.setAdapter(itemBridgeAdapter);
         FocusHighlightHelper.setupBrowseItemFocusHighlight(itemBridgeAdapter, FocusHighlight.ZOOM_FACTOR_MEDIUM, false);
@@ -58,9 +114,39 @@ public class MainActivity extends AppCompatActivity {
 //                    dataBeans.get(i).getName();
                     Log.e(TAG, "run: " + dataBeans.get(i).getName());
                 }
-                mArrayObjectAdapter.addAll(0, dataBeans);
+                Message msg = Message.obtain();
+                msg.what = MSG_NOTIFY_TITLE;
+                msg.obj = dataBeans;
+                mHandler.sendMessage(msg);
             }
         }).start();
     }
 
+    private void initViewPager(List<Title.DataBean> dataBeans) {
+
+        mViewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
+        mViewPagerAdapter.setData(dataBeans);
+        mViewPager.setAdapter(mViewPagerAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.e(TAG, "onPageSelected position: " + position);
+                mCurrentPageIndex = position;
+                mViewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                Log.e(TAG, "onPageScrollStateChanged state: " + state);
+
+            }
+        });
+    }
 }
+
+
