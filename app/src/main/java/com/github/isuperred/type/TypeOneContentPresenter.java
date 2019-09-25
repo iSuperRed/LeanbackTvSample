@@ -1,8 +1,6 @@
 package com.github.isuperred.type;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,22 +16,21 @@ import com.github.isuperred.content.Content;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/24.
+ * Created by（dongch） on 2019/9/25.
  * ClassName  :
  * Description  :
  */
-public class ContentPresenter extends Presenter {
-
+public class TypeOneContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "ContentPresenter";
+    private static final String TAG = "TypeOneContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_content_type1, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_one_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -41,18 +38,13 @@ public class ContentPresenter extends Presenter {
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
         if (item instanceof Content.DataBean.WidgetsBean) {
             ViewHolder vh = (ViewHolder) viewHolder;
-            Log.e(TAG, "onBindViewHolder: "+((Content.DataBean.WidgetsBean) item).getUrl() );
             Glide.with(mContext)
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px300),
-                                    (int) mContext.getResources().getDimension(R.dimen.px450))
+                            .override((int) mContext.getResources().getDimension(R.dimen.px840),
+                                    (int) mContext.getResources().getDimension(R.dimen.px416))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvPoster);
-            String desc = ((Content.DataBean.WidgetsBean) item).getDesc();
-            if (!TextUtils.isEmpty(desc)) {
-                vh.mTvDesc.setText(desc);
-            }
+                    .into(vh.mIvTypeOnePoster);
         }
     }
 
@@ -63,14 +55,11 @@ public class ContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final TextView mTvDesc;
-        private final ImageView mIvPoster;
+        private final ImageView mIvTypeOnePoster;
 
         public ViewHolder(View view) {
             super(view);
-            mTvDesc = view.findViewById(R.id.tv_desc);
-            mIvPoster = view.findViewById(R.id.iv_poster);
+            mIvTypeOnePoster = view.findViewById(R.id.iv_type_one_poster);
         }
     }
-
 }

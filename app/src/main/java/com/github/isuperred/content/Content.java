@@ -50,13 +50,13 @@ public class Content {
          * title : Banner
          * showTitle : true
          * contentCode : 1081
-         * widgets : [{"id":13,"contentCode":"1081","name":"诛仙","desc":"诛仙是张小凡的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":14,"contentCode":"1081","name":"花木兰","desc":"花木兰是花木兰的故事","url":"https://pic2.zhimg.com/v2-6dfaf094073bc710e3ed4b250e6cd302_1200x500.jpg"},{"id":13,"contentCode":"1081","name":"X战警","desc":"X战警是X战警的故事","url":"http://www.rjzxw.com/dats/twjc/7/11836/11836-1.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"}]
+         * widgets : [{"id":13,"contentCode":1081,"name":"诛仙","desc":"诛仙是张小凡的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":14,"contentCode":"1081","name":"花木兰","desc":"花木兰是花木兰的故事","url":"https://pic2.zhimg.com/v2-6dfaf094073bc710e3ed4b250e6cd302_1200x500.jpg"},{"id":13,"contentCode":"1081","name":"X战警","desc":"X战警是X战警的故事","url":"http://www.rjzxw.com/dats/twjc/7/11836/11836-1.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"},{"id":13,"contentCode":"1081","name":"大闹天宫","desc":"大闹天宫是孙悟空的故事","url":"https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"}]
          */
 
         private int id;
         private String title;
         private String showTitle;
-        private String contentCode;
+        private int contentCode;
         private List<WidgetsBean> widgets;
 
         public int getId() {
@@ -83,11 +83,11 @@ public class Content {
             this.showTitle = showTitle;
         }
 
-        public String getContentCode() {
+        public int getContentCode() {
             return contentCode;
         }
 
-        public void setContentCode(String contentCode) {
+        public void setContentCode(int contentCode) {
             this.contentCode = contentCode;
         }
 

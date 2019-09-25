@@ -11,6 +11,8 @@ import androidx.leanback.widget.FocusHighlight;
 import androidx.leanback.widget.FocusHighlightHelper;
 import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ItemBridgeAdapter;
+import androidx.leanback.widget.OnChildViewHolderSelectedListener;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
@@ -79,11 +81,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initView();
         initData();
+        initListener();
     }
 
     @Override
     protected void onDestroy() {
         mHandler.removeCallbacksAndMessages(null);
+        mHorizontalGridView
+                .removeOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
         super.onDestroy();
     }
 
@@ -122,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+    private void initListener() {
+        mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
+    }
+
     private void initViewPager(List<Title.DataBean> dataBeans) {
 
         mViewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
@@ -147,6 +156,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private final OnChildViewHolderSelectedListener onChildViewHolderSelectedListener
+            = new OnChildViewHolderSelectedListener() {
+        @Override
+        public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
+            super.onChildViewHolderSelected(parent, child, position, subposition);
+            if (mViewPager != null) {
+                mViewPager.setCurrentItem(position);
+            }
+
+        }
+
+        @Override
+        public void onChildViewHolderSelectedAndPositioned(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
+            super.onChildViewHolderSelectedAndPositioned(parent, child, position, subposition);
+        }
+    };
 }
 
 

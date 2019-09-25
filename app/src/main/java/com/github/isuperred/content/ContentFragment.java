@@ -1,10 +1,7 @@
 package com.github.isuperred.content;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,21 +9,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.ListRow;
-import androidx.leanback.widget.ListRowPresenter;
 import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
-import com.github.isuperred.title.Title;
 import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeOneContentPresenter;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
+import com.github.isuperred.utils.Type;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -93,6 +88,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
         if (mRootView == null) {
             mRootView = inflater.inflate(R.layout.fragment_content, container, false);
             initView();
+            initListener();
         }
         return mRootView;
     }
@@ -108,7 +104,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
     }
 
     protected void initListener() {
-//        mVerticalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
 //        mVerticalGridView.addOnScrollListener(onScrollListener);
     }
 
@@ -120,6 +115,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
     }
 
     @Override
@@ -137,17 +133,148 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 List<Content.DataBean> dataBeans = content.getData();
                 for (int i = 0; i < dataBeans.size(); i++) {
                     Content.DataBean dataBean = dataBeans.get(i);
-                    ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new ContentPresenter());
-                    HeaderItem headerItem = new HeaderItem("大闹天宫");
-                    ListRow listRow = new ListRow(8, headerItem,
-                            arrayObjectAdapter);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                    arrayObjectAdapter.addAll(0, dataBean.getWidgets());
-
-                    mAdapter.add(listRow);
+                    addItem(dataBean);
                 }
             }
         }).start();
     }
+
+    private void addItem(Content.DataBean dataBean) {
+
+        switch (dataBean.getContentCode()) {
+            case Type.TYPE_ZERO:
+                ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new TypeOneContentPresenter());
+                List<Content.DataBean.WidgetsBean> listOne = dataBean.getWidgets();
+                if (listOne != null && listOne.size() > 2) {
+                    listOne = listOne.subList(0,2);
+                    arrayObjectAdapter.addAll(0, listOne);
+                    ListRow listRow = new ListRow(arrayObjectAdapter);
+                    mAdapter.add(listRow);
+                }
+                break;
+            case Type.TYPE_ONE:
+                ArrayObjectAdapter arrayObjectAdapterOne = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItem = new HeaderItem("大闹天宫");
+                ListRow listRowOne = new ListRow(8, headerItem,
+                        arrayObjectAdapterOne);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterOne.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowOne);
+                break;
+            case Type.TYPE_TWO:
+                ArrayObjectAdapter arrayObjectAdapterTwo = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemTwo = new HeaderItem("大闹天宫");
+                ListRow listRowTwo = new ListRow(8, headerItemTwo,
+                        arrayObjectAdapterTwo);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterTwo.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowTwo);
+                break;
+            case Type.TYPE_THREE:
+                ArrayObjectAdapter arrayObjectAdapterThree = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemThree = new HeaderItem("大闹天宫");
+                ListRow listRowThree = new ListRow(8, headerItemThree,
+                        arrayObjectAdapterThree);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterThree.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowThree);
+                break;
+            case Type.TYPE_FOUR:
+                ArrayObjectAdapter arrayObjectAdapterFour = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemFour = new HeaderItem("大闹天宫");
+                ListRow listRowFour = new ListRow(8, headerItemFour,
+                        arrayObjectAdapterFour);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterFour.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowFour);
+                break;
+            case Type.TYPE_FIVE:
+                ArrayObjectAdapter arrayObjectAdapterFive = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemFive = new HeaderItem("大闹天宫");
+                ListRow listRowFive = new ListRow(8, headerItemFive,
+                        arrayObjectAdapterFive);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterFive.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowFive);
+                break;
+            case Type.TYPE_SIX:
+                ArrayObjectAdapter arrayObjectAdapterSix = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemSix = new HeaderItem("大闹天宫");
+                ListRow listRowSix = new ListRow(8, headerItemSix,
+                        arrayObjectAdapterSix);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterSix.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowSix);
+                break;
+            case Type.TYPE_SEVEN:
+                ArrayObjectAdapter arrayObjectAdapterSeven = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemSeven = new HeaderItem("大闹天宫");
+                ListRow listRowSeven = new ListRow(8, headerItemSeven,
+                        arrayObjectAdapterSeven);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterSeven.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowSeven);
+                break;
+            case Type.TYPE_EIGHT:
+                ArrayObjectAdapter arrayObjectAdapterEight = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemEight = new HeaderItem("大闹天宫");
+                ListRow listRowEight = new ListRow(8, headerItemEight,
+                        arrayObjectAdapterEight);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterEight.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowEight);
+                break;
+            case Type.TYPE_NINE:
+                ArrayObjectAdapter arrayObjectAdapterNine = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemNine = new HeaderItem("大闹天宫");
+                ListRow listRowNine = new ListRow(8, headerItemNine,
+                        arrayObjectAdapterNine);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterNine.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowNine);
+                break;
+            case Type.TYPE_TEN:
+                ArrayObjectAdapter arrayObjectAdapterTen = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemTen = new HeaderItem("大闹天宫");
+                ListRow listRowTen = new ListRow(8, headerItemTen,
+                        arrayObjectAdapterTen);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterTen.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowTen);
+                break;
+            case Type.TYPE_ELEVEN:
+                ArrayObjectAdapter arrayObjectAdapterEleven = new ArrayObjectAdapter(new ContentPresenter());
+                HeaderItem headerItemEleven = new HeaderItem("大闹天宫");
+                ListRow listRowEleven = new ListRow(8, headerItemEleven,
+                        arrayObjectAdapterEleven);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                arrayObjectAdapterEleven.addAll(0, dataBean.getWidgets());
+
+                mAdapter.add(listRowEleven);
+                break;
+        }
+    }
+
+
 }

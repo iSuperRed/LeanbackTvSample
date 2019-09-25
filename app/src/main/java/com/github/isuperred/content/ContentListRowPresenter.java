@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ListRowPresenter;
 import androidx.leanback.widget.RowHeaderPresenter;
 import androidx.leanback.widget.RowPresenter;
@@ -28,5 +29,8 @@ public class ContentListRowPresenter extends ListRowPresenter {
         tv.setTextColor(tv.getContext().getResources().getColor(R.color.colorWhite));
         tv.setPadding(0, 20, 0, 20);
         tv.setTextSize(tv.getContext().getResources().getDimensionPixelSize(R.dimen.px50));
+
+        rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
+
     }
 }
