@@ -99,7 +99,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private void initView() {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
-        mVerticalGridView.setVerticalSpacing((int) mActivity.getResources().getDimension(R.dimen.px10));
+//        mVerticalGridView.setVerticalSpacing((int) mActivity.getResources().getDimension(R.dimen.px10));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mAdapter);
@@ -138,9 +138,13 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 for (int i = 0; i < dataBeans.size(); i++) {
                     Content.DataBean dataBean = dataBeans.get(i);
                     ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new ContentPresenter());
-                    arrayObjectAdapter.addAll(0, dataBean.getWidgets());
-                    ListRow listRow = new ListRow(new HeaderItem("大闹天宫"),
+                    HeaderItem headerItem = new HeaderItem("大闹天宫");
+                    ListRow listRow = new ListRow(8, headerItem,
                             arrayObjectAdapter);
+//                    headerItem.setContentDescription("大闹天宫");
+
+                    arrayObjectAdapter.addAll(0, dataBean.getWidgets());
+
                     mAdapter.add(listRow);
                 }
             }
