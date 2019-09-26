@@ -5,6 +5,7 @@ import androidx.leanback.widget.ListRowPresenter;
 
 import com.github.isuperred.type.ContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
+import com.github.isuperred.type.TypeThreeContentPresenter;
 import com.github.isuperred.type.TypeTwoContentPresenter;
 import com.github.isuperred.type.TypeZeroContentPresenter;
 
@@ -25,6 +26,7 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeZeroContentPresenter.class);
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeOneContentPresenter.class);
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeTwoContentPresenter.class);
+        addClassPresenter(ListRow.class, listRowPresenterOne, TypeThreeContentPresenter.class);
     }
 
 }
