@@ -55,7 +55,7 @@ public class Content {
 
         private int id;
         private String title;
-        private String showTitle;
+        private boolean showTitle;
         private int contentCode;
         private List<WidgetsBean> widgets;
 
@@ -75,11 +75,11 @@ public class Content {
             this.title = title;
         }
 
-        public String getShowTitle() {
+        public boolean getShowTitle() {
             return showTitle;
         }
 
-        public void setShowTitle(String showTitle) {
+        public void setShowTitle(boolean showTitle) {
             this.showTitle = showTitle;
         }
 

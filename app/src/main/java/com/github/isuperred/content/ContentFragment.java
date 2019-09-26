@@ -18,6 +18,7 @@ import androidx.leanback.widget.VerticalGridView;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeTwoContentPresenter;
 import com.github.isuperred.type.TypeZeroContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
@@ -148,30 +149,45 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 List<Content.DataBean.WidgetsBean> listZero = dataBean.getWidgets();
                 if (listZero != null && listZero.size() > 2) {
                     listZero = listZero.subList(0, 2);
-                    arrayObjectAdapter.addAll(0, listZero);
-                    ListRow listRow = new ListRow(arrayObjectAdapter);
-                    mAdapter.add(listRow);
                 }
+                arrayObjectAdapter.addAll(0, listZero);
+                ListRow listRow = new ListRow(arrayObjectAdapter);
+                mAdapter.add(listRow);
                 break;
             case Type.TYPE_ONE:
                 ArrayObjectAdapter arrayObjectAdapterOne = new ArrayObjectAdapter(new TypeOneContentPresenter());
                 List<Content.DataBean.WidgetsBean> listOne = dataBean.getWidgets();
-                if (listOne != null && listOne.size() > 4) {
-                    listOne = listOne.subList(0, 4);
-                    arrayObjectAdapterOne.addAll(0, listOne);
-                    ListRow listRow = new ListRow(arrayObjectAdapterOne);
-                    mAdapter.add(listRow);
+                if (listOne == null) {
+                    return;
                 }
+                if (listOne.size() > 4) {
+                    listOne = listOne.subList(0, 4);
+                }
+                arrayObjectAdapterOne.addAll(0, listOne);
+                HeaderItem headerItem = null;
+                if (dataBean.getShowTitle()) {
+                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    headerItem = new HeaderItem(dataBean.getTitle());
+                }
+                ListRow listRowOne = new ListRow(headerItem, arrayObjectAdapterOne);
+                mAdapter.add(listRowOne);
                 break;
             case Type.TYPE_TWO:
-                ArrayObjectAdapter arrayObjectAdapterTwo = new ArrayObjectAdapter(new ContentPresenter());
-                HeaderItem headerItemTwo = new HeaderItem("大闹天宫");
-                ListRow listRowTwo = new ListRow(8, headerItemTwo,
-                        arrayObjectAdapterTwo);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                arrayObjectAdapterTwo.addAll(0, dataBean.getWidgets());
-
+                ArrayObjectAdapter arrayObjectAdapterTwo = new ArrayObjectAdapter(new TypeTwoContentPresenter());
+                List<Content.DataBean.WidgetsBean> listTwo = dataBean.getWidgets();
+                if (listTwo == null) {
+                    return;
+                }
+                if (listTwo.size() > 3) {
+                    listTwo = listTwo.subList(0, 3);
+                }
+                arrayObjectAdapterTwo.addAll(0, listTwo);
+                HeaderItem headerItemTwo = null;
+                if (dataBean.getShowTitle()) {
+                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    headerItemTwo = new HeaderItem(dataBean.getTitle());
+                }
+                ListRow listRowTwo = new ListRow(headerItemTwo, arrayObjectAdapterTwo);
                 mAdapter.add(listRowTwo);
                 break;
             case Type.TYPE_THREE:

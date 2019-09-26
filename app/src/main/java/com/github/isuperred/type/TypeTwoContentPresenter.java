@@ -15,21 +15,21 @@ import com.github.isuperred.content.Content;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/25.
+ * Created by（dongch） on 2019/9/26.
  * ClassName  :
  * Description  :
  */
-public class TypeZeroContentPresenter extends Presenter {
+public class TypeTwoContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeOneContentPresenter";
+    private static final String TAG = "TypeTwoContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_zero_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_two_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -41,10 +41,10 @@ public class TypeZeroContentPresenter extends Presenter {
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
                             .centerCrop()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px840),
-                                    (int) mContext.getResources().getDimension(R.dimen.px416))
+                            .override((int) mContext.getResources().getDimension(R.dimen.px544),
+                                    (int) mContext.getResources().getDimension(R.dimen.px372))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvTypeOnePoster);
+                    .into(vh.mIvTypeTwoPoster);
         }
     }
 
@@ -55,11 +55,12 @@ public class TypeZeroContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final ImageView mIvTypeOnePoster;
+        private final ImageView mIvTypeTwoPoster;
 
         public ViewHolder(View view) {
             super(view);
-            mIvTypeOnePoster = view.findViewById(R.id.iv_type_one_poster);
+            mIvTypeTwoPoster = view.findViewById(R.id.iv_type_two_poster);
         }
     }
 }
+

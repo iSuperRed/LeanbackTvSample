@@ -40,6 +40,7 @@ public class TypeOneContentPresenter extends Presenter {
             Glide.with(mContext)
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
+                            .centerCrop()
                             .override((int) mContext.getResources().getDimension(R.dimen.px400),
                                     (int) mContext.getResources().getDimension(R.dimen.px222))
                             .placeholder(R.drawable.shape_default))

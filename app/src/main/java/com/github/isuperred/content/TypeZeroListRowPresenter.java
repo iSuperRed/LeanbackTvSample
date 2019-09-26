@@ -1,7 +1,10 @@
 package com.github.isuperred.content;
 
+import android.widget.TextView;
+
 import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ListRowPresenter;
+import androidx.leanback.widget.RowHeaderPresenter;
 import androidx.leanback.widget.RowPresenter;
 
 import com.github.isuperred.R;
@@ -20,6 +23,15 @@ public class TypeZeroListRowPresenter extends ListRowPresenter {
 
         rowViewHolder.getGridView().setHorizontalSpacing((int) rowViewHolder.getGridView().getResources().getDimension(R.dimen.px48));
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
+
+        RowHeaderPresenter.ViewHolder vh = rowViewHolder.getHeaderViewHolder();
+        TextView textView = vh.view.findViewById(R.id.row_header);
+        textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorWhite));
+        textView.setTextSize(textView.getContext().getResources().getDimensionPixelSize(R.dimen.px32));
+        textView.setBackgroundResource(R.color.colorAccent);
+        textView.setPadding(0, 0, 0, 20);
+        rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
+
 
     }
 }

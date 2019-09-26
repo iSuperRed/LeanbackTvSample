@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/FocusStyle"
-    android:layout_width="@dimen/px396"
-    android:layout_height="@dimen/px222">
+    android:layout_width="@dimen/px544"
+    android:layout_height="@dimen/px372">
 
     <ImageView
         android:id="@+id/iv_type_two_poster"
