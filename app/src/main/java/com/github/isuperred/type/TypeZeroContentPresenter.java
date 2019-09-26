@@ -22,7 +22,7 @@ import com.github.isuperred.content.Content;
 public class TypeZeroContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeOneContentPresenter";
+    private static final String TAG = "TypeZeroContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {

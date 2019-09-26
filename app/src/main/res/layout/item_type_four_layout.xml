@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FocusStyle"
+    android:layout_width="@dimen/px248"
+    android:layout_height="@dimen/px120">
+
+    <ImageView
+        android:id="@+id/iv_type_four_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_type_four_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/px28" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -219,15 +219,45 @@
     {
       "id": 9966,
       "title": "Banner",
-      "showTitle": "true",
+      "showTitle": "false",
       "contentCode": 104,
       "widgets": [
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "全部剧集",
+          "desc": "全部剧集",
+          "url": ""
+        },{
+          "id": 13,
+          "contentCode": "1081",
+          "name": "挑战风云",
+          "desc": "挑战风云",
+          "url": ""
+        },{
+          "id": 13,
+          "contentCode": "1081",
+          "name": "古装仙侠",
+          "desc": "古装仙侠",
+          "url": ""
+        },{
+          "id": 13,
+          "contentCode": "1081",
+          "name": "家长里短",
+          "desc": "家长里短",
+          "url": ""
+        },{
+          "id": 13,
+          "contentCode": "1081",
+          "name": "都市情缘",
+          "desc": "都市情缘",
+          "url": ""
+        },{
+          "id": 13,
+          "contentCode": "1081",
+          "name": "青春偶像",
+          "desc": "青春偶像",
+          "url": ""
         }
       ]
     },

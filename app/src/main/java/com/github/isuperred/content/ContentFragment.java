@@ -18,6 +18,7 @@ import androidx.leanback.widget.VerticalGridView;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeFourContentPresenter;
 import com.github.isuperred.type.TypeThreeContentPresenter;
 import com.github.isuperred.type.TypeTwoContentPresenter;
 import com.github.isuperred.type.TypeZeroContentPresenter;
@@ -210,14 +211,21 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowThree);
                 break;
             case Type.TYPE_FOUR:
-                ArrayObjectAdapter arrayObjectAdapterFour = new ArrayObjectAdapter(new ContentPresenter());
-                HeaderItem headerItemFour = new HeaderItem("大闹天宫");
-                ListRow listRowFour = new ListRow(8, headerItemFour,
-                        arrayObjectAdapterFour);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                arrayObjectAdapterFour.addAll(0, dataBean.getWidgets());
-
+                ArrayObjectAdapter arrayObjectAdapterFour = new ArrayObjectAdapter(new TypeFourContentPresenter());
+                List<Content.DataBean.WidgetsBean> listFour = dataBean.getWidgets();
+                if (listFour == null) {
+                    return;
+                }
+                if (listFour.size() > 6) {
+                    listFour = listFour.subList(0, 6);
+                }
+                arrayObjectAdapterFour.addAll(0, listFour);
+                HeaderItem headerItemFour = null;
+                if (dataBean.getShowTitle()) {
+                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    headerItemFour = new HeaderItem(dataBean.getTitle());
+                }
+                ListRow listRowFour = new ListRow(headerItemFour, arrayObjectAdapterFour);
                 mAdapter.add(listRowFour);
                 break;
             case Type.TYPE_FIVE:

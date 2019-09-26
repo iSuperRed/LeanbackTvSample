@@ -27,7 +27,8 @@ public class TypeZeroListRowPresenter extends ListRowPresenter {
         RowHeaderPresenter.ViewHolder vh = rowViewHolder.getHeaderViewHolder();
         TextView textView = vh.view.findViewById(R.id.row_header);
         textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorWhite));
-        textView.setTextSize(textView.getContext().getResources().getDimensionPixelSize(R.dimen.px32));
+        textView.setTextSize(textView.getContext().getResources().getDimensionPixelSize(R.dimen.px30));
+        textView.getPaint().setFakeBoldText(true);
         textView.setPadding(0, 0, 0, 20);
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
 
