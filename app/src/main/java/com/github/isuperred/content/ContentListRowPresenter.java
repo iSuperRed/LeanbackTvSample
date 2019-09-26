@@ -23,13 +23,13 @@ public class ContentListRowPresenter extends ListRowPresenter {
         super.initializeRowViewHolder(holder);
 
         final ViewHolder rowViewHolder = (ViewHolder) holder;
-        rowViewHolder.getGridView().setHorizontalSpacing(10);
+        rowViewHolder.getGridView().setHorizontalSpacing(
+                rowViewHolder.getGridView().getContext().getResources().getDimensionPixelSize(R.dimen.px48));
         RowHeaderPresenter.ViewHolder headerViewHolder = holder.getHeaderViewHolder();
         TextView tv = headerViewHolder.view.findViewById(R.id.row_header);
         tv.setTextColor(tv.getContext().getResources().getColor(R.color.colorWhite));
         tv.setPadding(0, 20, 0, 20);
-        tv.setTextSize(tv.getContext().getResources().getDimensionPixelSize(R.dimen.px50));
-
+        tv.setTextSize(tv.getContext().getResources().getDimensionPixelSize(R.dimen.px48));
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
 
     }

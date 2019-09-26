@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/FocusStyle"
     android:layout_width="@dimen/px840"
-    android:layout_height="@dimen/px416">
+    android:layout_height="@dimen/px414">
 
     <ImageView
         android:id="@+id/iv_type_one_poster"

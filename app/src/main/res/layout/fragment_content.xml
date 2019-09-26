@@ -10,9 +10,9 @@
         android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingStart="@dimen/px100"
+        android:paddingStart="@dimen/px96"
         android:paddingTop="@dimen/px222"
-        android:paddingEnd="@dimen/px100"
+        android:paddingEnd="@dimen/px96"
         app:focusOutEnd="true"
         app:focusOutFront="true" />
 

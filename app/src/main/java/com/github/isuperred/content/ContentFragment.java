@@ -96,7 +96,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private void initView() {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
-        mVerticalGridView.setVerticalSpacing((int) mActivity.getResources().getDimension(R.dimen.px50));
+        mVerticalGridView.setVerticalSpacing((int) mActivity.getResources().getDimension(R.dimen.px48));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mAdapter);
