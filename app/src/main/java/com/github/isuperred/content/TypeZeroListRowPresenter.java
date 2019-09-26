@@ -12,7 +12,7 @@ import com.github.isuperred.R;
  * ClassName  :
  * Description  :
  */
-public class TypeOneListRowPresenter extends ListRowPresenter {
+public class TypeZeroListRowPresenter extends ListRowPresenter {
     @Override
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);

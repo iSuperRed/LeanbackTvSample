@@ -5,6 +5,7 @@ import androidx.leanback.widget.ListRowPresenter;
 
 import com.github.isuperred.type.ContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
+import com.github.isuperred.type.TypeZeroContentPresenter;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
@@ -18,8 +19,9 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         listRowPresenter.setShadowEnabled(false);
         addClassPresenter(ListRow.class, listRowPresenter, ContentPresenter.class);
 
-        ListRowPresenter listRowPresenterOne = new TypeOneListRowPresenter();
+        ListRowPresenter listRowPresenterOne = new TypeZeroListRowPresenter();
         listRowPresenterOne.setShadowEnabled(false);
+        addClassPresenter(ListRow.class, listRowPresenterOne, TypeZeroContentPresenter.class);
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeOneContentPresenter.class);
     }
 

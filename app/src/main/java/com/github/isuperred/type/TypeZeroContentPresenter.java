@@ -19,17 +19,17 @@ import com.github.isuperred.content.Content;
  * ClassName  :
  * Description  :
  */
-public class TypeOneContentPresenter extends Presenter {
+public class TypeZeroContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeTwoContentPresenter";
+    private static final String TAG = "TypeOneContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_one_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_zero_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,10 +40,10 @@ public class TypeOneContentPresenter extends Presenter {
             Glide.with(mContext)
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px400),
-                                    (int) mContext.getResources().getDimension(R.dimen.px222))
+                            .override((int) mContext.getResources().getDimension(R.dimen.px840),
+                                    (int) mContext.getResources().getDimension(R.dimen.px416))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvTypeTwoPoster);
+                    .into(vh.mIvTypeOnePoster);
         }
     }
 
@@ -54,11 +54,11 @@ public class TypeOneContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final ImageView mIvTypeTwoPoster;
+        private final ImageView mIvTypeOnePoster;
 
         public ViewHolder(View view) {
             super(view);
-            mIvTypeTwoPoster = view.findViewById(R.id.iv_type_two_poster);
+            mIvTypeOnePoster = view.findViewById(R.id.iv_type_one_poster);
         }
     }
 }
