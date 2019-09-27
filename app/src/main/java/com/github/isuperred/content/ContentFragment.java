@@ -1,8 +1,10 @@
 package com.github.isuperred.content;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +15,19 @@ import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.ListRow;
+import androidx.leanback.widget.OnChildViewHolderSelectedListener;
 import androidx.leanback.widget.VerticalGridView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.type.ContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
+import com.github.isuperred.type.TypeOneContentPresenter;
 import com.github.isuperred.type.TypeThreeContentPresenter;
 import com.github.isuperred.type.TypeTwoContentPresenter;
 import com.github.isuperred.type.TypeZeroContentPresenter;
-import com.github.isuperred.type.TypeOneContentPresenter;
+import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.utils.Type;
 
@@ -52,6 +57,15 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private ArrayObjectAdapter mAdapter;
 
+    private static boolean isPressUp = false;
+    private static boolean isPressDown = false;
+
+    private ContentFragment.OnFragmentInteractionListener mListener;
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
+    }
+
     public static ContentFragment newInstance(int position, String tabCode) {
         Log.e(TAG + " pos:" + position, "new Instance status: " + position + " tab:" + tabCode);
         ContentFragment fragment = new ContentFragment();
@@ -67,6 +81,13 @@ public class ContentFragment extends BaseLazyLoadFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+
+        if (context instanceof ContentFragment.OnFragmentInteractionListener) {
+            mListener = (ContentFragment.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
         mActivity = (MainActivity) context;
     }
 
@@ -97,9 +118,16 @@ public class ContentFragment extends BaseLazyLoadFragment {
         return mRootView;
     }
 
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
     private void initView() {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
-        mVerticalGridView.setVerticalSpacing((int) mActivity.getResources().getDimension(R.dimen.px48));
+        mVerticalGridView.setVerticalSpacing((int) getResources().getDimension(R.dimen.px48));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mAdapter);
@@ -108,18 +136,24 @@ public class ContentFragment extends BaseLazyLoadFragment {
     }
 
     protected void initListener() {
-//        mVerticalGridView.addOnScrollListener(onScrollListener);
+        mVerticalGridView.addOnScrollListener(onScrollListener);
+        mVerticalGridView.addOnChildViewHolderSelectedListener(onSelectedListener);
     }
-
-    /*@Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-    }*/
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (mVerticalGridView != null) {
+            mVerticalGridView.removeOnScrollListener(onScrollListener);
+            mVerticalGridView.removeOnChildViewHolderSelectedListener(onSelectedListener);
+        }
+    }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.e(TAG, "setUserVisibleHint mCurrentTabPosition: " + mCurrentTabPosition
+                + " isVisibleToUser:" + isVisibleToUser);
     }
 
     @Override
@@ -131,7 +165,10 @@ public class ContentFragment extends BaseLazyLoadFragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String json = LocalJsonResolutionUtil.getJson(mActivity, "movie.json");
+                if (getActivity() == null) {
+                    return;
+                }
+                String json = LocalJsonResolutionUtil.getJson(getActivity(), "movie.json");
                 Log.e(TAG, "run json: " + json);
                 Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
                 List<Content.DataBean> dataBeans = content.getData();
@@ -143,8 +180,43 @@ public class ContentFragment extends BaseLazyLoadFragment {
         }).start();
     }
 
-    private void addItem(Content.DataBean dataBean) {
+    public boolean onKeyEvent(KeyEvent keyEvent) {
+        if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+            isPressDown = false;
+            isPressUp = false;
+            switch (keyEvent.getKeyCode()) {
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    isPressDown = true;
+                    break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    isPressUp = true;
+                    break;
+                case KeyEvent.KEYCODE_BACK:
 
+
+                    scrollToTop();
+                    return true;
+                default:
+                    break;
+            }
+
+        }
+        return false;
+    }
+
+    private void scrollToTop() {
+        if (mVerticalGridView != null) {
+            mVerticalGridView.scrollToPosition(0);
+            currentTitleRequestFocus();
+        }
+    }
+
+    private void currentTitleRequestFocus() {
+        mListener.onFragmentInteraction(Uri.parse(Constants.URI_TITLE_REQUEST_FOCUS));
+    }
+
+    private void addItem(Content.DataBean dataBean) {
+        Log.e(TAG, "addItem: " + dataBean.getTitle());
         switch (dataBean.getContentCode()) {
             case Type.TYPE_ZERO:
                 ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new TypeZeroContentPresenter());
@@ -168,7 +240,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterOne.addAll(0, listOne);
                 HeaderItem headerItem = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItem = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowOne = new ListRow(headerItem, arrayObjectAdapterOne);
@@ -186,7 +258,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterTwo.addAll(0, listTwo);
                 HeaderItem headerItemTwo = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemTwo = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowTwo = new ListRow(headerItemTwo, arrayObjectAdapterTwo);
@@ -204,7 +276,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterThree.addAll(0, listThree);
                 HeaderItem headerItemThree = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemThree = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowThree = new ListRow(headerItemThree, arrayObjectAdapterThree);
@@ -222,7 +294,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterFour.addAll(0, listFour);
                 HeaderItem headerItemFour = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: "+dataBean.getTitle() );
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemFour = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowFour = new ListRow(headerItemFour, arrayObjectAdapterFour);
@@ -307,6 +379,32 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 break;
         }
     }
+
+    private final RecyclerView.OnScrollListener onScrollListener
+            = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+        }
+    };
+
+    private final OnChildViewHolderSelectedListener onSelectedListener
+            = new OnChildViewHolderSelectedListener() {
+        @Override
+        public void onChildViewHolderSelected(RecyclerView parent,
+                                              RecyclerView.ViewHolder child,
+                                              int position, int subposition) {
+            super.onChildViewHolderSelected(parent, child, position, subposition);
+            Log.e(TAG, "onChildViewHolderSelected: " + position
+                    + "　isPressUp:" + isPressUp
+                    + " isPressDown:" + isPressDown);
+            if (isPressUp && position == 0) {
+                mListener.onFragmentInteraction(Uri.parse(Constants.URI_SHOW_TITLE));
+            } else if (isPressDown && position == 1) {
+                mListener.onFragmentInteraction(Uri.parse(Constants.URI_HIDE_TITLE));
+            }
+        }
+    };
 
 
 }

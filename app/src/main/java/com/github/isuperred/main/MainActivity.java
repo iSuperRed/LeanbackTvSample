@@ -1,9 +1,12 @@
 package com.github.isuperred.main;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
@@ -16,30 +19,57 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
-import com.github.isuperred.content.ContentViewPagerAdapter;
+import com.github.isuperred.content.ContentFragment;
 import com.github.isuperred.title.Title;
 import com.github.isuperred.title.TitlePresenter;
+import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContentFragment.OnFragmentInteractionListener {
 
     private static final String TAG = "MainActivity";
     private static final int MSG_NOTIFY_TITLE = 100;
+    private static final int TAG_FEATURE_POSITION = 4;
+
+
 //    private static final int MSG_NOTIFY_TITLE = 1;
 
     private ArrayObjectAdapter mArrayObjectAdapter;
     private ContentViewPagerAdapter mViewPagerAdapter;
 
-    private int mCurrentPageIndex;
+    private View mCurrentTitle;
+
+    private int mCurrentPageIndex = 0;
 
     public ArrayObjectAdapter getArrayObjectAdapter() {
         return mArrayObjectAdapter;
     }
 
+    public HorizontalGridView getHorizontalGridView() {
+        return mHorizontalGridView;
+    }
+
     private Handler mHandler = new MyHandler(this);
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Log.e(TAG, "onFragmentInteraction: " + uri);
+
+        switch (uri.toString()) {
+            case Constants.URI_TITLE_REQUEST_FOCUS:
+                currentTitleRequestFocus();
+                break;
+            case Constants.URI_HIDE_TITLE:
+                handleTitleVisible(false);
+                break;
+            case Constants.URI_SHOW_TITLE:
+                handleTitleVisible(true);
+                break;
+        }
+    }
 
 
     private static class MyHandler extends Handler {
@@ -63,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
                         if (adapter != null) {
                             adapter.addAll(0, dataBeans);
                             activity.initViewPager(dataBeans);
+                            HorizontalGridView horizontalGridView = activity.getHorizontalGridView();
+                            if (dataBeans.size() > TAG_FEATURE_POSITION) {
+                                if (horizontalGridView != null) {
+                                    horizontalGridView.setSelectedPosition(TAG_FEATURE_POSITION);
+                                }
+                            } else {
+                                if (activity.getHorizontalGridView() != null) {
+                                    horizontalGridView.setSelectedPosition(0);
+                                }
+                            }
                         }
                         break;
                     case 2:
@@ -82,6 +122,18 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
         initListener();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (mViewPagerAdapter != null) {
+            ContentFragment contentFragment = (ContentFragment)
+                    mViewPagerAdapter.getRegisteredFragment(mCurrentPageIndex);
+            if (contentFragment != null && contentFragment.onKeyEvent(event)) {
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -115,19 +167,19 @@ public class MainActivity extends AppCompatActivity {
                 //转换为对象
                 Title title = LocalJsonResolutionUtil.JsonToObject(titleJson, Title.class);
                 List<Title.DataBean> dataBeans = title.getData();
-                for (int i = 0; i < dataBeans.size(); i++) {
-//                    dataBeans.get(i).getName();
-                    Log.e(TAG, "run: " + dataBeans.get(i).getName());
+                if (dataBeans != null && dataBeans.size() > 0) {
+                    Message msg = Message.obtain();
+                    msg.what = MSG_NOTIFY_TITLE;
+                    msg.obj = dataBeans;
+                    mHandler.sendMessage(msg);
                 }
-                Message msg = Message.obtain();
-                msg.what = MSG_NOTIFY_TITLE;
-                msg.obj = dataBeans;
-                mHandler.sendMessage(msg);
             }
         }).start();
     }
 
     private void initListener() {
+        mHorizontalGridView.setOnKeyListener(onKeyListener);
+
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
     }
 
@@ -157,20 +209,60 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void handleTitleVisible(boolean isShow) {
+        if (isShow) {
+            if (mHorizontalGridView.getVisibility() != View.VISIBLE) {
+                mHorizontalGridView.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (mHorizontalGridView.getVisibility() != View.INVISIBLE) {
+                mHorizontalGridView.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    private void currentTitleRequestFocus() {
+        handleTitleVisible(true);
+        if (mCurrentTitle != null) {
+            mCurrentTitle.requestFocus();
+        }
+    }
+
     private final OnChildViewHolderSelectedListener onChildViewHolderSelectedListener
             = new OnChildViewHolderSelectedListener() {
         @Override
         public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
             super.onChildViewHolderSelected(parent, child, position, subposition);
+
+            mCurrentPageIndex = position;
+            if (child != null) {
+                mCurrentTitle = child.itemView.findViewById(R.id.tv_main_title);
+            }
+            Log.e(TAG, "onChildViewHolderSelected mViewPager != null: " + (mViewPager != null)
+                    + " position:" + position);
             if (mViewPager != null) {
                 mViewPager.setCurrentItem(position);
             }
-
         }
+    };
 
+    private final View.OnKeyListener onKeyListener = new View.OnKeyListener() {
         @Override
-        public void onChildViewHolderSelectedAndPositioned(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
-            super.onChildViewHolderSelectedAndPositioned(parent, child, position, subposition);
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            Log.e(TAG, "onKey: "+keyCode );
+            if (event.getAction() == KeyEvent.ACTION_DOWN
+                    && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+                if (mCurrentPageIndex != TAG_FEATURE_POSITION) {
+                    if (mHorizontalGridView != null) {
+                        mHorizontalGridView.scrollToPosition(TAG_FEATURE_POSITION);
+                        return true;
+                    }
+                } else {
+                    finish();
+                }
+
+            }
+            return false;
         }
     };
 }

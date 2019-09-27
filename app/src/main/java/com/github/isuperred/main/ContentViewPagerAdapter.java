@@ -1,10 +1,11 @@
-package com.github.isuperred.content;
+package com.github.isuperred.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.github.isuperred.content.ContentFragment;
 import com.github.isuperred.title.Title;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * ClassName  :
  * Description  :
  */
-public class ContentViewPagerAdapter extends FragmentStatePagerAdapter {
+public class ContentViewPagerAdapter extends SmartFragmentStatePagerAdapter {
     private static final String TAG = "ContentViewPagerAdapter";
 
     private List<Title.DataBean> dataBeans;
