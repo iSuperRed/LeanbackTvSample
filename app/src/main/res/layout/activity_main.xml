@@ -9,6 +9,7 @@
     android:clipToPadding="false"
     tools:context="com.github.isuperred.main.MainActivity">
 
+
     <androidx.leanback.widget.HorizontalGridView
         android:id="@+id/hg_title"
         android:layout_width="match_parent"
@@ -29,5 +30,222 @@
         android:layout_height="match_parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px73"
+        android:layout_marginTop="@dimen/px30"
+        android:background="@drawable/selector_focus_bg_corner24"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/px60"
+            android:paddingTop="@dimen/px10"
+            android:paddingEnd="@dimen/px20"
+            android:paddingBottom="@dimen/px10"
+            android:text="搜索"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/px26"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px30"
+            android:layout_marginStart="@dimen/px20"
+            android:src="@drawable/lb_ic_in_app_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px20"
+        android:background="@drawable/selector_focus_bg_corner24"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintLeft_toRightOf="@+id/cl_search"
+        app:layout_constraintTop_toTopOf="@+id/cl_search">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/px60"
+            android:paddingTop="@dimen/px10"
+            android:paddingEnd="@dimen/px20"
+            android:paddingBottom="@dimen/px10"
+            android:text="历史"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/px26"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px30"
+            android:layout_marginStart="@dimen/px20"
+            android:src="@drawable/lb_ic_in_app_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px20"
+        android:background="@drawable/selector_focus_bg_corner24"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintLeft_toRightOf="@+id/cl_history"
+        app:layout_constraintTop_toTopOf="@+id/cl_history">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/px60"
+            android:paddingTop="@dimen/px10"
+            android:paddingEnd="@dimen/px20"
+            android:paddingBottom="@dimen/px10"
+            android:text="登录"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/px26"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px30"
+            android:layout_marginStart="@dimen/px20"
+            android:src="@drawable/lb_ic_in_app_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_open_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/px20"
+        android:background="@drawable/selector_focus_bg_corner24"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:maxWidth="@dimen/px611"
+        app:layout_constraintLeft_toRightOf="@+id/cl_login"
+        app:layout_constraintTop_toTopOf="@+id/cl_login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="1"
+            android:maxWidth="@dimen/px611"
+            android:paddingStart="@dimen/px60"
+            android:paddingTop="@dimen/px10"
+            android:paddingEnd="@dimen/px20"
+            android:paddingBottom="@dimen/px10"
+            android:singleLine="true"
+            android:text="开通VIP   燃爆九月，会员首月仅16元 点击开通"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/px26"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px30"
+            android:layout_marginStart="@dimen/px20"
+            android:src="@drawable/lb_ic_in_app_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_app_logo"
+        android:layout_width="@dimen/px70"
+        android:layout_height="@dimen/px60"
+        android:layout_marginTop="@dimen/px30"
+        android:layout_marginEnd="@dimen/px96"
+        android:background="@color/lb_tv_white"
+        android:scaleType="centerInside"
+        android:src="@drawable/icon_danmu_like"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/px1"
+        android:layout_height="@dimen/px24"
+        android:layout_marginEnd="@dimen/px18"
+        android:background="#5d5e60"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
+        app:layout_constraintRight_toLeftOf="@+id/iv_app_logo"
+        app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
+
+    <TextClock
+        android:id="@+id/tp_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/px19"
+        android:theme="@style/MyTimePicker"
+        android:format12Hour ="hh:mm"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/px26"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
+        app:layout_constraintRight_toLeftOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
+
+
+    <ImageView
+        android:id="@+id/iv_network"
+        android:layout_width="@dimen/px60"
+        android:layout_height="@dimen/px60"
+        android:layout_marginEnd="@dimen/px22"
+        android:src="@drawable/ic_ok_normal"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
+        app:layout_constraintRight_toLeftOf="@+id/tp_time"
+        app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_focus_bg_corner24"
+        android:clickable="true"
+        android:drawableStart="@drawable/lb_ic_search_mic_out"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingStart="@dimen/px30"
+        android:paddingTop="@dimen/px10"
+        android:paddingEnd="@dimen/px20"
+        android:paddingBottom="@dimen/px10"
+        android:text="新人礼包"
+        android:gravity="center|left"
+        android:textColor="@color/colorWhite"
+        android:layout_marginEnd="@dimen/px22"
+        android:textSize="@dimen/px26"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
+        app:layout_constraintRight_toLeftOf="@+id/iv_network"
+        app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

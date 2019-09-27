@@ -8,11 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
 
     </style>
-    <style name="FocusStyle" >
+
+    <style name="FocusStyle">
         <!-- Customize your theme here. -->
         <item name="android:focusableInTouchMode">true</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
 
+    </style>
+
+    <style name="MyTimePicker" >
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 </resources>

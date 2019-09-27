@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shape_button_bg_normal" android:state_focused="true"/>
+    <item android:drawable="@drawable/shape_button_bg_normal" android:state_selected="true"/>
+    <item android:drawable="@drawable/shape_corner24_color_14ffffff"/>
+</selector>
