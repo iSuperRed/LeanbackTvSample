@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.VerticalGridView;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
  * Created by（dongch） on 2019/9/28.

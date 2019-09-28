@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
     <!--如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；设置为ture的话你的应用只可以在使用Leanback的设备上。-->
     <uses-feature android:name="android.software.leanback"
         android:required="false" />
@@ -15,6 +17,7 @@
         android:required="false" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
