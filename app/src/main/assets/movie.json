@@ -463,57 +463,57 @@
     {
       "id": 9966,
       "title": "Banner",
-      "showTitle": "true",
-      "contentCode": 109,
+      "showTitle": "false",
+      "contentCode": 104,
       "widgets": [
         {
           "id": 14,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "北京卫视",
+          "desc": "北京卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "东方卫视",
+          "desc": "东方卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "湖南卫视",
+          "desc": "湖南卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "浙江卫视",
+          "desc": "浙江卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "江苏卫视",
+          "desc": "江苏卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "央视频道",
+          "desc": "央视频道",
+          "url": ""
         },
         {
           "id": 13,
           "contentCode": "1081",
           "name": "大闹天宫",
           "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "url": ""
         }
       ]
     },
