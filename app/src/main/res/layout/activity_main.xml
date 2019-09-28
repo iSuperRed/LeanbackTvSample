@@ -10,7 +10,7 @@
     tools:context="com.github.isuperred.main.MainActivity">
 
 
-    <androidx.leanback.widget.HorizontalGridView
+    <com.github.isuperred.widgets.TabHorizontalGridView
         android:id="@+id/hg_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/px50"

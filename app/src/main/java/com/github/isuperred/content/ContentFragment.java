@@ -30,6 +30,7 @@ import com.github.isuperred.type.TypeZeroContentPresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.utils.Type;
+import com.github.isuperred.widgets.TabVerticalGridView;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private static final String BUNDLE_KEY_TAB_CODE = "bundleKeyTabCode";
     private static final int MSG_ADD_ITEM = 100;
 
-    private VerticalGridView mVerticalGridView;
+    private TabVerticalGridView mVerticalGridView;
 
     private int mCurrentTabPosition;
     private String mCurrentTabCode;
@@ -127,6 +128,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private void initView() {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
+        mVerticalGridView.setTabView(mActivity.getHorizontalGridView());
         mVerticalGridView.setVerticalSpacing((int) getResources().getDimension(R.dimen.px48));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
@@ -192,8 +194,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                     isPressUp = true;
                     break;
                 case KeyEvent.KEYCODE_BACK:
-
-
                     scrollToTop();
                     return true;
                 default:

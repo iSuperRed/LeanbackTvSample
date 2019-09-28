@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.leanback.widget.VerticalGridView
+    <com.github.isuperred.widgets.TabVerticalGridView
         android:id="@+id/hg_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

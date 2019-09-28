@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private static final String TAG = "MainActivity";
     private static final int MSG_NOTIFY_TITLE = 100;
-    private static final int TAG_FEATURE_POSITION = 4;
 
 
 //    private static final int MSG_NOTIFY_TITLE = 1;
@@ -94,15 +93,15 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                             adapter.addAll(0, dataBeans);
                             activity.initViewPager(dataBeans);
                             HorizontalGridView horizontalGridView = activity.getHorizontalGridView();
-                            if (dataBeans.size() > TAG_FEATURE_POSITION) {
-                                if (horizontalGridView != null) {
-                                    horizontalGridView.setSelectedPosition(TAG_FEATURE_POSITION);
-                                }
-                            } else {
-                                if (activity.getHorizontalGridView() != null) {
-                                    horizontalGridView.setSelectedPosition(0);
-                                }
-                            }
+//                            if (dataBeans.size() > Constants.TAG_FEATURE_POSITION) {
+//                                if (horizontalGridView != null) {
+//                                    horizontalGridView.setSelectedPosition(Constants.TAG_FEATURE_POSITION);
+//                                }
+//                            } else {
+//                                if (activity.getHorizontalGridView() != null) {
+//                                    horizontalGridView.setSelectedPosition(0);
+//                                }
+//                            }
                         }
                         break;
                     case 2:
@@ -126,13 +125,13 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (mViewPagerAdapter != null) {
-            ContentFragment contentFragment = (ContentFragment)
-                    mViewPagerAdapter.getRegisteredFragment(mCurrentPageIndex);
-            if (contentFragment != null && contentFragment.onKeyEvent(event)) {
-                return true;
-            }
-        }
+//        if (mViewPagerAdapter != null) {
+//            ContentFragment contentFragment = (ContentFragment)
+//                    mViewPagerAdapter.getRegisteredFragment(mCurrentPageIndex);
+//            if (contentFragment != null && contentFragment.onKeyEvent(event)) {
+//                return true;
+//            }
+//        }
         return super.onKeyDown(keyCode, event);
     }
 
@@ -179,7 +178,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private void initListener() {
         mHorizontalGridView.setOnKeyListener(onKeyListener);
-
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
     }
 
@@ -252,9 +250,9 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             Log.e(TAG, "onKey: "+keyCode );
             if (event.getAction() == KeyEvent.ACTION_DOWN
                     && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-                if (mCurrentPageIndex != TAG_FEATURE_POSITION) {
+                if (mCurrentPageIndex != Constants.TAG_FEATURE_POSITION) {
                     if (mHorizontalGridView != null) {
-                        mHorizontalGridView.scrollToPosition(TAG_FEATURE_POSITION);
+                        mHorizontalGridView.scrollToPosition(Constants.TAG_FEATURE_POSITION);
                         return true;
                     }
                 } else {
@@ -265,6 +263,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             return false;
         }
     };
+
 }
 
 
