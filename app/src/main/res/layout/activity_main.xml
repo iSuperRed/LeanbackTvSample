@@ -208,10 +208,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/px19"
-        android:theme="@style/MyTimePicker"
-        android:format12Hour ="hh:mm"
+        android:format12Hour="hh:mm"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/px26"
+        android:theme="@style/MyTimePicker"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
@@ -228,24 +228,33 @@
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
 
     <TextView
+        android:id="@+id/tv_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/px22"
         android:background="@drawable/selector_focus_bg_corner24"
         android:clickable="true"
         android:drawableStart="@drawable/lb_ic_search_mic_out"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:gravity="center|start"
         android:paddingStart="@dimen/px30"
         android:paddingTop="@dimen/px10"
         android:paddingEnd="@dimen/px20"
         android:paddingBottom="@dimen/px10"
         android:text="新人礼包"
-        android:gravity="center|left"
         android:textColor="@color/colorWhite"
-        android:layout_marginEnd="@dimen/px22"
         android:textSize="@dimen/px26"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/iv_network"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/id_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_ad,
+        iv_network,tp_time,view,iv_app_logo,cl_open_vip,cl_login,
+        cl_history,cl_search,hg_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

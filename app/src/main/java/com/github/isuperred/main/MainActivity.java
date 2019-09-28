@@ -9,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.FocusHighlight;
 import androidx.leanback.widget.FocusHighlightHelper;
@@ -145,10 +146,17 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private HorizontalGridView mHorizontalGridView;
     private ViewPager mViewPager;
+    private Group mGroup;
+
+    public Group getGroup() {
+        return mGroup;
+    }
 
     private void initView() {
         mHorizontalGridView = findViewById(R.id.hg_title);
         mViewPager = findViewById(R.id.vp_content);
+        mGroup = findViewById(R.id.id_group);
+
         mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
@@ -209,12 +217,12 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private void handleTitleVisible(boolean isShow) {
         if (isShow) {
-            if (mHorizontalGridView.getVisibility() != View.VISIBLE) {
-                mHorizontalGridView.setVisibility(View.VISIBLE);
+            if (mGroup.getVisibility() != View.VISIBLE) {
+                mGroup.setVisibility(View.VISIBLE);
             }
         } else {
-            if (mHorizontalGridView.getVisibility() != View.INVISIBLE) {
-                mHorizontalGridView.setVisibility(View.INVISIBLE);
+            if (mGroup.getVisibility() != View.GONE) {
+                mGroup.setVisibility(View.GONE);
             }
         }
     }

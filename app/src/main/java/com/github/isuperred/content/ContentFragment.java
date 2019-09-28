@@ -58,8 +58,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private ArrayObjectAdapter mAdapter;
 
-    private static boolean isPressUp = false;
-    private static boolean isPressDown = false;
 
     private ContentFragment.OnFragmentInteractionListener mListener;
 
@@ -129,6 +127,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private void initView() {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
         mVerticalGridView.setTabView(mActivity.getHorizontalGridView());
+        mVerticalGridView.setGroup(mActivity.getGroup());
         mVerticalGridView.setVerticalSpacing((int) getResources().getDimension(R.dimen.px48));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
@@ -144,6 +143,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     @Override
     public void onDestroy() {
+        thread.interrupt();
         super.onDestroy();
         if (mVerticalGridView != null) {
             mVerticalGridView.removeOnScrollListener(onScrollListener);
@@ -163,42 +163,30 @@ public class ContentFragment extends BaseLazyLoadFragment {
         loadData();
     }
 
-    private void loadData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (getActivity() == null) {
-                    return;
-                }
-                String json = LocalJsonResolutionUtil.getJson(getActivity(), "movie.json");
-                Log.e(TAG, "run json: " + json);
-                Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
-                List<Content.DataBean> dataBeans = content.getData();
-                for (int i = 0; i < dataBeans.size(); i++) {
-                    Content.DataBean dataBean = dataBeans.get(i);
-                    addItem(dataBean);
-                }
+    private Thread thread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            if (getActivity() == null) {
+                return;
             }
-        }).start();
+            String json = LocalJsonResolutionUtil.getJson(getActivity(), "movie.json");
+            Log.e(TAG, "run json: " + json);
+            Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
+            List<Content.DataBean> dataBeans = content.getData();
+            for (int i = 0; i < dataBeans.size(); i++) {
+                Content.DataBean dataBean = dataBeans.get(i);
+                addItem(dataBean);
+            }
+        }
+    });
+
+    private void loadData() {
+        thread.start();
     }
 
     public boolean onKeyEvent(KeyEvent keyEvent) {
         if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-            isPressDown = false;
-            isPressUp = false;
-            switch (keyEvent.getKeyCode()) {
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    isPressDown = true;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    isPressUp = true;
-                    break;
-                case KeyEvent.KEYCODE_BACK:
-                    scrollToTop();
-                    return true;
-                default:
-                    break;
-            }
+
 
         }
         return false;
@@ -396,11 +384,17 @@ public class ContentFragment extends BaseLazyLoadFragment {
                                               int position, int subposition) {
             super.onChildViewHolderSelected(parent, child, position, subposition);
             Log.e(TAG, "onChildViewHolderSelected: " + position
-                    + "　isPressUp:" + isPressUp
-                    + " isPressDown:" + isPressDown);
-            if (isPressUp && position == 0) {
+            );
+
+            if (mVerticalGridView == null) {
+                return;
+            }
+            Log.e(TAG, "onChildViewHolderSelected: " + "　isPressUp:" + mVerticalGridView.isPressUp()
+                    + " isPressDown:" + mVerticalGridView.isPressDown());
+
+            if (mVerticalGridView.isPressUp() && position == 0) {
                 mListener.onFragmentInteraction(Uri.parse(Constants.URI_SHOW_TITLE));
-            } else if (isPressDown && position == 1) {
+            } else if (mVerticalGridView.isPressDown() && position == 1) {
                 mListener.onFragmentInteraction(Uri.parse(Constants.URI_HIDE_TITLE));
             }
         }

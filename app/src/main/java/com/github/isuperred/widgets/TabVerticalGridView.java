@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.VerticalGridView;
 
 /**
@@ -27,21 +28,45 @@ public class TabVerticalGridView extends VerticalGridView {
         super(context, attrs, defStyle);
     }
 
-    private View tabView;
+    private View mTabView;
+    private Group mGroup;
+    private boolean isPressUp = false;
+    private boolean isPressDown = false;
+
     public void setTabView(View tabView) {
-        this.tabView = tabView;
+        this.mTabView = tabView;
+    }
+
+    public void setGroup(Group mGroup) {
+        this.mGroup = mGroup;
+    }
+
+    public boolean isPressUp() {
+        return isPressUp;
+    }
+
+    public boolean isPressDown() {
+        return isPressDown;
     }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            isPressDown = false;
+            isPressUp = false;
             switch (event.getKeyCode()) {
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    isPressDown = true;
+                    break;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    isPressUp = true;
+                    break;
                 case KeyEvent.KEYCODE_BACK:
-                    if (tabView != null) {
-                        if (tabView.getVisibility() != View.VISIBLE) {
-                            tabView.setVisibility(View.VISIBLE);
+                    if (mTabView != null) {
+                        if (mGroup != null && mGroup.getVisibility() != View.VISIBLE) {
+                            mGroup.setVisibility(View.VISIBLE);
                         }
-                        tabView.requestFocus();
+                        mTabView.requestFocus();
                         scrollToPosition(0);
                     }
                     return true;
