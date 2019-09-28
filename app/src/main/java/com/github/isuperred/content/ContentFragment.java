@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeFiveContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
 import com.github.isuperred.type.TypeThreeContentPresenter;
@@ -289,15 +290,24 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowFour);
                 break;
             case Type.TYPE_FIVE:
-                ArrayObjectAdapter arrayObjectAdapterFive = new ArrayObjectAdapter(new ContentPresenter());
-                HeaderItem headerItemFive = new HeaderItem("大闹天宫");
-                ListRow listRowFive = new ListRow(8, headerItemFive,
-                        arrayObjectAdapterFive);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                arrayObjectAdapterFive.addAll(0, dataBean.getWidgets());
-
-                mAdapter.add(listRowFive);
+                ArrayObjectAdapter arrayObjectAdapterFive = new ArrayObjectAdapter(new TypeFiveContentPresenter());
+                List<Content.DataBean.WidgetsBean> listFive = dataBean.getWidgets();
+                if (listFive == null) {
+                    return;
+                }
+                if (listFive.size() > 6) {
+                    listFive = listFive.subList(0, 6);
+                }
+                arrayObjectAdapterFive.addAll(0, listFive);
+                HeaderItem headerItemFive = null;
+                if (dataBean.getShowTitle()) {
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
+                    headerItemFive = new HeaderItem(dataBean.getTitle());
+                }
+                ListRow listRowFive = new ListRow(headerItemFive, arrayObjectAdapterFive);
+                if(!mVerticalGridView.isComputingLayout()){
+                    mAdapter.add(listRowFive);
+                }
                 break;
             case Type.TYPE_SIX:
                 ArrayObjectAdapter arrayObjectAdapterSix = new ArrayObjectAdapter(new ContentPresenter());

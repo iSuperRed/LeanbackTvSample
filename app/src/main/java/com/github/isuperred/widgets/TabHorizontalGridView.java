@@ -34,16 +34,14 @@ public class TabHorizontalGridView extends HorizontalGridView {
     @Override
     public View focusSearch(View focused, int direction) {
         if (focused != null) {
-            if (direction == View.FOCUS_LEFT) {
-                final FocusFinder ff = FocusFinder.getInstance();
-                final View found = ff.findNextFocus(this, focused, direction);
+            final FocusFinder ff = FocusFinder.getInstance();
+            final View found = ff.findNextFocus(this, focused, direction);
+            if (direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT) {
                 if (found == null || found.getId() != R.id.tv_main_title) {
                     focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake));
                     return null;
                 }
-
             }
-
         }
         return super.focusSearch(focused, direction);
     }

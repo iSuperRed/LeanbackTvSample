@@ -2,12 +2,15 @@ package com.github.isuperred.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.FocusFinder;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 
 import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.VerticalGridView;
 
+import com.github.isuperred.R;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
@@ -51,6 +54,21 @@ public class TabVerticalGridView extends VerticalGridView {
         return isPressDown;
     }
 
+
+    @Override
+    public View focusSearch(View focused, int direction) {
+        if (focused != null) {
+            final FocusFinder ff = FocusFinder.getInstance();
+            final View found = ff.findNextFocus(this, focused, direction);
+            if (direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT||direction == View.FOCUS_DOWN) {
+                if (found == null) {
+                    focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake_y));
+                    return null;
+                }
+            }
+        }
+        return super.focusSearch(focused, direction);
+    }
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {

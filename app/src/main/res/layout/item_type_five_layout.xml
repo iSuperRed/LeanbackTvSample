@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FocusStyle"
+    android:layout_width="@dimen/px544"
+    android:layout_height="@dimen/px248">
+
+    <ImageView
+        android:id="@+id/iv_type_five_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription"
+        tools:src="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tv_type_five_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/px83"
+        android:gravity="center|start"
+        android:paddingStart="@dimen/px34"
+        android:paddingEnd="@dimen/px34"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/px28"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="欢乐剧场" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="@dimen/px239"
+        android:layout_height="@dimen/px1"
+        android:layout_marginStart="@dimen/px34"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="@dimen/px10"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_type_five_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_type_five_name" />
+
+    <TextView
+        android:id="@+id/tv_type_five_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="一家人在一起最开心"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/px24"
+        android:paddingStart="@dimen/px34"
+        android:paddingEnd="@dimen/px34"
+        android:layout_marginTop="@dimen/px8"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
