@@ -2,6 +2,7 @@ package com.github.isuperred.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.tencent.bugly.crashreport.CrashReport;
  * Description  :
  */
 public class TabVerticalGridView extends VerticalGridView {
+
+    private static final String TAG = "TabVerticalGridView";
 
     public TabVerticalGridView(Context context) {
         super(context);
@@ -60,7 +63,13 @@ public class TabVerticalGridView extends VerticalGridView {
         if (focused != null) {
             final FocusFinder ff = FocusFinder.getInstance();
             final View found = ff.findNextFocus(this, focused, direction);
-            if (direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT||direction == View.FOCUS_DOWN) {
+            /*if (direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT) {
+                Log.e(TAG, "focusSearch: " + (found == null));
+                if (found == null) {
+                    focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake));
+                    return null;
+                }
+            } else */if (direction == View.FOCUS_DOWN) {
                 if (found == null) {
                     focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake_y));
                     return null;
@@ -69,6 +78,7 @@ public class TabVerticalGridView extends VerticalGridView {
         }
         return super.focusSearch(focused, direction);
     }
+
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
