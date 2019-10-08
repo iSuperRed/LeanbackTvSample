@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -169,7 +168,12 @@ public class ContentFragment extends BaseLazyLoadFragment {
             if (getActivity() == null) {
                 return;
             }
-            String json = LocalJsonResolutionUtil.getJson(getActivity(), "movie.json");
+
+
+//            switch (mCurrentTabCode){
+//                case "mCurrentTabCode"
+//            }
+            String json = LocalJsonResolutionUtil.getJson(getActivity(), "Mine.json");
             Log.e(TAG, "run json: " + json);
             Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
             List<Content.DataBean> dataBeans = content.getData();

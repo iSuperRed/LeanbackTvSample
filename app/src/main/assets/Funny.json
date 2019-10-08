@@ -1,0 +1,564 @@
+﻿{
+  "code": 200,
+  "total_count": 12,
+  "data": [
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 100,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "诛仙",
+          "desc": "诛仙是张小凡的故事",
+          "url": "http://image12.m1905.cn/mapps/uploadfile/edu/2014/0815/thumb_0_800_400_2014081504081797626.jpg"
+        },
+        {
+          "id": 14,
+          "contentCode": "1081",
+          "name": "花木兰",
+          "desc": "花木兰是花木兰的故事",
+          "url": "http://img.juimg.com/tuku/yulantu/110520/2445-11052020525497.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "X战警",
+          "desc": "X战警是X战警的故事",
+          "url": "http://www.rjzxw.com/dats/twjc/7/11836/11836-1.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": "101",
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://2img.hitv.com/preview/sp_images/2019/9/20/zongyi/330026/6425298/20190920224556237.jpg_366x206.jpg"
+        },
+        {
+          "id": 14,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://1img.hitv.com/preview/cms_icon/2019/9/23/09/20190923155026591.jpg_366x206.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://2img.hitv.com/preview/cms_icon/2019/6/7/06/20190607210510061.jpg_366x206.jpg"
+        },
+        {
+          "id": 14,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://3img.hitv.com/preview/cms_icon/2019/9/17/09/20190917085422819.jpg_366x206.jpg"
+        },
+        {
+          "id": 14,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "最近观看",
+      "showTitle": "true",
+      "contentCode": 101,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://0img.hitv.com/preview/cms_icon/2019/9/16/09/20190916114210512.jpg_366x206.jpg?0tUtazP/RA"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://0img.hitv.com/preview/cms_icon/2019/9/24/09/20190924194648906.jpg_366x206.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://4img.hitv.com/preview/cms_icon/2019/8/27/08/20190827120809511.jpg_366x206.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://1img.hitv.com/preview/cms_icon/2019/9/16/09/20190916093251417.jpg_366x206.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "卫视热播",
+      "showTitle": "true",
+      "contentCode": 102,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/common/lego/20190925/dfbc4d26b02647ff8296656106485772.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/image/20190925/4f/d7/v_138558117_m_601_m1_480_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/common/lego/20190710/24637c49d4a44f6c9e03e70bc7c5c5ad.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/common/lego/20190710/24637c49d4a44f6c9e03e70bc7c5c5ad.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 103,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic6.iqiyipic.com/image/20180128/7f/a5/a_100010172_m_601_m8_260_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic9.iqiyipic.com/image/20190714/b3/f9/a_100010085_m_601_m2_260_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/image/20181106/fd/89/a_100010437_m_601_m4_260_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic6.iqiyipic.com/image/20190712/d6/53/a_100011364_m_601_m3_260_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/image/20190702/ed/98/a_100008476_m_601_m2_260_360.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://pic2.iqiyipic.com/image/20181120/84/ab/a_50392791_m_601_m3_260_360.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 104,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "全部剧集",
+          "desc": "全部剧集",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "挑战风云",
+          "desc": "挑战风云",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "古装仙侠",
+          "desc": "古装仙侠",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "家长里短",
+          "desc": "家长里短",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "都市情缘",
+          "desc": "都市情缘",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "青春偶像",
+          "desc": "青春偶像",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "超级网剧",
+      "showTitle": "true",
+      "contentCode": 102,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "读心",
+          "desc": "李小璐李佳航上演读心夫妻",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/472b42d1ce624f83b1d47b4062a60e8c.png?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "你是我眼中的山川和海洋",
+          "desc": "少年志趣相投回味青春校园初恋",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/bd9ebd7620c045e1aa551f6a86f24b1e.jpg?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "拜托啦师兄",
+          "desc": "击剑天才跌谷底涅槃重生",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/f587b81b9a734a1681934bb31c723e26.jpg?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 103,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://r1.ykimg.com/050E00005D5F46E6ADA7B27941045138?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://r1.ykimg.com/050E00005D494F3F8B7439D1D80064FC?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://r1.ykimg.com/050E00005D883BA58B743946B3007305?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/07a4c10e-e525-46a9-abed-b2693e25873c.jpg?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://r1.ykimg.com/050E00005CF1F08A859B5E8F9E06AE09?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": "https://r1.ykimg.com/050E00005D885F80ADA7B2AB580A59FB?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 104,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "卫视同步",
+          "desc": "卫视同步",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "超级网剧",
+          "desc": "超级网剧",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "港台经典",
+          "desc": "港台经典",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "欧美爆款",
+          "desc": "欧美爆款",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "口碑神剧",
+          "desc": "口碑神剧",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "热剧话题",
+          "desc": "热剧话题",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "24小时随心看",
+      "showTitle": "true",
+      "contentCode": 105,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "人气剧星",
+          "desc": "人气作品",
+          "url": "https://ykpic.alicdn.com/haitun-image/prod/compress/20190102/e76228ed6c73ceef7a4f98d5aea91922.jpg?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "人气剧星",
+          "desc": "人气作品",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/407892042e2a4e42a8aa8cd8c35ebb6e.jpg?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "男人必看系列",
+          "desc": "是男人就看100集",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/f587b81b9a734a1681934bb31c723e26.jpg?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "回忆杀专区",
+          "desc": "每逢佳节必重播",
+          "url": "https://puui.qpic.cn/vcover_hz_pic/0/m441e3rjq9kwpsc1567821299/332"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "欢乐剧场",
+          "desc": "一家人在一起最开心",
+          "url": "https://puui.qpic.cn/media_img/lena/PICabh8dj_180_320/0"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "乡村剧场",
+          "desc": "有笑有泪有看头",
+          "url": "https://puui.qpic.cn/vcover_hz_pic/0/o0ytzgvq6o08e9o1567878596/332"
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "Banner",
+      "showTitle": "false",
+      "contentCode": 104,
+      "widgets": [
+        {
+          "id": 14,
+          "contentCode": "1081",
+          "name": "北京卫视",
+          "desc": "北京卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "东方卫视",
+          "desc": "东方卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "湖南卫视",
+          "desc": "湖南卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "浙江卫视",
+          "desc": "浙江卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "江苏卫视",
+          "desc": "江苏卫视",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "央视频道",
+          "desc": "央视频道",
+          "url": ""
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "大闹天宫",
+          "desc": "大闹天宫是孙悟空的故事",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 9966,
+      "title": "更多精彩 精彩动漫",
+      "showTitle": "true",
+      "contentCode": 106,
+      "widgets": [
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "博人传",
+          "desc": "博人传",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/bd9ebd7620c045e1aa551f6a86f24b1e.jpg?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "扫毒2",
+          "desc": "扫毒2",
+          "url": "https://r1.ykimg.com/050E00005D5F481FADA7B276B400BAFC?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "精武英雄",
+          "desc": "精武英雄",
+          "url": "https://r1.ykimg.com/050E00005D5F44E88B74390B9F059888?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "方世玉",
+          "desc": "方世玉",
+          "url": "https://r1.ykimg.com/050E00005D2EFF46425BD9B874EF4837?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        },
+        {
+          "id": 13,
+          "contentCode": "1081",
+          "name": "霸王别姬",
+          "desc": "霸王别姬",
+          "url": "https://r1.ykimg.com/050E00005D3694CD425BD91F5BAC5BD3?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
+        }
+      ]
+    }
+  ]
+}

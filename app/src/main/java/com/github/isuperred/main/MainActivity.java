@@ -168,8 +168,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String fileName = "title.json";
-                String titleJson = LocalJsonResolutionUtil.getJson(MainActivity.this, fileName);
+                String titleJson = LocalJsonResolutionUtil.getJson(MainActivity.this, "MyTitle.json");
                 Log.e(TAG, "run: " + titleJson);
                 //转换为对象
                 Title title = LocalJsonResolutionUtil.JsonToObject(titleJson, Title.class);
