@@ -2,7 +2,6 @@ package com.github.isuperred.widgets;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
 import android.view.View;
@@ -12,7 +11,6 @@ import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
-import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd

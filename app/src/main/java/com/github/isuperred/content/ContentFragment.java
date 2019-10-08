@@ -163,7 +163,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
         loadData();
     }
 
-    private Thread thread = new Thread(new Runnable() {
+    private final Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
             if (getActivity() == null) {
@@ -184,13 +184,13 @@ public class ContentFragment extends BaseLazyLoadFragment {
         thread.start();
     }
 
-    public boolean onKeyEvent(KeyEvent keyEvent) {
-        if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
-
-
-        }
-        return false;
-    }
+//    public boolean onKeyEvent(KeyEvent keyEvent) {
+//        if (keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+//
+//
+//        }
+//        return false;
+//    }
 
     private void scrollToTop() {
         if (mVerticalGridView != null) {

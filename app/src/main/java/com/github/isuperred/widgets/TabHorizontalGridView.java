@@ -59,7 +59,8 @@ public class TabHorizontalGridView extends HorizontalGridView {
                         scrollToPosition(Constants.TAG_FEATURE_POSITION);
                         return true;
                     }
-
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    break;
                 default:
                     break;
             }

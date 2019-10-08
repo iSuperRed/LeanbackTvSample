@@ -17,7 +17,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
  */
 public abstract class SmartFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
     private static final String TAG = "SmartSVodContent";
-    private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+    private SparseArray<Fragment> registeredFragments = new SparseArray<>();
 
     SmartFragmentStatePagerAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);

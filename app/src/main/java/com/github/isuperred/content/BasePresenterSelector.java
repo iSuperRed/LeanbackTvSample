@@ -80,7 +80,7 @@ public class BasePresenterSelector extends PresenterSelector {
 
     @Override
     public Presenter[] getPresenters() {
-        return mPresenters.toArray(new Presenter[mPresenters.size()]);
+        return mPresenters.toArray(new Presenter[0]);
     }
 
     public void enable(ListRowPresenter listRowPresenter, boolean flag) {

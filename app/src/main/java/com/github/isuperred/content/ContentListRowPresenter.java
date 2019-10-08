@@ -1,7 +1,5 @@
 package com.github.isuperred.content;
 
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.leanback.widget.HorizontalGridView;
