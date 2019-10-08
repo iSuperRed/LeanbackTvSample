@@ -22,31 +22,43 @@ import com.github.isuperred.content.Content;
  * ClassName  :
  * Description  :
  */
-public class ContentPresenter extends Presenter {
+public class TypeSixContentPresenter extends Presenter {
 
     private Context mContext;
 
-    private static final String TAG = "ContentPresenter";
+    private static final String TAG = "TypeSixContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_content_type1, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_six_layout, parent, false);
+        final ViewHolder viewHolder = new ViewHolder(view);
+        view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                viewHolder.mTvDesc.setSelected(hasFocus);
+                if (hasFocus) {
+                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorBlack));
+                } else {
+                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorWhite));
+                }
+            }
+        });
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
         if (item instanceof Content.DataBean.WidgetsBean) {
             ViewHolder vh = (ViewHolder) viewHolder;
-            Log.e(TAG, "onBindViewHolder: "+((Content.DataBean.WidgetsBean) item).getUrl() );
+            Log.e(TAG, "onBindViewHolder: " + ((Content.DataBean.WidgetsBean) item).getUrl());
             Glide.with(mContext)
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px300),
-                                    (int) mContext.getResources().getDimension(R.dimen.px450))
+                            .override((int) mContext.getResources().getDimension(R.dimen.px248),
+                                    (int) mContext.getResources().getDimension(R.dimen.px372))
                             .placeholder(R.drawable.shape_default))
                     .into(vh.mIvPoster);
             String desc = ((Content.DataBean.WidgetsBean) item).getDesc();

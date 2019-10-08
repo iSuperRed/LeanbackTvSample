@@ -441,7 +441,7 @@
           "id": 13,
           "contentCode": "1081",
           "name": "回忆杀专区",
-          "desc": "每逢佳节比重播",
+          "desc": "每逢佳节必重播",
           "url": "https://puui.qpic.cn/vcover_hz_pic/0/m441e3rjq9kwpsc1567821299/332"
         },
         {
@@ -519,80 +519,44 @@
     },
     {
       "id": 9966,
-      "title": "Banner",
+      "title": "更多精彩 精彩动漫",
       "showTitle": "true",
-      "contentCode": 110,
+      "contentCode": 106,
       "widgets": [
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "博人传",
+          "desc": "博人传",
+          "url": "https://liangcang-material.alicdn.com/prod/upload/bd9ebd7620c045e1aa551f6a86f24b1e.jpg?x-oss-process=image/resize,w_490/crop,x_0,y_0,w_490,h_276"
         },
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "扫毒2",
+          "desc": "扫毒2",
+          "url": "https://r1.ykimg.com/050E00005D5F481FADA7B276B400BAFC?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
         },
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "精武英雄",
+          "desc": "精武英雄",
+          "url": "https://r1.ykimg.com/050E00005D5F44E88B74390B9F059888?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
         },
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "方世玉",
+          "desc": "方世玉",
+          "url": "https://r1.ykimg.com/050E00005D2EFF46425BD9B874EF4837?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
         },
         {
           "id": 13,
           "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        }
-      ]
-    },
-    {
-      "id": 9966,
-      "title": "Banner",
-      "showTitle": "true",
-      "contentCode": 111,
-      "widgets": [
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
-        },
-        {
-          "id": 13,
-          "contentCode": "1081",
-          "name": "大闹天宫",
-          "desc": "大闹天宫是孙悟空的故事",
-          "url": "https://n.sinaimg.cn/ent/transform/712/w630h882/20190824/d7f5-icqznha5072940.jpg"
+          "name": "霸王别姬",
+          "desc": "霸王别姬",
+          "url": "https://r1.ykimg.com/050E00005D3694CD425BD91F5BAC5BD3?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
         }
       ]
     }

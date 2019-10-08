@@ -3,7 +3,7 @@ package com.github.isuperred.content;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
 
-import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeSixContentPresenter;
 import com.github.isuperred.type.TypeFiveContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
@@ -22,7 +22,6 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         ListRowPresenter listRowPresenter = new ContentListRowPresenter();
         listRowPresenter.setShadowEnabled(false);
 
-        addClassPresenter(ListRow.class, listRowPresenter, ContentPresenter.class);
 
         ListRowPresenter listRowPresenterOne = new TypeZeroListRowPresenter();
         listRowPresenterOne.setShadowEnabled(false);
@@ -37,6 +36,8 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         listRowPresenterOne.setShadowEnabled(false);
 
         addClassPresenter(ListRow.class, listRowPresenterFive, TypeFiveContentPresenter.class);
+        addClassPresenter(ListRow.class, listRowPresenterOne, TypeSixContentPresenter.class);
+
     }
 
 }

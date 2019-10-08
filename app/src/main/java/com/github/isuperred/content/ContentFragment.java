@@ -16,12 +16,11 @@ import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.OnChildViewHolderSelectedListener;
-import androidx.leanback.widget.VerticalGridView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
-import com.github.isuperred.type.ContentPresenter;
+import com.github.isuperred.type.TypeSixContentPresenter;
 import com.github.isuperred.type.TypeFiveContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
@@ -310,18 +309,27 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 }
                 break;
             case Type.TYPE_SIX:
-                ArrayObjectAdapter arrayObjectAdapterSix = new ArrayObjectAdapter(new ContentPresenter());
-                HeaderItem headerItemSix = new HeaderItem("大闹天宫");
-                ListRow listRowSix = new ListRow(8, headerItemSix,
-                        arrayObjectAdapterSix);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                arrayObjectAdapterSix.addAll(0, dataBean.getWidgets());
-
-                mAdapter.add(listRowSix);
+                ArrayObjectAdapter arrayObjectAdapterSix = new ArrayObjectAdapter(new TypeSixContentPresenter());
+                List<Content.DataBean.WidgetsBean> listSix = dataBean.getWidgets();
+                if (listSix == null) {
+                    return;
+                }
+                if (listSix.size() > 5) {
+                    listSix = listSix.subList(0, 5);
+                }
+                arrayObjectAdapterSix.addAll(0, listSix);
+                HeaderItem headerItemSix = null;
+                if (dataBean.getShowTitle()) {
+                    Log.e(TAG, "addItem: " + dataBean.getTitle());
+                    headerItemSix = new HeaderItem(dataBean.getTitle());
+                }
+                ListRow listRowSix = new ListRow(headerItemSix, arrayObjectAdapterSix);
+                if(!mVerticalGridView.isComputingLayout()){
+                    mAdapter.add(listRowSix);
+                }
                 break;
             case Type.TYPE_SEVEN:
-                ArrayObjectAdapter arrayObjectAdapterSeven = new ArrayObjectAdapter(new ContentPresenter());
+                ArrayObjectAdapter arrayObjectAdapterSeven = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemSeven = new HeaderItem("大闹天宫");
                 ListRow listRowSeven = new ListRow(8, headerItemSeven,
                         arrayObjectAdapterSeven);
@@ -332,7 +340,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowSeven);
                 break;
             case Type.TYPE_EIGHT:
-                ArrayObjectAdapter arrayObjectAdapterEight = new ArrayObjectAdapter(new ContentPresenter());
+                ArrayObjectAdapter arrayObjectAdapterEight = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemEight = new HeaderItem("大闹天宫");
                 ListRow listRowEight = new ListRow(8, headerItemEight,
                         arrayObjectAdapterEight);
@@ -343,7 +351,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowEight);
                 break;
             case Type.TYPE_NINE:
-                ArrayObjectAdapter arrayObjectAdapterNine = new ArrayObjectAdapter(new ContentPresenter());
+                ArrayObjectAdapter arrayObjectAdapterNine = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemNine = new HeaderItem("大闹天宫");
                 ListRow listRowNine = new ListRow(8, headerItemNine,
                         arrayObjectAdapterNine);
@@ -354,7 +362,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowNine);
                 break;
             case Type.TYPE_TEN:
-                ArrayObjectAdapter arrayObjectAdapterTen = new ArrayObjectAdapter(new ContentPresenter());
+                ArrayObjectAdapter arrayObjectAdapterTen = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemTen = new HeaderItem("大闹天宫");
                 ListRow listRowTen = new ListRow(8, headerItemTen,
                         arrayObjectAdapterTen);
@@ -365,7 +373,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mAdapter.add(listRowTen);
                 break;
             case Type.TYPE_ELEVEN:
-                ArrayObjectAdapter arrayObjectAdapterEleven = new ArrayObjectAdapter(new ContentPresenter());
+                ArrayObjectAdapter arrayObjectAdapterEleven = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemEleven = new HeaderItem("大闹天宫");
                 ListRow listRowEleven = new ListRow(8, headerItemEleven,
                         arrayObjectAdapterEleven);
