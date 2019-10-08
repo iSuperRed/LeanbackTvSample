@@ -17,6 +17,7 @@ import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.OnChildViewHolderSelectedListener;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.type.TypeSixContentPresenter;
@@ -455,6 +456,16 @@ public class ContentFragment extends BaseLazyLoadFragment {
         @Override
         public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
             super.onScrollStateChanged(recyclerView, newState);
+            switch (newState) {
+                //当屏幕滚动且用户使用的触碰或手指还在屏幕上，停止加载图片
+                case RecyclerView.SCROLL_STATE_DRAGGING:
+                    //由于用户的操作，屏幕产生惯性滑动，停止加载图片
+                case RecyclerView.SCROLL_STATE_SETTLING:
+                    Glide.with(mActivity).pauseRequests();
+                    break;
+                case RecyclerView.SCROLL_STATE_IDLE:
+                    Glide.with(mActivity).resumeRequests();
+            }
         }
     };
 
