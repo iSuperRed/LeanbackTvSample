@@ -61,11 +61,11 @@
             android:layout_width="@dimen/px30"
             android:layout_height="@dimen/px30"
             android:layout_marginStart="@dimen/px20"
-            android:src="@drawable/lb_ic_in_app_search"
+            android:src="@drawable/search"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,11 +98,11 @@
             android:layout_width="@dimen/px30"
             android:layout_height="@dimen/px30"
             android:layout_marginStart="@dimen/px20"
-            android:src="@drawable/lb_ic_in_app_search"
+            android:src="@drawable/history"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,11 +135,11 @@
             android:layout_width="@dimen/px30"
             android:layout_height="@dimen/px30"
             android:layout_marginStart="@dimen/px20"
-            android:src="@drawable/lb_ic_in_app_search"
+            android:src="@drawable/login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -177,23 +177,24 @@
             android:layout_width="@dimen/px30"
             android:layout_height="@dimen/px30"
             android:layout_marginStart="@dimen/px20"
-            android:src="@drawable/lb_ic_in_app_search"
+            android:src="@drawable/vip"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <TextView
         android:id="@+id/iv_app_logo"
-        android:layout_width="@dimen/px70"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/px60"
         android:layout_marginTop="@dimen/px30"
         android:layout_marginEnd="@dimen/px96"
-        android:background="@color/lb_tv_white"
-        android:scaleType="centerInside"
-        android:src="@drawable/icon_danmu_like"
+        android:text="LeanbackTvSmaple"
+        android:gravity="start|center"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"/>
@@ -224,14 +225,14 @@
 
     <ImageView
         android:id="@+id/iv_network"
-        android:layout_width="@dimen/px60"
-        android:layout_height="@dimen/px60"
+        android:layout_width="@dimen/px40"
+        android:layout_height="@dimen/px40"
         android:layout_marginEnd="@dimen/px22"
-        android:src="@drawable/ic_ok_normal"
+        android:src="@drawable/ethernet"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/tp_time"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_ad"
@@ -240,7 +241,7 @@
         android:layout_marginEnd="@dimen/px22"
         android:background="@drawable/selector_focus_bg_corner24"
         android:clickable="true"
-        android:drawableStart="@drawable/lb_ic_search_mic_out"
+        android:drawableStart="@drawable/gift"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center|start"
