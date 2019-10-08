@@ -94,15 +94,15 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                             adapter.addAll(0, dataBeans);
                             activity.initViewPager(dataBeans);
                             HorizontalGridView horizontalGridView = activity.getHorizontalGridView();
-//                            if (dataBeans.size() > Constants.TAG_FEATURE_POSITION) {
-//                                if (horizontalGridView != null) {
-//                                    horizontalGridView.setSelectedPosition(Constants.TAG_FEATURE_POSITION);
-//                                }
-//                            } else {
-//                                if (activity.getHorizontalGridView() != null) {
-//                                    horizontalGridView.setSelectedPosition(0);
-//                                }
-//                            }
+                            if (dataBeans.size() > Constants.TAG_FEATURE_POSITION) {
+                                if (horizontalGridView != null) {
+                                    horizontalGridView.setSelectedPositionSmooth(Constants.TAG_FEATURE_POSITION);
+                                }
+                            } else {
+                                if (activity.getHorizontalGridView() != null) {
+                                    horizontalGridView.setSelectedPositionSmooth(0);
+                                }
+                            }
                         }
                         break;
                     case 2:

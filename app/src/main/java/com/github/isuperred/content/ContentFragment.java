@@ -495,6 +495,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private void addWithTryCatch(Object item) {
         try {
+            Log.e(TAG, "addWithTryCatch: " + !mVerticalGridView.isComputingLayout() + " code：" + mCurrentTabCode);
             if (!mVerticalGridView.isComputingLayout()) {
                 mAdapter.add(item);
             }
