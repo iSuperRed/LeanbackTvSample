@@ -228,7 +228,7 @@
         android:layout_width="@dimen/px40"
         android:layout_height="@dimen/px40"
         android:layout_marginEnd="@dimen/px22"
-        android:src="@drawable/ethernet"
+        android:src="@drawable/no_net"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/tp_time"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo"

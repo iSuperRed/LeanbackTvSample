@@ -1,12 +1,21 @@
 package com.github.isuperred.main;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
@@ -54,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private Handler mHandler = new MyHandler(this);
 
+    private NetworkChangeReceiver networkChangeReceiver;
+
+
+    private ImageView mIvNetwork;
     @Override
     public void onFragmentInteraction(Uri uri) {
         Log.e(TAG, "onFragmentInteraction: " + uri);
@@ -122,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         initView();
         initData();
         initListener();
+        initBroadCast();
     }
 
     @Override
@@ -142,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         mHorizontalGridView
                 .removeOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
         super.onDestroy();
+        unregisterReceiver(networkChangeReceiver);
     }
 
     private HorizontalGridView mHorizontalGridView;
@@ -156,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         mHorizontalGridView = findViewById(R.id.hg_title);
         mViewPager = findViewById(R.id.vp_content);
         mGroup = findViewById(R.id.id_group);
-
+        mIvNetwork = findViewById(R.id.iv_network);
         mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
@@ -186,6 +201,13 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     private void initListener() {
         mHorizontalGridView.setOnKeyListener(onKeyListener);
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
+    }
+
+    private void initBroadCast() {
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        networkChangeReceiver = new NetworkChangeReceiver();
+        registerReceiver(networkChangeReceiver, intentFilter);
     }
 
     private void initViewPager(List<Title.DataBean> dataBeans) {
@@ -254,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     private final View.OnKeyListener onKeyListener = new View.OnKeyListener() {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
-            Log.e(TAG, "onKey: "+keyCode );
+            Log.e(TAG, "onKey: " + keyCode);
             if (event.getAction() == KeyEvent.ACTION_DOWN
                     && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
                 if (mCurrentPageIndex != Constants.TAG_FEATURE_POSITION) {
@@ -270,6 +292,30 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             return false;
         }
     };
+
+    class NetworkChangeReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager connectivityManager =
+                    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isAvailable()) {
+                switch (networkInfo.getType()) {
+                    case ConnectivityManager.TYPE_ETHERNET:
+                        mIvNetwork.setImageResource(R.drawable.ethernet);
+                        break;
+                    case ConnectivityManager.TYPE_WIFI:
+                        mIvNetwork.setImageResource(R.drawable.wifi);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                mIvNetwork.setImageResource(R.drawable.no_net);
+            }
+
+        }
+    }
 
 }
 
