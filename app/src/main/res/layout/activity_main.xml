@@ -41,6 +41,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:nextFocusDown="@+id/hg_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -78,6 +79,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:nextFocusDown="@+id/hg_title"
         app:layout_constraintLeft_toRightOf="@+id/cl_search"
         app:layout_constraintTop_toTopOf="@+id/cl_search">
 
@@ -115,6 +117,7 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:nextFocusDown="@+id/hg_title"
         app:layout_constraintLeft_toRightOf="@+id/cl_history"
         app:layout_constraintTop_toTopOf="@+id/cl_history">
 
@@ -153,6 +156,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:maxWidth="@dimen/px611"
+        android:nextFocusDown="@+id/hg_title"
         app:layout_constraintLeft_toRightOf="@+id/cl_login"
         app:layout_constraintTop_toTopOf="@+id/cl_login">
 
@@ -191,13 +195,13 @@
         android:layout_height="@dimen/px60"
         android:layout_marginTop="@dimen/px30"
         android:layout_marginEnd="@dimen/px96"
-        android:text="LeanbackTvSmaple"
         android:gravity="start|center"
-        android:textStyle="bold"
+        android:text="LeanbackTvSmaple"
         android:textColor="@color/colorWhite"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <View
         android:id="@+id/view"
@@ -245,6 +249,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center|start"
+        android:nextFocusDown="@+id/hg_title"
         android:paddingStart="@dimen/px30"
         android:paddingTop="@dimen/px10"
         android:paddingEnd="@dimen/px20"

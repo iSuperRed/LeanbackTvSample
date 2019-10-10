@@ -67,7 +67,8 @@ public class TabVerticalGridView extends VerticalGridView {
                     focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake));
                     return null;
                 }
-            } else */if (direction == View.FOCUS_DOWN) {
+            } else */
+            if (direction == View.FOCUS_DOWN) {
                 if (found == null) {
                     focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake_y));
                     return null;
@@ -88,6 +89,10 @@ public class TabVerticalGridView extends VerticalGridView {
                     break;
                 case KeyEvent.KEYCODE_DPAD_UP:
                     isPressUp = true;
+                    if (getSelectedPosition() == 0) {
+                        mTabView.requestFocus();
+                        return true;
+                    }
                     break;
                 case KeyEvent.KEYCODE_BACK:
                     if (mTabView != null) {
@@ -96,8 +101,8 @@ public class TabVerticalGridView extends VerticalGridView {
                         }
                         mTabView.requestFocus();
                         scrollToPosition(0);
+                        return true;
                     }
-                    return true;
                 default:
                     break;
             }
