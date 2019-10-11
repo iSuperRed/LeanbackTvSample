@@ -35,17 +35,17 @@ public class TypeSixContentPresenter extends Presenter {
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_six_layout, parent, false);
         final ViewHolder viewHolder = new ViewHolder(view);
-        view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                viewHolder.mTvDesc.setSelected(hasFocus);
-                if (hasFocus) {
-                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorBlack));
-                } else {
-                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorWhite));
-                }
-            }
-        });
+//        view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                viewHolder.mTvDesc.setSelected(hasFocus);
+//                if (hasFocus) {
+//                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorBlack));
+//                } else {
+//                    viewHolder.mTvDesc.setTextColor(mContext.getResources().getColor(R.color.colorWhite));
+//                }
+//            }
+//        });
         return viewHolder;
     }
 

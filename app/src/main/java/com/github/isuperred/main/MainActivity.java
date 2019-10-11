@@ -7,15 +7,14 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
@@ -38,7 +37,8 @@ import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ContentFragment.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements ContentFragment.OnFragmentInteractionListener,
+        ViewTreeObserver.OnGlobalFocusChangeListener {
 
     private static final String TAG = "MainActivity";
     private static final int MSG_NOTIFY_TITLE = 100;
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
 
     private ImageView mIvNetwork;
+
     @Override
     public void onFragmentInteraction(Uri uri) {
         Log.e(TAG, "onFragmentInteraction: " + uri);
@@ -82,6 +83,12 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                 handleTitleVisible(true);
                 break;
         }
+    }
+
+    @Override
+    public void onGlobalFocusChanged(View oldFocus, View newFocus) {
+        Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
+        Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
     }
 
 
@@ -155,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         mHandler.removeCallbacksAndMessages(null);
         mHorizontalGridView
                 .removeOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
+        getWindow().getDecorView().getViewTreeObserver().removeOnGlobalFocusChangeListener(this);
         super.onDestroy();
         unregisterReceiver(networkChangeReceiver);
     }
@@ -199,6 +207,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     }
 
     private void initListener() {
+        getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
         mHorizontalGridView.setOnKeyListener(onKeyListener);
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
     }
