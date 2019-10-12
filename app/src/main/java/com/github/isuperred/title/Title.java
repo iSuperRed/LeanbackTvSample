@@ -2,12 +2,7 @@ package com.github.isuperred.title;
 
 import java.util.List;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/18.
- * ClassName  :
- * Description  :
- */
+
 public class Title {
 
 

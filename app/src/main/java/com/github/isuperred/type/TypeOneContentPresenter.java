@@ -14,12 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
 import com.github.isuperred.content.Content;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/25.
- * ClassName  :
- * Description  :
- */
+
 public class TypeOneContentPresenter extends Presenter {
     private Context mContext;
 

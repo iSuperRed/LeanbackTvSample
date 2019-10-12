@@ -13,12 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.github.isuperred.R;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/10/10.
- * ClassName  :
- * Description  :
- */
 public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocusChangeListener {
 
 

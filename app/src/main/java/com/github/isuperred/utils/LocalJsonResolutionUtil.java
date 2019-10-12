@@ -9,12 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/18.
- * ClassName  :
- * Description  :
- */
+
 public class LocalJsonResolutionUtil {
 
     public static String getJson(Context context, String fileName){

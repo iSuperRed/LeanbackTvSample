@@ -12,12 +12,6 @@ import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/28.
- * ClassName  :
- * Description  :
- */
 public class TabVerticalGridView extends VerticalGridView {
 
     private static final String TAG = "TabVerticalGridView";

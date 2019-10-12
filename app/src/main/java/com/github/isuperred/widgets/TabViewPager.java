@@ -15,12 +15,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/29.
- * ClassName  :
- * Description  :
- */
 public class TabViewPager extends ViewPager {
     public TabViewPager(@NonNull Context context) {
         super(context);

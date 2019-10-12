@@ -9,12 +9,6 @@ import androidx.leanback.widget.Presenter;
 
 import com.github.isuperred.R;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/18.
- * ClassName  :
- * Description  :
- */
 public class TitlePresenter extends Presenter {
     private static final String TAG = "TitlePresenter";
 

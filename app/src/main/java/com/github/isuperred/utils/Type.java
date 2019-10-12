@@ -1,11 +1,6 @@
 package com.github.isuperred.utils;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/25.
- * ClassName  :
- * Description  :
- */
+
 public class Type {
     public static final int TYPE_ZERO = 100;
     public static final int TYPE_ONE = 101;

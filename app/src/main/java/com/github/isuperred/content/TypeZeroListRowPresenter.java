@@ -11,12 +11,7 @@ import androidx.leanback.widget.RowPresenter;
 
 import com.github.isuperred.R;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/25.
- * ClassName  :
- * Description  :
- */
+
 public class TypeZeroListRowPresenter extends BaseListRowPresenter {
     @Override
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {

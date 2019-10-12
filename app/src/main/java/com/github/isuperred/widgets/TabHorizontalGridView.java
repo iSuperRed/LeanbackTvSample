@@ -12,12 +12,7 @@ import androidx.leanback.widget.HorizontalGridView;
 import com.github.isuperred.R;
 import com.github.isuperred.utils.Constants;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/28.
- * ClassName  :
- * Description  :
- */
+
 public class TabHorizontalGridView extends HorizontalGridView {
     public TabHorizontalGridView(Context context) {
         super(context);

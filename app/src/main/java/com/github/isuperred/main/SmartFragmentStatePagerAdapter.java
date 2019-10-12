@@ -9,12 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/27.
- * ClassName  :
- * Description  :
- */
+
 public abstract class SmartFragmentStatePagerAdapter extends FragmentStatePagerAdapter {
     private static final String TAG = "SmartSVodContent";
     private SparseArray<Fragment> registeredFragments = new SparseArray<>();

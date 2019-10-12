@@ -4,12 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/9/4.
- * ClassName  :
- * Description  :
- */
+
 public abstract class BaseLazyLoadFragment extends Fragment {
     /**
      * Fragment的View加载完毕的标记
