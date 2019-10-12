@@ -24,6 +24,7 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         listRowPresenter.setSelectEffectEnabled(false);
         listRowPresenter.setKeepChildForeground(false);
 
+
         ListRowPresenter listRowPresenterOne = new TypeZeroListRowPresenter();
         listRowPresenterOne.setShadowEnabled(false);
         listRowPresenterOne.setSelectEffectEnabled(false);

@@ -1,9 +1,11 @@
 package com.github.isuperred.content;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.leanback.widget.BaseOnItemViewClickedListener;
 import androidx.leanback.widget.HorizontalGridView;
-import androidx.leanback.widget.ListRowPresenter;
+import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.RowHeaderPresenter;
 import androidx.leanback.widget.RowPresenter;
 
@@ -15,7 +17,7 @@ import com.github.isuperred.R;
  * ClassName  :
  * Description  :
  */
-public class TypeZeroListRowPresenter extends ListRowPresenter {
+public class TypeZeroListRowPresenter extends BaseListRowPresenter {
     @Override
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);
@@ -31,7 +33,18 @@ public class TypeZeroListRowPresenter extends ListRowPresenter {
         textView.getPaint().setFakeBoldText(true);
         textView.setPadding(0, 0, 0, 20);
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
+        setOnItemViewClickedListener(new BaseOnItemViewClickedListener() {
+            @Override
+            public void onItemClicked(Presenter.ViewHolder itemViewHolder,
+                                      Object item, RowPresenter.ViewHolder rowViewHolder, Object row) {
+                if (item instanceof Content.DataBean.WidgetsBean) {
+                    Toast.makeText(((ViewHolder) rowViewHolder).getGridView().getContext(),
+                            "位置:" + ((ViewHolder) rowViewHolder).getGridView().getSelectedPosition(),
+                            Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
 
     }
 }
