@@ -31,7 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,9 +68,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.github.isuperred.widgets.ScaleConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,9 +106,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.github.isuperred.widgets.ScaleConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,9 +144,9 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.github.isuperred.widgets.ScaleConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_open_vip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.github.isuperred.widgets.ScaleConstraintLayout>
 
     <TextView
         android:id="@+id/iv_app_logo"
@@ -238,16 +238,13 @@
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo"
         tools:ignore="ContentDescription" />
 
-    <TextView
+    <com.github.isuperred.widgets.ScaleTextView
         android:id="@+id/tv_ad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/px22"
         android:background="@drawable/selector_focus_bg_corner24"
-        android:clickable="true"
         android:drawableStart="@drawable/gift"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:gravity="center|start"
         android:nextFocusDown="@+id/hg_title"
         android:paddingStart="@dimen/px30"
