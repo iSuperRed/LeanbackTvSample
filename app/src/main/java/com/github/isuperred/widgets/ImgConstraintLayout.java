@@ -61,7 +61,8 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
                 view.setTranslationX(aFloat);
                 float alpha = aFloat / width;
                 float a1 = (alpha > 0 ? (1 - alpha) : (1 + alpha));
-                float a2 = (float) (a1 / 2 + 0.5);
+                float a2 = (float) (a1 / 2 + 0.3);
+                Log.e("dch", "onAnimationUpdate: "+a2 );
                 view.setAlpha(a2);
             }
         });
