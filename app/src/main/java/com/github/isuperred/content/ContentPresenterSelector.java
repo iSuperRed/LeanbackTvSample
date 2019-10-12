@@ -21,10 +21,13 @@ public class ContentPresenterSelector extends BasePresenterSelector {
     public ContentPresenterSelector() {
         ListRowPresenter listRowPresenter = new ContentListRowPresenter();
         listRowPresenter.setShadowEnabled(false);
-
+        listRowPresenter.setSelectEffectEnabled(false);
+        listRowPresenter.setKeepChildForeground(false);
 
         ListRowPresenter listRowPresenterOne = new TypeZeroListRowPresenter();
         listRowPresenterOne.setShadowEnabled(false);
+        listRowPresenterOne.setSelectEffectEnabled(false);
+        listRowPresenterOne.setKeepChildForeground(false);
 
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeZeroContentPresenter.class);
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeOneContentPresenter.class);
@@ -33,7 +36,9 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeFourContentPresenter.class);
 
         ListRowPresenter listRowPresenterFive = new TypeFiveListRowPresenter();
-        listRowPresenterOne.setShadowEnabled(false);
+        listRowPresenterFive.setShadowEnabled(false);
+        listRowPresenterFive.setSelectEffectEnabled(false);
+        listRowPresenterFive.setKeepChildForeground(false);
 
         addClassPresenter(ListRow.class, listRowPresenterFive, TypeFiveContentPresenter.class);
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeSixContentPresenter.class);

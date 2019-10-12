@@ -13,8 +13,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.github.isuperred.R;
 
-import java.util.logging.Handler;
-
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
  * Created by（dongch） on 2019/10/10.
@@ -52,8 +50,7 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
             if (hasFocus) {
                 move(v.findViewById(R.id.light));
             } else {
-                valueAnimator.cancel();
-                valueAnimator.end();
+                remove();
             }
         }
     }
@@ -101,13 +98,13 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
         float ff = 1000 * (d * 0.25f + 1);
         Log.e("dch", "move: " + ff);
         valueAnimator.setDuration(((Float)ff).longValue());
-        valueAnimator.setStartDelay(200);
+        valueAnimator.setStartDelay(300);
         valueAnimator.start();
     }
 
     private void remove() {
         if (valueAnimator != null) {
-            valueAnimator.end();
+            valueAnimator.cancel();
         }
     }
 }
