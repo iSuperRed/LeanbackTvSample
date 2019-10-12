@@ -63,7 +63,8 @@ public class TabVerticalGridView extends VerticalGridView {
                 }
             } else */
             if (direction == View.FOCUS_DOWN) {
-                if (found == null) {
+                if (found == null && getScrollState() == SCROLL_STATE_IDLE) {
+
                     focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake_y));
                     return null;
                 }
