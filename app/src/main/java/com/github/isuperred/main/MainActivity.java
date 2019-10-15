@@ -89,13 +89,26 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
         Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
         Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
+        Log.e(TAG, "onGlobalFocusChanged isPressUp: " + isPressUp);
+        Log.e(TAG, "onGlobalFocusChanged isPressDown: " + isPressDown);
+        Log.e(TAG, "onGlobalFocusChanged isPressBack: " + isPressBack);
 
+        if (newFocus != null
+                && newFocus.getId() == R.id.tv_main_title
+                && (isPressUp || isPressDown || isPressBack)) {
+            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
+        }
+        if (oldFocus != null && oldFocus.getId() == R.id.tv_main_title
+                && (isPressUp || isPressDown)) {
+            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorBlue));
+        }
     }
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN
                 && keyCode == KeyEvent.KEYCODE_BACK) {
+            isPressBack = true;
             switch (v.getId()) {
                 case R.id.cl_search:
                 case R.id.cl_history:
@@ -202,9 +215,13 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                 case KeyEvent.KEYCODE_DPAD_DOWN:
                     isPressDown = true;
                     break;
+                case KeyEvent.KEYCODE_BACK:
+                    isPressBack = true;
+                    break;
                 default:
                     isPressDown = false;
                     isPressUp = false;
+                    isPressBack = false;
                     break;
             }
 
@@ -283,6 +300,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private boolean isPressDown = false;
     private boolean isPressUp = false;
+    private boolean isPressBack = false;
 
     private void initListener() {
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
@@ -361,8 +379,10 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             }
             if (child != null) {
                 TextView view = child.itemView.findViewById(R.id.tv_main_title);
-                view.setTextColor(getResources().getColor(R.color.colorBlue));
                 view.getPaint().setFakeBoldText(true);
+                if (view.getCurrentTextColor() != getResources().getColor(R.color.colorWhite)) {
+                    view.setTextColor(getResources().getColor(R.color.colorWhite));
+                }
 
                 mOldTitle = view;
             }

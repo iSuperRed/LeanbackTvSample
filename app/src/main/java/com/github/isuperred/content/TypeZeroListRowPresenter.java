@@ -19,15 +19,12 @@ public class TypeZeroListRowPresenter extends BaseListRowPresenter {
         final ViewHolder rowViewHolder = (ViewHolder) holder;
 
         rowViewHolder.getGridView().setHorizontalSpacing((int) rowViewHolder.getGridView().getResources().getDimension(R.dimen.px48));
-//        rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
-
+        rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
         RowHeaderPresenter.ViewHolder vh = rowViewHolder.getHeaderViewHolder();
         TextView textView = vh.view.findViewById(R.id.row_header);
-        textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorWhite));
         textView.setTextSize(textView.getContext().getResources().getDimensionPixelSize(R.dimen.px30));
-        textView.getPaint().setFakeBoldText(true);
+        textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorWhite));
         textView.setPadding(0, 0, 0, 20);
-//        rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
         setOnItemViewClickedListener(new BaseOnItemViewClickedListener() {
             @Override
             public void onItemClicked(Presenter.ViewHolder itemViewHolder,

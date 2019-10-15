@@ -60,7 +60,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private MainActivity mActivity;
     private View mRootView;
     private Handler mHandler;
-    private ProgressBar mPbLoading;
+    public ProgressBar mPbLoading;
     private ArrayObjectAdapter mAdapter;
 //    public static final int MSG_ADD_ITEM = 100;
 
@@ -90,6 +90,8 @@ public class ContentFragment extends BaseLazyLoadFragment {
                             addItem(dataBean);
                         }
                         addFooter();
+                        mPbLoading.setVisibility(View.GONE);
+                        mVerticalGridView.setVisibility(View.VISIBLE);
                         break;
                     default:
                         break;
@@ -299,19 +301,15 @@ public class ContentFragment extends BaseLazyLoadFragment {
             Bundle b = new Bundle();
             b.putParcelable(MSG_BUNDLE_KEY_ADD_ITEM, content);
             msg.setData(b);
-            //演示2秒模拟加载数据
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mHandler.sendMessage(msg);
-                    mPbLoading.setVisibility(View.GONE);
-                }
-            },2000);
+            //延迟1秒模拟加载数据过程
+            mHandler.sendMessageDelayed(msg,1000);
+
         }
     });
 
     private void loadData() {
         mPbLoading.setVisibility(View.VISIBLE);
+        mVerticalGridView.setVisibility(View.INVISIBLE);
         thread.start();
     }
 
