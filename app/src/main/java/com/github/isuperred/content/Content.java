@@ -1,9 +1,12 @@
 package com.github.isuperred.content;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 
-public class Content {
+public class Content implements Parcelable {
 
     /**
      * code : 200
@@ -14,6 +17,23 @@ public class Content {
     private int code;
     private int total_count;
     private List<DataBean> data;
+
+    protected Content(Parcel in) {
+        code = in.readInt();
+        total_count = in.readInt();
+    }
+
+    public static final Creator<Content> CREATOR = new Creator<Content>() {
+        @Override
+        public Content createFromParcel(Parcel in) {
+            return new Content(in);
+        }
+
+        @Override
+        public Content[] newArray(int size) {
+            return new Content[size];
+        }
+    };
 
     public int getCode() {
         return code;
@@ -39,7 +59,18 @@ public class Content {
         this.data = data;
     }
 
-    public static class DataBean {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(code);
+        dest.writeInt(total_count);
+    }
+
+    public static class DataBean implements Parcelable{
         /**
          * id : 9966
          * title : Banner
@@ -53,6 +84,25 @@ public class Content {
         private boolean showTitle;
         private int contentCode;
         private List<WidgetsBean> widgets;
+
+        protected DataBean(Parcel in) {
+            id = in.readInt();
+            title = in.readString();
+            showTitle = in.readByte() != 0;
+            contentCode = in.readInt();
+        }
+
+        public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+            @Override
+            public DataBean createFromParcel(Parcel in) {
+                return new DataBean(in);
+            }
+
+            @Override
+            public DataBean[] newArray(int size) {
+                return new DataBean[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -94,7 +144,20 @@ public class Content {
             this.widgets = widgets;
         }
 
-        public static class WidgetsBean {
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(title);
+            dest.writeByte((byte) (showTitle ? 1 : 0));
+            dest.writeInt(contentCode);
+        }
+
+        public static class WidgetsBean implements Parcelable{
             /**
              * id : 13
              * contentCode : 1081
@@ -108,6 +171,26 @@ public class Content {
             private String name;
             private String desc;
             private String url;
+
+            protected WidgetsBean(Parcel in) {
+                id = in.readInt();
+                contentCode = in.readString();
+                name = in.readString();
+                desc = in.readString();
+                url = in.readString();
+            }
+
+            public static final Creator<WidgetsBean> CREATOR = new Creator<WidgetsBean>() {
+                @Override
+                public WidgetsBean createFromParcel(Parcel in) {
+                    return new WidgetsBean(in);
+                }
+
+                @Override
+                public WidgetsBean[] newArray(int size) {
+                    return new WidgetsBean[size];
+                }
+            };
 
             public int getId() {
                 return id;
@@ -147,6 +230,20 @@ public class Content {
 
             public void setUrl(String url) {
                 this.url = url;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeInt(id);
+                dest.writeString(contentCode);
+                dest.writeString(name);
+                dest.writeString(desc);
+                dest.writeString(url);
             }
         }
     }

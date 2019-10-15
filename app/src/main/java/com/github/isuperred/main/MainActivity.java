@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         mClOpenVip = findViewById(R.id.cl_open_vip);
         mTvAd = findViewById(R.id.tv_ad);
 
-
+        mViewPager.setOffscreenPageLimit(2);
         mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);

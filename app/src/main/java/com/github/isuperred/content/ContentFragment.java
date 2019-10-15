@@ -6,10 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +50,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private static final String BUNDLE_KEY_POSITION = "bundleKeyPosition";
     private static final String BUNDLE_KEY_TAB_CODE = "bundleKeyTabCode";
     private static final int MSG_ADD_ITEM = 100;
+    private static final String MSG_BUNDLE_KEY_ADD_ITEM = "msgBundleKeyItem";
 
     private TabVerticalGridView mVerticalGridView;
 
@@ -56,11 +60,11 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private MainActivity mActivity;
     private View mRootView;
     private Handler mHandler;
-
+    private ProgressBar mPbLoading;
     private ArrayObjectAdapter mAdapter;
 //    public static final int MSG_ADD_ITEM = 100;
 
-    private static class MyHandler extends Handler {
+    private class MyHandler extends Handler {
 
         private final WeakReference<Activity> mActivity;
 
@@ -71,11 +75,23 @@ public class ContentFragment extends BaseLazyLoadFragment {
         @Override
         public void handleMessage(Message msg) {
 
-            Activity activity = mActivity.get();
+            MainActivity activity = (MainActivity) mActivity.get();
             if (activity != null) {
                 switch (msg.what) {
                     case MSG_ADD_ITEM:
 
+                        Content content = msg.getData().getParcelable(MSG_BUNDLE_KEY_ADD_ITEM);
+                        if (content == null) {
+                            break;
+                        }
+                        List<Content.DataBean> dataBeans = content.getData();
+                        for (int i = 0; i < dataBeans.size(); i++) {
+                            Content.DataBean dataBean = dataBeans.get(i);
+                            addItem(dataBean);
+                        }
+                        addFooter();
+                        break;
+                    default:
                         break;
                 }
             }
@@ -150,6 +166,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     }
 
     private void initView() {
+        mPbLoading = mRootView.findViewById(R.id.pb_loading);
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
         mVerticalGridView.setTabView(mActivity.getHorizontalGridView());
         mVerticalGridView.setGroup(mActivity.getGroup());
@@ -184,6 +201,9 @@ public class ContentFragment extends BaseLazyLoadFragment {
         super.setUserVisibleHint(isVisibleToUser);
         Log.e(TAG, "setUserVisibleHint mCurrentTabPosition: " + mCurrentTabPosition
                 + " isVisibleToUser:" + isVisibleToUser);
+        if (!isVisibleToUser) {
+            scrollToTop();
+        }
     }
 
     @Override
@@ -195,10 +215,16 @@ public class ContentFragment extends BaseLazyLoadFragment {
         @Override
         public void run() {
             if (getActivity() == null) {
+                mPbLoading.setVisibility(View.GONE);
                 return;
             }
 
             String json = null;
+            if (mCurrentTabCode == null) {
+                mPbLoading.setVisibility(View.GONE);
+                Toast.makeText(mActivity, "加载数据失败", Toast.LENGTH_SHORT).show();
+                return;
+            }
             switch (mCurrentTabCode) {
                 case "c40248cac1f44c278f8bd23a0bba8b4f":
                     json = LocalJsonResolutionUtil.getJson(getActivity(), "Mine.json");
@@ -269,16 +295,24 @@ public class ContentFragment extends BaseLazyLoadFragment {
             }
             Log.e(TAG, "run json: " + json);
             Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
-            List<Content.DataBean> dataBeans = content.getData();
-            for (int i = 0; i < dataBeans.size(); i++) {
-                Content.DataBean dataBean = dataBeans.get(i);
-                addItem(dataBean);
-            }
-            addFooter();
+            final Message msg = Message.obtain();
+            msg.what = MSG_ADD_ITEM;
+            Bundle b = new Bundle();
+            b.putParcelable(MSG_BUNDLE_KEY_ADD_ITEM, content);
+            msg.setData(b);
+            //演示2秒模拟加载数据
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mHandler.sendMessage(msg);
+                    mPbLoading.setVisibility(View.GONE);
+                }
+            },2000);
         }
     });
 
     private void loadData() {
+        mPbLoading.setVisibility(View.VISIBLE);
         thread.start();
     }
 
@@ -293,7 +327,10 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private void scrollToTop() {
         if (mVerticalGridView != null) {
             mVerticalGridView.scrollToPosition(0);
-            currentTitleRequestFocus();
+//            currentTitleRequestFocus();
+            if (mActivity.getGroup() != null && mActivity.getGroup().getVisibility() != View.VISIBLE) {
+                mActivity.getGroup().setVisibility(View.VISIBLE);
+            }
         }
     }
 
