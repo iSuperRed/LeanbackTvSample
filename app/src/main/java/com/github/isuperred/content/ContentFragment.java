@@ -222,7 +222,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
             String json = null;
             if (mCurrentTabCode == null) {
                 mPbLoading.setVisibility(View.GONE);
-                Toast.makeText(mActivity, "加载数据失败", Toast.LENGTH_SHORT).show();
                 return;
             }
             switch (mCurrentTabCode) {
@@ -332,10 +331,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mActivity.getGroup().setVisibility(View.VISIBLE);
             }
         }
-    }
-
-    private void currentTitleRequestFocus() {
-        mListener.onFragmentInteraction(Uri.parse(Constants.URI_TITLE_REQUEST_FOCUS));
     }
 
     private void addItem(Content.DataBean dataBean) {

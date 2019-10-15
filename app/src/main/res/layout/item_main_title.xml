@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/px20"
     android:paddingEnd="@dimen/px20"
-    android:textColor="@color/lb_tv_white"
+    android:textColor="@color/colorWhite"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:gravity="center"

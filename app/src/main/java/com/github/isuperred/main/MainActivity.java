@@ -15,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     private ArrayObjectAdapter mArrayObjectAdapter;
     private ContentViewPagerAdapter mViewPagerAdapter;
 
-    private View mCurrentTitle;
+    private TextView mOldTitle;
 
     private int mCurrentPageIndex = 0;
 
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private NetworkChangeReceiver networkChangeReceiver;
 
-
     private ImageView mIvNetwork;
 
     @Override
@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         Log.e(TAG, "onFragmentInteraction: " + uri);
 
         switch (uri.toString()) {
-            case Constants.URI_TITLE_REQUEST_FOCUS:
-                currentTitleRequestFocus();
-                break;
             case Constants.URI_HIDE_TITLE:
                 handleTitleVisible(false);
                 break;
@@ -92,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
         Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
         Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
+
     }
 
     @Override
@@ -196,6 +194,21 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    isPressUp = true;
+                    break;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    isPressDown = true;
+                    break;
+                default:
+                    isPressDown = false;
+                    isPressUp = false;
+                    break;
+            }
+
+        }
 //        if (mViewPagerAdapter != null) {
 //            ContentFragment contentFragment = (ContentFragment)
 //                    mViewPagerAdapter.getRegisteredFragment(mCurrentPageIndex);
@@ -268,10 +281,13 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         }).start();
     }
 
+    private boolean isPressDown = false;
+    private boolean isPressUp = false;
+
     private void initListener() {
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
-        mHorizontalGridView.setOnKeyListener(onKeyListener);
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
+
         mClSearch.setOnClickListener(this);
         mClHistory.setOnClickListener(this);
         mClLogin.setOnClickListener(this);
@@ -307,8 +323,10 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             @Override
             public void onPageSelected(int position) {
                 Log.e(TAG, "onPageSelected position: " + position);
-                mCurrentPageIndex = position;
-                mViewPager.setCurrentItem(position);
+                if (position != mCurrentPageIndex) {
+                    mCurrentPageIndex = position;
+                    mHorizontalGridView.setSelectedPosition(position);
+                }
             }
 
             @Override
@@ -331,48 +349,30 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         }
     }
 
-    private void currentTitleRequestFocus() {
-        handleTitleVisible(true);
-        if (mCurrentTitle != null) {
-            mCurrentTitle.requestFocus();
-        }
-    }
-
     private final OnChildViewHolderSelectedListener onChildViewHolderSelectedListener
             = new OnChildViewHolderSelectedListener() {
         @Override
         public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
             super.onChildViewHolderSelected(parent, child, position, subposition);
 
-            mCurrentPageIndex = position;
+            if (mOldTitle != null) {
+                mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+                mOldTitle.getPaint().setFakeBoldText(false);
+            }
             if (child != null) {
-                mCurrentTitle = child.itemView.findViewById(R.id.tv_main_title);
+                TextView view = child.itemView.findViewById(R.id.tv_main_title);
+                view.setTextColor(getResources().getColor(R.color.colorBlue));
+                view.getPaint().setFakeBoldText(true);
+
+                mOldTitle = view;
             }
             Log.e(TAG, "onChildViewHolderSelected mViewPager != null: " + (mViewPager != null)
                     + " position:" + position);
-            if (mViewPager != null) {
+            if (mViewPager != null && position != mCurrentPageIndex) {
                 mViewPager.setCurrentItem(position);
             }
-        }
-    };
+            mCurrentPageIndex = position;
 
-    private final View.OnKeyListener onKeyListener = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            Log.e(TAG, "onKey: " + keyCode);
-            if (event.getAction() == KeyEvent.ACTION_DOWN
-                    && event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
-                if (mCurrentPageIndex != Constants.TAG_FEATURE_POSITION) {
-                    if (mHorizontalGridView != null) {
-                        mHorizontalGridView.scrollToPosition(Constants.TAG_FEATURE_POSITION);
-                        return true;
-                    }
-                } else {
-                    finish();
-                }
-
-            }
-            return false;
         }
     };
 
