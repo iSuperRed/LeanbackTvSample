@@ -384,8 +384,8 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 if (listSix == null) {
                     return;
                 }
-                if (listSix.size() > 5) {
-                    listSix = listSix.subList(0, 5);
+                if (listSix.size() > 6) {
+                    listSix = listSix.subList(0, 6);
                 }
                 arrayObjectAdapterSix.addAll(0, listSix);
                 HeaderItem headerItemSix = null;

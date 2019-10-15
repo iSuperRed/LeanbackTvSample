@@ -90,18 +90,22 @@ public class TabVerticalGridView extends VerticalGridView {
                     }
                     break;
                 case KeyEvent.KEYCODE_BACK:
-                    if (mTabView != null) {
-                        if (mGroup != null && mGroup.getVisibility() != View.VISIBLE) {
-                            mGroup.setVisibility(View.VISIBLE);
-                        }
-                        mTabView.requestFocus();
-                        scrollToPosition(0);
-                        return true;
-                    }
+                    backToTop();
+                    return true;
                 default:
                     break;
             }
         }
         return super.dispatchKeyEvent(event);
+    }
+
+    public void backToTop(){
+        if (mTabView != null) {
+            if (mGroup != null && mGroup.getVisibility() != View.VISIBLE) {
+                mGroup.setVisibility(View.VISIBLE);
+            }
+            mTabView.requestFocus();
+        }
+        scrollToPosition(0);
     }
 }

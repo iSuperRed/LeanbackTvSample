@@ -127,6 +127,13 @@
             "tabCode": "b9c9229ef6534682919d7af67438e4d6",
             "name": "搞笑",
             "icon": ""
+        },
+        {
+            "id": 13,
+            "contentCode": "1081",
+            "name": "扫毒2",
+            "desc": "扫毒2",
+            "url": "https://r1.ykimg.com/050E00005D5F481FADA7B276B400BAFC?x-oss-process=image/resize,w_290/interlace,1/quality,Q_80/sharpen,100"
         }
     ]
 }
