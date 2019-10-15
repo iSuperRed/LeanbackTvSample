@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
+import com.github.isuperred.title.Footer;
+import com.github.isuperred.type.TypeFooterPresenter;
 import com.github.isuperred.type.TypeSixContentPresenter;
 import com.github.isuperred.type.TypeFiveContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
@@ -241,6 +243,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 Content.DataBean dataBean = dataBeans.get(i);
                 addItem(dataBean);
             }
+            addFooter();
         }
     });
 
@@ -445,6 +448,11 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 break;
         }
     }
+
+    private void addFooter() {
+        addWithTryCatch(new Footer());
+    }
+
 
     private final RecyclerView.OnScrollListener onScrollListener
             = new RecyclerView.OnScrollListener() {

@@ -15,8 +15,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.FocusHighlight;
@@ -33,12 +35,13 @@ import com.github.isuperred.title.Title;
 import com.github.isuperred.title.TitlePresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
+import com.github.isuperred.widgets.ScaleTextView;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ContentFragment.OnFragmentInteractionListener,
-        ViewTreeObserver.OnGlobalFocusChangeListener {
+        ViewTreeObserver.OnGlobalFocusChangeListener, View.OnKeyListener, View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private static final int MSG_NOTIFY_TITLE = 100;
@@ -89,6 +92,52 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
         Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
         Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN
+                && keyCode == KeyEvent.KEYCODE_BACK) {
+            switch (v.getId()) {
+                case R.id.cl_search:
+                case R.id.cl_history:
+                case R.id.cl_login:
+                case R.id.cl_open_vip:
+                case R.id.tv_ad:
+                    if (mHorizontalGridView != null) {
+                        mHorizontalGridView.requestFocus();
+                    }
+                    return true;
+                default:
+                    break;
+            }
+
+        }
+
+        return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.cl_search:
+                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cl_history:
+                Toast.makeText(this, "历史", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cl_login:
+                Toast.makeText(this, "登录", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.cl_open_vip:
+                Toast.makeText(this, "开通VIP", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tv_ad:
+                Toast.makeText(this, "新人礼包", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -175,11 +224,24 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         return mGroup;
     }
 
+    private ConstraintLayout mClSearch;
+    private ConstraintLayout mClHistory;
+    private ConstraintLayout mClLogin;
+    private ConstraintLayout mClOpenVip;
+    private ScaleTextView mTvAd;
+
     private void initView() {
         mHorizontalGridView = findViewById(R.id.hg_title);
         mViewPager = findViewById(R.id.vp_content);
         mGroup = findViewById(R.id.id_group);
         mIvNetwork = findViewById(R.id.iv_network);
+        mClSearch = findViewById(R.id.cl_search);
+        mClHistory = findViewById(R.id.cl_history);
+        mClLogin = findViewById(R.id.cl_login);
+        mClOpenVip = findViewById(R.id.cl_open_vip);
+        mTvAd = findViewById(R.id.tv_ad);
+
+
         mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
@@ -210,6 +272,18 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
         mHorizontalGridView.setOnKeyListener(onKeyListener);
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
+        mClSearch.setOnClickListener(this);
+        mClHistory.setOnClickListener(this);
+        mClLogin.setOnClickListener(this);
+        mClOpenVip.setOnClickListener(this);
+        mTvAd.setOnClickListener(this);
+
+        mClSearch.setOnKeyListener(this);
+        mClHistory.setOnKeyListener(this);
+        mClLogin.setOnKeyListener(this);
+        mClOpenVip.setOnKeyListener(this);
+        mTvAd.setOnKeyListener(this);
+
     }
 
     private void initBroadCast() {

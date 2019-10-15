@@ -1,11 +1,14 @@
 package com.github.isuperred.widgets;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.leanback.widget.FocusHighlight;
+
+import com.github.isuperred.R;
 
 
 public class ScaleConstraintLayout extends ConstraintLayout implements View.OnFocusChangeListener {
@@ -28,10 +31,13 @@ public class ScaleConstraintLayout extends ConstraintLayout implements View.OnFo
         setClipChildren(false);
         setClipToPadding(false);
         setOnFocusChangeListener(this);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScaleConstraintLayout);
+        int zoomIndex =  typedArray.getInteger(R.styleable.ScaleConstraintLayout_scale_mode, MyFocusHighlightHelper.ZOOM_FACTOR_XXXSMALL);
+        typedArray.recycle();
         if (mBrowseItemFocusHighlight == null) {
             mBrowseItemFocusHighlight =
                     new MyFocusHighlightHelper
-                            .BrowseItemFocusHighlight(MyFocusHighlightHelper.ZOOM_FACTOR_XXXSMALL, false);
+                            .BrowseItemFocusHighlight(zoomIndex, false);
         }
 
     }
