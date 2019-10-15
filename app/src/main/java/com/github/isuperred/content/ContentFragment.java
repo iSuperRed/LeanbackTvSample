@@ -1,8 +1,11 @@
 package com.github.isuperred.content;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +24,10 @@ import com.bumptech.glide.Glide;
 import com.github.isuperred.R;
 import com.github.isuperred.main.MainActivity;
 import com.github.isuperred.title.Footer;
-import com.github.isuperred.type.TypeFooterPresenter;
-import com.github.isuperred.type.TypeSixContentPresenter;
 import com.github.isuperred.type.TypeFiveContentPresenter;
 import com.github.isuperred.type.TypeFourContentPresenter;
 import com.github.isuperred.type.TypeOneContentPresenter;
+import com.github.isuperred.type.TypeSixContentPresenter;
 import com.github.isuperred.type.TypeThreeContentPresenter;
 import com.github.isuperred.type.TypeTwoContentPresenter;
 import com.github.isuperred.type.TypeZeroContentPresenter;
@@ -34,6 +36,7 @@ import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.utils.Type;
 import com.github.isuperred.widgets.TabVerticalGridView;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 
@@ -52,9 +55,32 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private MainActivity mActivity;
     private View mRootView;
+    private Handler mHandler;
 
     private ArrayObjectAdapter mAdapter;
+//    public static final int MSG_ADD_ITEM = 100;
 
+    private static class MyHandler extends Handler {
+
+        private final WeakReference<Activity> mActivity;
+
+        MyHandler(Activity activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            Activity activity = mActivity.get();
+            if (activity != null) {
+                switch (msg.what) {
+                    case MSG_ADD_ITEM:
+
+                        break;
+                }
+            }
+        }
+    }
 
     private ContentFragment.OnFragmentInteractionListener mListener;
 
@@ -85,6 +111,8 @@ public class ContentFragment extends BaseLazyLoadFragment {
                     + " must implement OnFragmentInteractionListener");
         }
         mActivity = (MainActivity) context;
+        mHandler = new MyHandler(mActivity);
+
     }
 
     @Override
@@ -140,8 +168,11 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     @Override
     public void onDestroy() {
-        thread.interrupt();
         super.onDestroy();
+        thread.interrupt();
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+        }
         if (mVerticalGridView != null) {
             mVerticalGridView.removeOnScrollListener(onScrollListener);
             mVerticalGridView.removeOnChildViewHolderSelectedListener(onSelectedListener);

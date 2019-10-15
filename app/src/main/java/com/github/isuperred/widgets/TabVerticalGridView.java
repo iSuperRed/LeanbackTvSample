@@ -49,7 +49,6 @@ public class TabVerticalGridView extends VerticalGridView {
         return isPressDown;
     }
 
-
     @Override
     public View focusSearch(View focused, int direction) {
         if (focused != null) {
