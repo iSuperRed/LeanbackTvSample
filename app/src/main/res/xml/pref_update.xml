@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Preference android:enabled="true" android:title="版本状态" android:selectable="false" android:key="update_state" android:summary="基线版本号：5.9.4 | 部署版本号：暂未发生部署" />
-    <SwitchPreference android:title="线上部署策略" android:key="update_switch" android:summary="自动更新线上部署包" android:defaultValue="true" />
-    <ListPreference android:title="部署到线上版本" android:key="onLineUpdateEntries" android:defaultValue="-1" />
-    <Preference android:enabled="true" android:title="部署到本地版本" android:selectable="true" android:key="local_update" android:summary="版本号：5.9.4" />
-</PreferenceScreen>
