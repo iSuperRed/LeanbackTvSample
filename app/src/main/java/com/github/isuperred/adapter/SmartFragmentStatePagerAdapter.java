@@ -1,4 +1,4 @@
-package com.github.isuperred.main;
+package com.github.isuperred.adapter;
 
 import android.util.Log;
 import android.util.SparseArray;

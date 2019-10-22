@@ -1,4 +1,4 @@
-package com.github.isuperred.type;
+package com.github.isuperred.presenter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import androidx.leanback.widget.Presenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
-import com.github.isuperred.content.Content;
+import com.github.isuperred.bean.Content;
 
 
 public class TypeFourContentPresenter extends Presenter {

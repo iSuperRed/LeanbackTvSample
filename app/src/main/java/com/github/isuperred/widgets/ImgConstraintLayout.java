@@ -39,7 +39,6 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        Log.e("dch", "onFocusChange hasFocus: " + hasFocus);
         if (v != null) {
             if (hasFocus) {
                 move(v.findViewById(R.id.light));
@@ -62,7 +61,6 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
                 float alpha = aFloat / width;
                 float a1 = (alpha > 0 ? (1 - alpha) : (1 + alpha));
                 float a2 = (float) (a1 / 2 + 0.3);
-                Log.e("dch", "onAnimationUpdate: "+a2 );
                 view.setAlpha(a2);
             }
         });
@@ -91,7 +89,6 @@ public class ImgConstraintLayout extends ConstraintLayout implements View.OnFocu
         valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         int d = width / 355 - 1;
         float ff = 1000 * (d * 0.25f + 1);
-        Log.e("dch", "move: " + ff);
         valueAnimator.setDuration(((Float)ff).longValue());
         valueAnimator.setStartDelay(300);
         valueAnimator.start();

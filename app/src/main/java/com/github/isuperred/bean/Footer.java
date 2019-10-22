@@ -1,4 +1,4 @@
-package com.github.isuperred.title;
+package com.github.isuperred.bean;
 
 /**
  * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd

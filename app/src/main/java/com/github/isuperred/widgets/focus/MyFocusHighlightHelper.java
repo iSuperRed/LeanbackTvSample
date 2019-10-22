@@ -1,4 +1,4 @@
-package com.github.isuperred.widgets;
+package com.github.isuperred.widgets.focus;
 
 import android.animation.TimeAnimator;
 import android.content.res.Resources;
@@ -17,6 +17,7 @@ import androidx.leanback.widget.ShadowOverlayHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.isuperred.R;
+import com.github.isuperred.widgets.focus.FocusHighlightHandler;
 
 import static androidx.leanback.widget.FocusHighlight.ZOOM_FACTOR_LARGE;
 import static androidx.leanback.widget.FocusHighlight.ZOOM_FACTOR_MEDIUM;
@@ -143,7 +144,7 @@ public class MyFocusHighlightHelper {
         private int mScaleIndex;
         private final boolean mUseDimmer;
 
-        BrowseItemFocusHighlight(int zoomIndex, boolean useDimmer) {
+        public BrowseItemFocusHighlight(int zoomIndex, boolean useDimmer) {
             if (!isValidZoomIndex(zoomIndex)) {
                 throw new IllegalArgumentException("Unhandled zoom index");
             }

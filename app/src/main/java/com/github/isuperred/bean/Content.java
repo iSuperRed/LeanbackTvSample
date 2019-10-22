@@ -1,4 +1,4 @@
-package com.github.isuperred.content;
+package com.github.isuperred.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

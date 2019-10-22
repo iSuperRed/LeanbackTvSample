@@ -1,4 +1,4 @@
-package com.github.isuperred.widgets;
+package com.github.isuperred.widgets.focus;
 
 import android.view.View;
 

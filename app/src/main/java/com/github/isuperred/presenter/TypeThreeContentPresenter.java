@@ -1,4 +1,4 @@
-package com.github.isuperred.type;
+package com.github.isuperred.presenter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,19 +11,19 @@ import androidx.leanback.widget.Presenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
-import com.github.isuperred.content.Content;
+import com.github.isuperred.bean.Content;
 
-public class TypeTwoContentPresenter extends Presenter {
+public class TypeThreeContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeTwoContentPresenter";
+    private static final String TAG = "TypeThreeContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_two_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_three_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -35,10 +35,10 @@ public class TypeTwoContentPresenter extends Presenter {
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
                             .centerCrop()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px544),
+                            .override((int) mContext.getResources().getDimension(R.dimen.px248),
                                     (int) mContext.getResources().getDimension(R.dimen.px372))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvTypeTwoPoster);
+                    .into(vh.mIvTypeThreePoster);
         }
     }
 
@@ -49,11 +49,11 @@ public class TypeTwoContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final ImageView mIvTypeTwoPoster;
+        private final ImageView mIvTypeThreePoster;
 
         public ViewHolder(View view) {
             super(view);
-            mIvTypeTwoPoster = view.findViewById(R.id.iv_type_two_poster);
+            mIvTypeThreePoster = view.findViewById(R.id.iv_type_three_poster);
         }
     }
 }

@@ -31,9 +31,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
+import com.github.isuperred.adapter.ContentViewPagerAdapter;
 import com.github.isuperred.content.ContentFragment;
-import com.github.isuperred.title.Title;
-import com.github.isuperred.title.TitlePresenter;
+import com.github.isuperred.bean.Title;
+import com.github.isuperred.presenter.TitlePresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.widgets.ScaleTextView;

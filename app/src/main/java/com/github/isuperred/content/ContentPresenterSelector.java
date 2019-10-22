@@ -3,15 +3,19 @@ package com.github.isuperred.content;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
 
-import com.github.isuperred.title.Footer;
-import com.github.isuperred.type.TypeFooterPresenter;
-import com.github.isuperred.type.TypeSixContentPresenter;
-import com.github.isuperred.type.TypeFiveContentPresenter;
-import com.github.isuperred.type.TypeFourContentPresenter;
-import com.github.isuperred.type.TypeOneContentPresenter;
-import com.github.isuperred.type.TypeThreeContentPresenter;
-import com.github.isuperred.type.TypeTwoContentPresenter;
-import com.github.isuperred.type.TypeZeroContentPresenter;
+import com.github.isuperred.base.BasePresenterSelector;
+import com.github.isuperred.bean.Footer;
+import com.github.isuperred.presenter.ContentListRowPresenter;
+import com.github.isuperred.presenter.TypeFiveListRowPresenter;
+import com.github.isuperred.presenter.TypeZeroListRowPresenter;
+import com.github.isuperred.presenter.TypeFooterPresenter;
+import com.github.isuperred.presenter.TypeSixContentPresenter;
+import com.github.isuperred.presenter.TypeFiveContentPresenter;
+import com.github.isuperred.presenter.TypeFourContentPresenter;
+import com.github.isuperred.presenter.TypeOneContentPresenter;
+import com.github.isuperred.presenter.TypeThreeContentPresenter;
+import com.github.isuperred.presenter.TypeTwoContentPresenter;
+import com.github.isuperred.presenter.TypeZeroContentPresenter;
 
 
 public class ContentPresenterSelector extends BasePresenterSelector {

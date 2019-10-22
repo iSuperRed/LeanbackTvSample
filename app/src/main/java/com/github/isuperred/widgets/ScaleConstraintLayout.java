@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.leanback.widget.FocusHighlight;
 
 import com.github.isuperred.R;
+import com.github.isuperred.widgets.focus.MyFocusHighlightHelper;
 
 
 public class ScaleConstraintLayout extends ConstraintLayout implements View.OnFocusChangeListener {

@@ -1,4 +1,4 @@
-package com.github.isuperred.content;
+package com.github.isuperred.base;
 
 import androidx.leanback.widget.BaseOnItemViewClickedListener;
 import androidx.leanback.widget.ListRowPresenter;

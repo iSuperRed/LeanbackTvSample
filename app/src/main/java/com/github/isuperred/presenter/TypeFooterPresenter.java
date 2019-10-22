@@ -1,4 +1,4 @@
-package com.github.isuperred.type;
+package com.github.isuperred.presenter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

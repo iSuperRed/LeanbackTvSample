@@ -1,4 +1,4 @@
-package com.github.isuperred.title;
+package com.github.isuperred.bean;
 
 import java.util.List;
 

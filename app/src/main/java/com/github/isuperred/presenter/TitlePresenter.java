@@ -1,4 +1,4 @@
-package com.github.isuperred.title;
+package com.github.isuperred.presenter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.leanback.widget.Presenter;
 
 import com.github.isuperred.R;
+import com.github.isuperred.bean.Title;
 
 public class TitlePresenter extends Presenter {
     private static final String TAG = "TitlePresenter";

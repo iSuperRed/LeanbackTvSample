@@ -6,13 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,18 +23,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.github.isuperred.R;
+import com.github.isuperred.base.BaseLazyLoadFragment;
+import com.github.isuperred.bean.Content;
 import com.github.isuperred.main.MainActivity;
-import com.github.isuperred.title.Footer;
-import com.github.isuperred.type.TypeFiveContentPresenter;
-import com.github.isuperred.type.TypeFourContentPresenter;
-import com.github.isuperred.type.TypeOneContentPresenter;
-import com.github.isuperred.type.TypeSixContentPresenter;
-import com.github.isuperred.type.TypeThreeContentPresenter;
-import com.github.isuperred.type.TypeTwoContentPresenter;
-import com.github.isuperred.type.TypeZeroContentPresenter;
+import com.github.isuperred.bean.Footer;
+import com.github.isuperred.presenter.TypeFiveContentPresenter;
+import com.github.isuperred.presenter.TypeFourContentPresenter;
+import com.github.isuperred.presenter.TypeOneContentPresenter;
+import com.github.isuperred.presenter.TypeSixContentPresenter;
+import com.github.isuperred.presenter.TypeThreeContentPresenter;
+import com.github.isuperred.presenter.TypeTwoContentPresenter;
+import com.github.isuperred.presenter.TypeZeroContentPresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
-import com.github.isuperred.utils.Type;
 import com.github.isuperred.widgets.TabVerticalGridView;
 
 import java.lang.ref.WeakReference;
@@ -334,7 +333,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private void addItem(Content.DataBean dataBean) {
         Log.e(TAG, "addItem: " + dataBean.getTitle());
         switch (dataBean.getContentCode()) {
-            case Type.TYPE_ZERO:
+            case Constants.TYPE_ZERO:
                 ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new TypeZeroContentPresenter());
                 List<Content.DataBean.WidgetsBean> listZero = dataBean.getWidgets();
                 if (listZero != null && listZero.size() > 2) {
@@ -345,7 +344,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRow);
 
                 break;
-            case Type.TYPE_ONE:
+            case Constants.TYPE_ONE:
                 ArrayObjectAdapter arrayObjectAdapterOne = new ArrayObjectAdapter(new TypeOneContentPresenter());
                 List<Content.DataBean.WidgetsBean> listOne = dataBean.getWidgets();
                 if (listOne == null) {
@@ -364,7 +363,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRowOne);
 
                 break;
-            case Type.TYPE_TWO:
+            case Constants.TYPE_TWO:
                 ArrayObjectAdapter arrayObjectAdapterTwo = new ArrayObjectAdapter(new TypeTwoContentPresenter());
                 List<Content.DataBean.WidgetsBean> listTwo = dataBean.getWidgets();
                 if (listTwo == null) {
@@ -383,7 +382,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRowTwo);
 
                 break;
-            case Type.TYPE_THREE:
+            case Constants.TYPE_THREE:
                 ArrayObjectAdapter arrayObjectAdapterThree = new ArrayObjectAdapter(new TypeThreeContentPresenter());
                 List<Content.DataBean.WidgetsBean> listThree = dataBean.getWidgets();
                 if (listThree == null) {
@@ -402,7 +401,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRowThree);
 
                 break;
-            case Type.TYPE_FOUR:
+            case Constants.TYPE_FOUR:
                 ArrayObjectAdapter arrayObjectAdapterFour = new ArrayObjectAdapter(new TypeFourContentPresenter());
                 List<Content.DataBean.WidgetsBean> listFour = dataBean.getWidgets();
                 if (listFour == null) {
@@ -421,7 +420,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRowFour);
 
                 break;
-            case Type.TYPE_FIVE:
+            case Constants.TYPE_FIVE:
                 ArrayObjectAdapter arrayObjectAdapterFive = new ArrayObjectAdapter(new TypeFiveContentPresenter());
                 List<Content.DataBean.WidgetsBean> listFive = dataBean.getWidgets();
                 if (listFive == null) {
@@ -439,7 +438,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 ListRow listRowFive = new ListRow(headerItemFive, arrayObjectAdapterFive);
                 addWithTryCatch(listRowFive);
                 break;
-            case Type.TYPE_SIX:
+            case Constants.TYPE_SIX:
                 ArrayObjectAdapter arrayObjectAdapterSix = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 List<Content.DataBean.WidgetsBean> listSix = dataBean.getWidgets();
                 if (listSix == null) {
@@ -457,7 +456,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 ListRow listRowSix = new ListRow(headerItemSix, arrayObjectAdapterSix);
                 addWithTryCatch(listRowSix);
                 break;
-            case Type.TYPE_SEVEN:
+            case Constants.TYPE_SEVEN:
                 ArrayObjectAdapter arrayObjectAdapterSeven = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemSeven = new HeaderItem("大闹天宫");
                 ListRow listRowSeven = new ListRow(8, headerItemSeven,
@@ -467,7 +466,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterSeven.addAll(0, dataBean.getWidgets());
                 addWithTryCatch(listRowSeven);
                 break;
-            case Type.TYPE_EIGHT:
+            case Constants.TYPE_EIGHT:
                 ArrayObjectAdapter arrayObjectAdapterEight = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemEight = new HeaderItem("大闹天宫");
                 ListRow listRowEight = new ListRow(8, headerItemEight,
@@ -477,7 +476,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterEight.addAll(0, dataBean.getWidgets());
                 addWithTryCatch(listRowEight);
                 break;
-            case Type.TYPE_NINE:
+            case Constants.TYPE_NINE:
                 ArrayObjectAdapter arrayObjectAdapterNine = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemNine = new HeaderItem("大闹天宫");
                 ListRow listRowNine = new ListRow(8, headerItemNine,
@@ -487,7 +486,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterNine.addAll(0, dataBean.getWidgets());
                 addWithTryCatch(listRowNine);
                 break;
-            case Type.TYPE_TEN:
+            case Constants.TYPE_TEN:
                 ArrayObjectAdapter arrayObjectAdapterTen = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemTen = new HeaderItem("大闹天宫");
                 ListRow listRowTen = new ListRow(8, headerItemTen,
@@ -497,7 +496,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterTen.addAll(0, dataBean.getWidgets());
                 addWithTryCatch(listRowTen);
                 break;
-            case Type.TYPE_ELEVEN:
+            case Constants.TYPE_ELEVEN:
                 ArrayObjectAdapter arrayObjectAdapterEleven = new ArrayObjectAdapter(new TypeSixContentPresenter());
                 HeaderItem headerItemEleven = new HeaderItem("大闹天宫");
                 ListRow listRowEleven = new ListRow(8, headerItemEleven,

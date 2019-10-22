@@ -1,4 +1,4 @@
-package com.github.isuperred;
+package com.github.isuperred.application;
 
 import android.app.Application;
 

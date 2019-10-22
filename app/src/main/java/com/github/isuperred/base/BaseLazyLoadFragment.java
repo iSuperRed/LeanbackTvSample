@@ -1,4 +1,4 @@
-package com.github.isuperred.content;
+package com.github.isuperred.base;
 
 import android.os.Bundle;
 

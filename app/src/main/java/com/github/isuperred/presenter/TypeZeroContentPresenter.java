@@ -1,4 +1,4 @@
-package com.github.isuperred.type;
+package com.github.isuperred.presenter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,19 +11,20 @@ import androidx.leanback.widget.Presenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
-import com.github.isuperred.content.Content;
+import com.github.isuperred.bean.Content;
 
-public class TypeThreeContentPresenter extends Presenter {
+
+public class TypeZeroContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeThreeContentPresenter";
+    private static final String TAG = "TypeZeroContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_three_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_zero_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -35,10 +36,10 @@ public class TypeThreeContentPresenter extends Presenter {
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
                             .centerCrop()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px248),
-                                    (int) mContext.getResources().getDimension(R.dimen.px372))
+                            .override((int) mContext.getResources().getDimension(R.dimen.px840),
+                                    (int) mContext.getResources().getDimension(R.dimen.px416))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvTypeThreePoster);
+                    .into(vh.mIvTypeOnePoster);
         }
     }
 
@@ -49,12 +50,11 @@ public class TypeThreeContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final ImageView mIvTypeThreePoster;
+        private final ImageView mIvTypeOnePoster;
 
         public ViewHolder(View view) {
             super(view);
-            mIvTypeThreePoster = view.findViewById(R.id.iv_type_three_poster);
+            mIvTypeOnePoster = view.findViewById(R.id.iv_type_one_poster);
         }
     }
 }
-

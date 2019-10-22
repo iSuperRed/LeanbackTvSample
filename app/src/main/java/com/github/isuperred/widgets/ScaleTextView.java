@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.github.isuperred.widgets.focus.MyFocusHighlightHelper;
+
 public class ScaleTextView extends AppCompatTextView implements View.OnFocusChangeListener {
     private MyFocusHighlightHelper.BrowseItemFocusHighlight mBrowseItemFocusHighlight;
 

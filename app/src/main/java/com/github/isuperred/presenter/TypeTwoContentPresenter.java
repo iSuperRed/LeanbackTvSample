@@ -1,32 +1,29 @@
-package com.github.isuperred.type;
+package com.github.isuperred.presenter;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.leanback.widget.Presenter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
-import com.github.isuperred.content.Content;
+import com.github.isuperred.bean.Content;
 
-
-public class TypeFiveContentPresenter extends Presenter {
+public class TypeTwoContentPresenter extends Presenter {
     private Context mContext;
 
-    private static final String TAG = "TypeFiveContentPresenter";
+    private static final String TAG = "TypeTwoContentPresenter";
 
     @Override
     public Presenter.ViewHolder onCreateViewHolder(ViewGroup parent) {
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_five_layout, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_type_two_layout, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,15 +36,9 @@ public class TypeFiveContentPresenter extends Presenter {
                     .apply(new RequestOptions()
                             .centerCrop()
                             .override((int) mContext.getResources().getDimension(R.dimen.px544),
-                                    (int) mContext.getResources().getDimension(R.dimen.px248))
+                                    (int) mContext.getResources().getDimension(R.dimen.px372))
                             .placeholder(R.drawable.shape_default))
-                    .into(vh.mIvTypeFivePoster);
-            if (!TextUtils.isEmpty(((Content.DataBean.WidgetsBean) item).getName())) {
-                vh.mIvTypeFiveName.setText(((Content.DataBean.WidgetsBean) item).getName());
-            }
-            if(!TextUtils.isEmpty(((Content.DataBean.WidgetsBean) item).getDesc())){
-                vh.mIvTypeFiveDesc.setText(((Content.DataBean.WidgetsBean) item).getDesc());
-            }
+                    .into(vh.mIvTypeTwoPoster);
         }
     }
 
@@ -58,15 +49,12 @@ public class TypeFiveContentPresenter extends Presenter {
 
     public static class ViewHolder extends Presenter.ViewHolder {
 
-        private final ImageView mIvTypeFivePoster;
-        private final TextView mIvTypeFiveName;
-        private final TextView mIvTypeFiveDesc;
+        private final ImageView mIvTypeTwoPoster;
 
         public ViewHolder(View view) {
             super(view);
-            mIvTypeFivePoster = view.findViewById(R.id.iv_type_five_poster);
-            mIvTypeFiveName = view.findViewById(R.id.tv_type_five_name);
-            mIvTypeFiveDesc = view.findViewById(R.id.tv_type_five_desc);
+            mIvTypeTwoPoster = view.findViewById(R.id.iv_type_two_poster);
         }
     }
 }
+

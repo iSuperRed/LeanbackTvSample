@@ -1,11 +1,12 @@
-package com.github.isuperred.main;
+package com.github.isuperred.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.github.isuperred.adapter.SmartFragmentStatePagerAdapter;
 import com.github.isuperred.content.ContentFragment;
-import com.github.isuperred.title.Title;
+import com.github.isuperred.bean.Title;
 
 import java.util.List;
 
