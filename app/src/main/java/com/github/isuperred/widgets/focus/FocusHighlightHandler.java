@@ -6,12 +6,6 @@ import androidx.annotation.RestrictTo;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
 
-/**
- * Copyright  : 2015-2033 Beijing Startimes Communication & Network Technology Co.Ltd
- * Created by（dongch） on 2019/10/12.
- * ClassName  :
- * Description  :
- */
 interface FocusHighlightHandler {
     /**
      * Called when an item gains or loses focus.
