@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -90,19 +91,19 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
         Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
         Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
-        Log.e(TAG, "onGlobalFocusChanged isPressUp: " + isPressUp);
-        Log.e(TAG, "onGlobalFocusChanged isPressDown: " + isPressDown);
-        Log.e(TAG, "onGlobalFocusChanged isPressBack: " + isPressBack);
+//        Log.e(TAG, "onGlobalFocusChanged isPressUp: " + isPressUp);
+//        Log.e(TAG, "onGlobalFocusChanged isPressDown: " + isPressDown);
+//        Log.e(TAG, "onGlobalFocusChanged isPressBack: " + isPressBack);
 
-        if (newFocus != null
-                && newFocus.getId() == R.id.tv_main_title
-                && (isPressUp || isPressDown || isPressBack)) {
-            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
-        }
-        if (oldFocus != null && oldFocus.getId() == R.id.tv_main_title
-                && (isPressUp || isPressDown)) {
-            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorBlue));
-        }
+//        if (newFocus != null
+//                && newFocus.getId() == R.id.tv_main_title
+//                && (isPressUp || isPressDown || isPressBack)) {
+//            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
+//        }
+//        if (oldFocus != null && oldFocus.getId() == R.id.tv_main_title
+//                && (isPressUp || isPressDown)) {
+//            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorBlue));
+//        }
     }
 
     @Override
@@ -375,27 +376,43 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             super.onChildViewHolderSelected(parent, child, position, subposition);
 
             if (mOldTitle != null) {
-                mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-                mOldTitle.getPaint().setFakeBoldText(false);
+//                mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+//                mOldTitle.getPaint().setFakeBoldText(false);
+                Paint paint = mOldTitle.getPaint();
+                if(paint != null) {
+                    paint.setFakeBoldText(false);
+                    //viewpager切页标题不刷新，调用invalidate刷新
+                    mOldTitle.invalidate();
+                }
             }
             if (child != null) {
-                TextView view = child.itemView.findViewById(R.id.tv_main_title);
-                view.getPaint().setFakeBoldText(true);
-                if (view.getCurrentTextColor() != getResources().getColor(R.color.colorWhite)) {
-                    view.setTextColor(getResources().getColor(R.color.colorWhite));
-                }
 
+                TextView view = child.itemView.findViewById(R.id.tv_main_title);
+//                view.getPaint().setFakeBoldText(true);
+                Paint paint = view.getPaint();
+                if(paint != null) {
+                    paint.setFakeBoldText(true);
+                    //viewpager切页标题不刷新，调用invalidate刷新
+                    view.invalidate();
+                }
+//                if (view.getCurrentTextColor() != getResources().getColor(R.color.colorWhite)) {
+//                    view.setTextColor(getResources().getColor(R.color.colorWhite));
+//                }
                 mOldTitle = view;
             }
             Log.e(TAG, "onChildViewHolderSelected mViewPager != null: " + (mViewPager != null)
                     + " position:" + position);
-            if (mViewPager != null && position != mCurrentPageIndex) {
-                mViewPager.setCurrentItem(position);
-            }
-            mCurrentPageIndex = position;
+            setCurrentItemPosition(position);
 
         }
     };
+
+    private void setCurrentItemPosition(int position){
+        if (mViewPager != null && position != mCurrentPageIndex) {
+            mViewPager.setCurrentItem(position);
+        }
+        mCurrentPageIndex = position;
+    }
 
     class NetworkChangeReceiver extends BroadcastReceiver {
         @Override
