@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN
                 && keyCode == KeyEvent.KEYCODE_BACK) {
-            isPressBack = true;
+//            isPressBack = true;
             switch (v.getId()) {
                 case R.id.cl_search:
                 case R.id.cl_history:
@@ -209,25 +209,25 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_DPAD_UP:
-                    isPressUp = true;
-                    break;
-                case KeyEvent.KEYCODE_DPAD_DOWN:
-                    isPressDown = true;
-                    break;
-                case KeyEvent.KEYCODE_BACK:
-                    isPressBack = true;
-                    break;
-                default:
-                    isPressDown = false;
-                    isPressUp = false;
-                    isPressBack = false;
-                    break;
-            }
-
-        }
+//        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+//            switch (keyCode) {
+//                case KeyEvent.KEYCODE_DPAD_UP:
+//                    isPressUp = true;
+//                    break;
+//                case KeyEvent.KEYCODE_DPAD_DOWN:
+//                    isPressDown = true;
+//                    break;
+//                case KeyEvent.KEYCODE_BACK:
+//                    isPressBack = true;
+//                    break;
+//                default:
+//                    isPressDown = false;
+//                    isPressUp = false;
+//                    isPressBack = false;
+//                    break;
+//            }
+//
+//        }
 //        if (mViewPagerAdapter != null) {
 //            ContentFragment contentFragment = (ContentFragment)
 //                    mViewPagerAdapter.getRegisteredFragment(mCurrentPageIndex);
@@ -245,6 +245,9 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                 .removeOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
         getWindow().getDecorView().getViewTreeObserver().removeOnGlobalFocusChangeListener(this);
         super.onDestroy();
+        if(mThread!=null){
+            mThread.interrupt();
+        }
         unregisterReceiver(networkChangeReceiver);
     }
 
@@ -261,6 +264,23 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     private ConstraintLayout mClLogin;
     private ConstraintLayout mClOpenVip;
     private ScaleTextView mTvAd;
+
+    private Thread mThread = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            String titleJson = LocalJsonResolutionUtil.getJson(MainActivity.this, "MyTitle.json");
+            Log.e(TAG, "run: " + titleJson);
+            //转换为对象
+            Title title = LocalJsonResolutionUtil.JsonToObject(titleJson, Title.class);
+            List<Title.DataBean> dataBeans = title.getData();
+            if (dataBeans != null && dataBeans.size() > 0) {
+                Message msg = Message.obtain();
+                msg.what = MSG_NOTIFY_TITLE;
+                msg.obj = dataBeans;
+                mHandler.sendMessage(msg);
+            }
+        }
+    });
 
     private void initView() {
         mHorizontalGridView = findViewById(R.id.hg_title);
@@ -282,27 +302,10 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     }
 
     private void initData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String titleJson = LocalJsonResolutionUtil.getJson(MainActivity.this, "MyTitle.json");
-                Log.e(TAG, "run: " + titleJson);
-                //转换为对象
-                Title title = LocalJsonResolutionUtil.JsonToObject(titleJson, Title.class);
-                List<Title.DataBean> dataBeans = title.getData();
-                if (dataBeans != null && dataBeans.size() > 0) {
-                    Message msg = Message.obtain();
-                    msg.what = MSG_NOTIFY_TITLE;
-                    msg.obj = dataBeans;
-                    mHandler.sendMessage(msg);
-                }
-            }
-        }).start();
+        if (mThread != null) {
+            mThread.start();
+        }
     }
-
-    private boolean isPressDown = false;
-    private boolean isPressUp = false;
-    private boolean isPressBack = false;
 
     private void initListener() {
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
@@ -379,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 //                mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
 //                mOldTitle.getPaint().setFakeBoldText(false);
                 Paint paint = mOldTitle.getPaint();
-                if(paint != null) {
+                if (paint != null) {
                     paint.setFakeBoldText(false);
                     //viewpager切页标题不刷新，调用invalidate刷新
                     mOldTitle.invalidate();
@@ -390,7 +393,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                 TextView view = child.itemView.findViewById(R.id.tv_main_title);
 //                view.getPaint().setFakeBoldText(true);
                 Paint paint = view.getPaint();
-                if(paint != null) {
+                if (paint != null) {
                     paint.setFakeBoldText(true);
                     //viewpager切页标题不刷新，调用invalidate刷新
                     view.invalidate();
@@ -407,7 +410,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         }
     };
 
-    private void setCurrentItemPosition(int position){
+    private void setCurrentItemPosition(int position) {
         if (mViewPager != null && position != mCurrentPageIndex) {
             mViewPager.setCurrentItem(position);
         }
