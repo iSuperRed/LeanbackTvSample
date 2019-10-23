@@ -1,6 +1,9 @@
 package com.github.isuperred.widgets;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
@@ -12,20 +15,47 @@ import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
 
+import java.lang.ref.WeakReference;
+
 public class TabVerticalGridView extends VerticalGridView {
 
     private static final String TAG = "TabVerticalGridView";
+    private static final int EAT_KEY_EVENT = 10010;// 是否屏蔽按键的事件，控制按键的频率
+    private static final int KEY_EVENT_TIME = 70; //最短的按键事件应该是在 KEY_EVENT_TIME ms
+    private static boolean eatKeyEvent = false;
+    private Handler mHandler;
+
+    private static class MyHandler extends Handler {
+
+        private final WeakReference<Activity> mActivity;
+
+        MyHandler(Activity activity) {
+            mActivity = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            Activity activity = mActivity.get();
+            if (activity != null
+                    && msg.what == EAT_KEY_EVENT) {
+                eatKeyEvent = false;
+            }
+        }
+    }
 
     public TabVerticalGridView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public TabVerticalGridView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs,0);
     }
 
     public TabVerticalGridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mHandler = new MyHandler((Activity) context);
+
     }
 
     private View mTabView;
@@ -74,6 +104,21 @@ public class TabVerticalGridView extends VerticalGridView {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
+            return super.dispatchKeyEvent(event);
+        }
+        if (eatKeyEvent) {
+            return true;
+        } else {
+            if (event.getRepeatCount() >= 0) {
+                eatKeyEvent = true;
+                mHandler.removeMessages(EAT_KEY_EVENT);
+                Message msg = mHandler.obtainMessage(EAT_KEY_EVENT);
+                mHandler.sendMessageDelayed(msg, KEY_EVENT_TIME);
+            }
+        }
+
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             isPressDown = false;
             isPressUp = false;
@@ -98,7 +143,7 @@ public class TabVerticalGridView extends VerticalGridView {
         return super.dispatchKeyEvent(event);
     }
 
-    public void backToTop(){
+    public void backToTop() {
         if (mTabView != null) {
             if (mGroup != null && mGroup.getVisibility() != View.VISIBLE) {
                 mGroup.setVisibility(View.VISIBLE);
