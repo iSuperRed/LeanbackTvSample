@@ -21,7 +21,7 @@ public class TabVerticalGridView extends VerticalGridView {
 
     private static final String TAG = "TabVerticalGridView";
     private static final int EAT_KEY_EVENT = 10010;// 是否屏蔽按键的事件，控制按键的频率
-    private static final int KEY_EVENT_TIME = 70; //最短的按键事件应该是在 KEY_EVENT_TIME ms
+    private static final Long KEY_EVENT_TIME = 50L; //最短的按键事件应该是在 KEY_EVENT_TIME ms
     private static boolean eatKeyEvent = false;
     private Handler mHandler;
 
@@ -108,16 +108,15 @@ public class TabVerticalGridView extends VerticalGridView {
                 || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
             return super.dispatchKeyEvent(event);
         }
-        if (eatKeyEvent) {
-            return true;
-        } else {
-            if (event.getRepeatCount() >= 0) {
-                eatKeyEvent = true;
-                mHandler.removeMessages(EAT_KEY_EVENT);
-                Message msg = mHandler.obtainMessage(EAT_KEY_EVENT);
-                mHandler.sendMessageDelayed(msg, KEY_EVENT_TIME);
-            }
-        }
+//        if (eatKeyEvent) {
+//            return true;
+//        } else {
+//            if (event.getRepeatCount() >= 0) {
+//                eatKeyEvent = true;
+//                mHandler.removeCallbacksAndMessages(null);
+//                mHandler.sendEmptyMessageDelayed(EAT_KEY_EVENT,KEY_EVENT_TIME);
+//            }
+//        }
 
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             isPressDown = false;

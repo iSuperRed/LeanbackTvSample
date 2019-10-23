@@ -7,7 +7,7 @@
     <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_back_to_top"
         android:layout_width="@dimen/px262"
-        android:layout_height="@dimen/px72"
+        android:layout_height="@dimen/px60"
         android:layout_marginTop="@dimen/px60"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
         android:background="@drawable/selector_focus_bg_corner24"
@@ -16,7 +16,7 @@
         app:layout_constraintRight_toLeftOf="@+id/cl_look_around"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/iv_back_to_top"
             android:layout_width="@dimen/px56"
             android:layout_height="@dimen/px56"
@@ -24,19 +24,17 @@
             android:src="@drawable/back_to_top"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tv_back_to_top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/px20"
-            android:gravity="start|center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="回到顶部"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/px30"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/iv_back_to_top"
             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -45,7 +43,7 @@
     <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_look_around"
         android:layout_width="@dimen/px262"
-        android:layout_height="@dimen/px72"
+        android:layout_height="@dimen/px60"
         android:layout_marginStart="@dimen/px20"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
         android:background="@drawable/selector_focus_bg_corner24"
@@ -53,7 +51,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cl_back_to_top">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/iv_look_around"
             android:layout_width="@dimen/px56"
             android:layout_height="@dimen/px56"
@@ -61,19 +59,17 @@
             android:src="@drawable/look_around"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
         <TextView
             android:id="@+id/tv_look_around"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/px20"
-            android:gravity="start|center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="随心看"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/px30"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/iv_look_around"
             app:layout_constraintTop_toTopOf="parent" />
 
     </com.github.isuperred.widgets.ScaleConstraintLayout>
