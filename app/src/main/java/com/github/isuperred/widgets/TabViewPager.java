@@ -104,7 +104,7 @@ public class TabViewPager extends ViewPager {
                     handled = nextFocused.requestFocus();
                 }
             }
-        } else if (direction == FOCUS_LEFT || direction == FOCUS_BACKWARD) {
+        } else if (direction == FOCUS_LEFT) {
             // Trying to move left and nothing there; try to page.
             if (getCurrentItem() == 0) {
                 shakeX(currentFocused);
@@ -112,7 +112,7 @@ public class TabViewPager extends ViewPager {
             } else {
                 handled = pageLeft();
             }
-        } else if (direction == FOCUS_RIGHT || direction == FOCUS_FORWARD) {
+        } else if (direction == FOCUS_RIGHT) {
             // Trying to move right and nothing there; try to page.
             if (getAdapter() != null && getCurrentItem() == getAdapter().getCount() - 1) {
                 shakeX(currentFocused);

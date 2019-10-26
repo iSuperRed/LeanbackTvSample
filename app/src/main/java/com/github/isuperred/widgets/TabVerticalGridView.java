@@ -1,9 +1,6 @@
 package com.github.isuperred.widgets;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.FocusFinder;
@@ -20,34 +17,15 @@ import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
 
-import java.lang.ref.WeakReference;
-
 public class TabVerticalGridView extends VerticalGridView {
 
     private static final String TAG = "TabVerticalGridView";
-    private static final int EAT_KEY_EVENT = 10010;// 是否屏蔽按键的事件，控制按键的频率
-    private static final Long KEY_EVENT_TIME = 50L; //最短的按键事件应该是在 KEY_EVENT_TIME ms
-    private static boolean eatKeyEvent = false;
-    private Handler mHandler;
 
-    private static class MyHandler extends Handler {
-
-        private final WeakReference<Activity> mActivity;
-
-        MyHandler(Activity activity) {
-            mActivity = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-
-            Activity activity = mActivity.get();
-            if (activity != null
-                    && msg.what == EAT_KEY_EVENT) {
-                eatKeyEvent = false;
-            }
-        }
-    }
+    private View mTabView;
+    private Group mGroup;
+    private Animation mShakeY;
+    private boolean isPressUp = false;
+    private boolean isPressDown = false;
 
     public TabVerticalGridView(Context context) {
         this(context, null);
@@ -59,15 +37,9 @@ public class TabVerticalGridView extends VerticalGridView {
 
     public TabVerticalGridView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mHandler = new MyHandler((Activity) context);
-
     }
 
-    private View mTabView;
-    private Group mGroup;
-    private Animation mShakeY;
-    private boolean isPressUp = false;
-    private boolean isPressDown = false;
+
 
     public void setTabView(View tabView) {
         this.mTabView = tabView;
@@ -85,32 +57,8 @@ public class TabVerticalGridView extends VerticalGridView {
         return isPressDown;
     }
 
-//    @Override
-//    public View focusSearch(View focused, int direction) {
-//        if (focused != null) {
-//            final FocusFinder ff = FocusFinder.getInstance();
-//            final View found = ff.findNextFocus(this, focused, direction);
-//
-//            if (direction == View.FOCUS_DOWN) {
-//                if (found == null && getScrollState() == SCROLL_STATE_IDLE) {
-//                    if(mShakeY){
-//
-//                    }
-//                    focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake_y));
-//                    return null;
-//                }
-//            }
-//        }
-//        return super.focusSearch(focused, direction);
-//    }
-
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER
-                || event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER) {
-            return super.dispatchKeyEvent(event);
-        }
-
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             isPressDown = false;
             isPressUp = false;
