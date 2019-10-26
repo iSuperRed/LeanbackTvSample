@@ -379,8 +379,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             super.onChildViewHolderSelected(parent, child, position, subposition);
 
             if (mOldTitle != null) {
-//                mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
-//                mOldTitle.getPaint().setFakeBoldText(false);
                 Paint paint = mOldTitle.getPaint();
                 if (paint != null) {
                     paint.setFakeBoldText(false);
@@ -391,16 +389,12 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             if (child != null) {
 
                 TextView view = child.itemView.findViewById(R.id.tv_main_title);
-//                view.getPaint().setFakeBoldText(true);
                 Paint paint = view.getPaint();
                 if (paint != null) {
                     paint.setFakeBoldText(true);
                     //viewpager切页标题不刷新，调用invalidate刷新
                     view.invalidate();
                 }
-//                if (view.getCurrentTextColor() != getResources().getColor(R.color.colorWhite)) {
-//                    view.setTextColor(getResources().getColor(R.color.colorWhite));
-//                }
                 mOldTitle = view;
             }
             Log.e(TAG, "onChildViewHolderSelected mViewPager != null: " + (mViewPager != null)
@@ -412,9 +406,9 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private void setCurrentItemPosition(int position) {
         if (mViewPager != null && position != mCurrentPageIndex) {
+            mCurrentPageIndex = position;
             mViewPager.setCurrentItem(position);
         }
-        mCurrentPageIndex = position;
     }
 
     class NetworkChangeReceiver extends BroadcastReceiver {

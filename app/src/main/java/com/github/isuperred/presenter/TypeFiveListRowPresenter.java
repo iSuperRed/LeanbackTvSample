@@ -16,7 +16,7 @@ public class TypeFiveListRowPresenter extends TypeZeroListRowPresenter {
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);
         final ViewHolder rowViewHolder = (ViewHolder) holder;
-        rowViewHolder.getGridView().setNumRows(2);
+        rowViewHolder.getGridView().setNumRows(1);
         rowViewHolder.getGridView().setVerticalSpacing((int) rowViewHolder.getGridView().getResources().getDimension(R.dimen.px48));
 
         setOnItemViewClickedListener(new BaseOnItemViewClickedListener() {

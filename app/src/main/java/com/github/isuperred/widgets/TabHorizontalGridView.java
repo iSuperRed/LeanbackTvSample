@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.leanback.widget.HorizontalGridView;
@@ -14,6 +15,7 @@ import com.github.isuperred.utils.Constants;
 
 
 public class TabHorizontalGridView extends HorizontalGridView {
+
     public TabHorizontalGridView(Context context) {
         super(context);
     }
@@ -26,14 +28,20 @@ public class TabHorizontalGridView extends HorizontalGridView {
         super(context, attrs, defStyle);
     }
 
+    private Animation shakeX;
     @Override
     public View focusSearch(View focused, int direction) {
         if (focused != null) {
             final FocusFinder ff = FocusFinder.getInstance();
             final View found = ff.findNextFocus(this, focused, direction);
             if (direction == View.FOCUS_LEFT || direction == View.FOCUS_RIGHT) {
-                if ((found == null || found.getId() != R.id.tv_main_title) && getScrollState() == SCROLL_STATE_IDLE) {
-                    focused.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.host_shake));
+                if ((found == null || found.getId() != R.id.tv_main_title)
+                        && getScrollState() == SCROLL_STATE_IDLE) {
+                    if (shakeX == null) {
+                        shakeX = AnimationUtils.loadAnimation(getContext(), R.anim.host_shake);
+                    }
+                    focused.clearAnimation();
+                    focused.startAnimation(shakeX);
                     return null;
                 }
             }
