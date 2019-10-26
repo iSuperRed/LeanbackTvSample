@@ -34,7 +34,7 @@ public class TabViewPager extends ViewPager {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
-        return executeKeyEvent(event) || super.dispatchKeyEvent(event);
+        return super.dispatchKeyEvent(event) || executeKeyEvent(event);
     }
 
     public boolean executeKeyEvent(@NonNull KeyEvent event) {
@@ -168,10 +168,11 @@ public class TabViewPager extends ViewPager {
         }
         return false;
     }
-    private void shakeX(View currentFocused){
+
+    private void shakeX(View currentFocused) {
         if (currentFocused != null) {
             if (mShakeX == null) {
-                mShakeX = AnimationUtils.loadAnimation(getContext(),R.anim.host_shake);
+                mShakeX = AnimationUtils.loadAnimation(getContext(), R.anim.host_shake);
             }
             currentFocused.clearAnimation();
             currentFocused.startAnimation(mShakeX);
