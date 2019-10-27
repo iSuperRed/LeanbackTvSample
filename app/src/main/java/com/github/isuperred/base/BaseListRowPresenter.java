@@ -6,6 +6,7 @@ import androidx.leanback.widget.RowPresenter;
 
 
 public class BaseListRowPresenter extends ListRowPresenter {
+
     @Override
     protected void onRowViewAttachedToWindow(RowPresenter.ViewHolder vh) {
         super.onRowViewAttachedToWindow(vh);
