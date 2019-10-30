@@ -33,8 +33,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
 import com.github.isuperred.adapter.ContentViewPagerAdapter;
-import com.github.isuperred.content.ContentFragment;
 import com.github.isuperred.bean.Title;
+import com.github.isuperred.content.ContentFragment;
 import com.github.isuperred.presenter.TitlePresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
@@ -49,15 +49,14 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     private static final String TAG = "MainActivity";
     private static final int MSG_NOTIFY_TITLE = 100;
 
-
-//    private static final int MSG_NOTIFY_TITLE = 1;
-
+    private TextView mOldTitle;
+    private ImageView mIvNetwork;
     private ArrayObjectAdapter mArrayObjectAdapter;
     private ContentViewPagerAdapter mViewPagerAdapter;
 
-    private TextView mOldTitle;
-
     private int mCurrentPageIndex = 0;
+    private boolean isSkipTabFromViewPager = false;
+    private NetworkChangeReceiver networkChangeReceiver;
 
     public ArrayObjectAdapter getArrayObjectAdapter() {
         return mArrayObjectAdapter;
@@ -69,9 +68,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
 
     private Handler mHandler = new MyHandler(this);
 
-    private NetworkChangeReceiver networkChangeReceiver;
-
-    private ImageView mIvNetwork;
 
     @Override
     public void onFragmentInteraction(Uri uri) {
@@ -91,19 +87,24 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onGlobalFocusChanged(View oldFocus, View newFocus) {
         Log.e(TAG, "onGlobalFocusChanged newFocus: " + newFocus);
         Log.e(TAG, "onGlobalFocusChanged oldFocus: " + oldFocus);
-//        Log.e(TAG, "onGlobalFocusChanged isPressUp: " + isPressUp);
-//        Log.e(TAG, "onGlobalFocusChanged isPressDown: " + isPressDown);
-//        Log.e(TAG, "onGlobalFocusChanged isPressBack: " + isPressBack);
-
-//        if (newFocus != null
-//                && newFocus.getId() == R.id.tv_main_title
-//                && (isPressUp || isPressDown || isPressBack)) {
-//            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
-//        }
-//        if (oldFocus != null && oldFocus.getId() == R.id.tv_main_title
-//                && (isPressUp || isPressDown)) {
-//            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorBlue));
-//        }
+        if (newFocus == null || oldFocus == null) {
+            return;
+        }
+        if (newFocus.getId() == R.id.tv_main_title
+                && oldFocus.getId() == R.id.tv_main_title) {
+            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
+            ((TextView) newFocus).getPaint().setFakeBoldText(true);
+            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorWhite));
+            ((TextView) oldFocus).getPaint().setFakeBoldText(false);
+        } else if (newFocus.getId() == R.id.tv_main_title
+                && oldFocus.getId() != R.id.tv_main_title) {
+            ((TextView) newFocus).setTextColor(getResources().getColor(R.color.colorWhite));
+            ((TextView) newFocus).getPaint().setFakeBoldText(true);
+        } else if (newFocus.getId() != R.id.tv_main_title
+                && oldFocus.getId() == R.id.tv_main_title) {
+            ((TextView) oldFocus).setTextColor(getResources().getColor(R.color.colorBlue));
+            ((TextView) oldFocus).getPaint().setFakeBoldText(true);
+        }
     }
 
     @Override
@@ -179,10 +180,18 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                             if (dataBeans.size() > Constants.TAG_FEATURE_POSITION) {
                                 if (horizontalGridView != null) {
                                     horizontalGridView.setSelectedPositionSmooth(Constants.TAG_FEATURE_POSITION);
+                                    View positionView = horizontalGridView.getChildAt(Constants.TAG_FEATURE_POSITION);
+                                    if (positionView != null) {
+                                        activity.mOldTitle = positionView.findViewById(R.id.tv_main_title);
+                                    }
                                 }
-                            } else {
+                            } else if (dataBeans.size() > 0) {
                                 if (activity.getHorizontalGridView() != null) {
                                     horizontalGridView.setSelectedPositionSmooth(0);
+                                    View position0 = horizontalGridView.getChildAt(0);
+                                    if (position0 != null) {
+                                        activity.mOldTitle = position0.findViewById(R.id.tv_main_title);
+                                    }
                                 }
                             }
                         }
@@ -207,23 +216,21 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         initBroadCast();
     }
 
+//    private boolean isPressUpDownLeftRightBack = false;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (event.getAction() == KeyEvent.ACTION_DOWN) {
 //            switch (keyCode) {
 //                case KeyEvent.KEYCODE_DPAD_UP:
-//                    isPressUp = true;
-//                    break;
 //                case KeyEvent.KEYCODE_DPAD_DOWN:
-//                    isPressDown = true;
-//                    break;
 //                case KeyEvent.KEYCODE_BACK:
-//                    isPressBack = true;
+//                case KeyEvent.KEYCODE_DPAD_LEFT:
+//                case KeyEvent.KEYCODE_DPAD_RIGHT:
+//                    isPressUpDownLeftRightBack = true;
 //                    break;
 //                default:
-//                    isPressDown = false;
-//                    isPressUp = false;
-//                    isPressBack = false;
+//                    isPressUpDownLeftRightBack = false;
 //                    break;
 //            }
 //
@@ -245,7 +252,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
                 .removeOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
         getWindow().getDecorView().getViewTreeObserver().removeOnGlobalFocusChangeListener(this);
         super.onDestroy();
-        if(mThread!=null){
+        if (mThread != null) {
             mThread.interrupt();
         }
         unregisterReceiver(networkChangeReceiver);
@@ -269,7 +276,6 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         @Override
         public void run() {
             String titleJson = LocalJsonResolutionUtil.getJson(MainActivity.this, "MyTitle.json");
-            Log.e(TAG, "run: " + titleJson);
             //转换为对象
             Title title = LocalJsonResolutionUtil.JsonToObject(titleJson, Title.class);
             List<Title.DataBean> dataBeans = title.getData();
@@ -298,7 +304,8 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
         mHorizontalGridView.setAdapter(itemBridgeAdapter);
-        FocusHighlightHelper.setupBrowseItemFocusHighlight(itemBridgeAdapter, FocusHighlight.ZOOM_FACTOR_MEDIUM, false);
+        FocusHighlightHelper.setupBrowseItemFocusHighlight(itemBridgeAdapter,
+                FocusHighlight.ZOOM_FACTOR_MEDIUM, false);
     }
 
     private void initData() {
@@ -332,6 +339,8 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         registerReceiver(networkChangeReceiver, intentFilter);
     }
 
+    private boolean isFirstIn = true;
+
     private void initViewPager(List<Title.DataBean> dataBeans) {
 
         mViewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
@@ -346,15 +355,20 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             @Override
             public void onPageSelected(int position) {
                 Log.e(TAG, "onPageSelected position: " + position);
+                if (isFirstIn) {
+                    isFirstIn = false;
+                } else {
+                    isSkipTabFromViewPager = true;
+                }
                 if (position != mCurrentPageIndex) {
-                    mCurrentPageIndex = position;
+//                    mCurrentPageIndex = position;
                     mHorizontalGridView.setSelectedPosition(position);
+
                 }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.e(TAG, "onPageScrollStateChanged state: " + state);
 
             }
         });
@@ -377,26 +391,35 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         @Override
         public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
             super.onChildViewHolderSelected(parent, child, position, subposition);
+            if (child != null & position != mCurrentPageIndex) {
+                Log.e(TAG, "onChildViewHolderSelected: 000 isSkipTabFromViewPager" + isSkipTabFromViewPager);
+                TextView currentTitle = child.itemView.findViewById(R.id.tv_main_title);
+                if (isSkipTabFromViewPager) {
+                    Log.e(TAG, "onChildViewHolderSelected: 111");
 
-            if (mOldTitle != null) {
-                Paint paint = mOldTitle.getPaint();
-                if (paint != null) {
-                    paint.setFakeBoldText(false);
-                    //viewpager切页标题不刷新，调用invalidate刷新
-                    mOldTitle.invalidate();
-                }
-            }
-            if (child != null) {
+                    if (mOldTitle != null) {
+                        Log.e(TAG, "onChildViewHolderSelected: 222");
 
-                TextView view = child.itemView.findViewById(R.id.tv_main_title);
-                Paint paint = view.getPaint();
-                if (paint != null) {
-                    paint.setFakeBoldText(true);
-                    //viewpager切页标题不刷新，调用invalidate刷新
-                    view.invalidate();
+                        mOldTitle.setTextColor(getResources().getColor(R.color.colorWhite));
+                        Paint paint = mOldTitle.getPaint();
+                        if (paint != null) {
+                            paint.setFakeBoldText(false);
+                            //viewpager切页标题不刷新，调用invalidate刷新
+                            mOldTitle.invalidate();
+                        }
+                    }
+                    currentTitle.setTextColor(getResources().getColor(R.color.colorBlue));
+                    Paint paint = currentTitle.getPaint();
+                    if (paint != null) {
+                        paint.setFakeBoldText(true);
+                        //viewpager切页标题不刷新，调用invalidate刷新
+                        currentTitle.invalidate();
+                    }
                 }
-                mOldTitle = view;
+                mOldTitle = currentTitle;
             }
+
+            isSkipTabFromViewPager = false;
             Log.e(TAG, "onChildViewHolderSelected mViewPager != null: " + (mViewPager != null)
                     + " position:" + position);
             setCurrentItemPosition(position);
@@ -431,9 +454,9 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
             } else {
                 mIvNetwork.setImageResource(R.drawable.no_net);
             }
-
         }
     }
+
 
 }
 

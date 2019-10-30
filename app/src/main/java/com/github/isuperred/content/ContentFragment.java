@@ -293,7 +293,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
             if (json == null) {
                 return;
             }
-            Log.e(TAG, "run json: " + json);
             Content content = LocalJsonResolutionUtil.JsonToObject(json, Content.class);
             final Message msg = Message.obtain();
             msg.what = MSG_ADD_ITEM;
@@ -331,7 +330,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
     }
 
     private void addItem(Content.DataBean dataBean) {
-        Log.e(TAG, "addItem: " + dataBean.getTitle());
         switch (dataBean.getContentCode()) {
             case Constants.TYPE_ZERO:
                 ArrayObjectAdapter arrayObjectAdapter = new ArrayObjectAdapter(new TypeZeroContentPresenter());
@@ -356,7 +354,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterOne.addAll(0, listOne);
                 HeaderItem headerItem = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItem = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowOne = new ListRow(headerItem, arrayObjectAdapterOne);
@@ -375,7 +372,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterTwo.addAll(0, listTwo);
                 HeaderItem headerItemTwo = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemTwo = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowTwo = new ListRow(headerItemTwo, arrayObjectAdapterTwo);
@@ -394,7 +390,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterThree.addAll(0, listThree);
                 HeaderItem headerItemThree = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemThree = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowThree = new ListRow(headerItemThree, arrayObjectAdapterThree);
@@ -413,7 +408,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterFour.addAll(0, listFour);
                 HeaderItem headerItemFour = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemFour = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowFour = new ListRow(headerItemFour, arrayObjectAdapterFour);
@@ -432,7 +426,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterFive.addAll(0, listFive);
                 HeaderItem headerItemFive = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemFive = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowFive = new ListRow(headerItemFive, arrayObjectAdapterFive);
@@ -450,7 +443,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 arrayObjectAdapterSix.addAll(0, listSix);
                 HeaderItem headerItemSix = null;
                 if (dataBean.getShowTitle()) {
-                    Log.e(TAG, "addItem: " + dataBean.getTitle());
                     headerItemSix = new HeaderItem(dataBean.getTitle());
                 }
                 ListRow listRowSix = new ListRow(headerItemSix, arrayObjectAdapterSix);
@@ -558,7 +550,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private void addWithTryCatch(Object item) {
         try {
-            Log.e(TAG, "addWithTryCatch: " + !mVerticalGridView.isComputingLayout() + " code：" + mCurrentTabCode);
             if (!mVerticalGridView.isComputingLayout()) {
                 mAdapter.add(item);
             }

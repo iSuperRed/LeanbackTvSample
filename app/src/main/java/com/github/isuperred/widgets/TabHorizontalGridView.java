@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.leanback.widget.HorizontalGridView;
@@ -20,11 +21,11 @@ import com.github.isuperred.utils.Constants;
 public class TabHorizontalGridView extends HorizontalGridView {
 
     public TabHorizontalGridView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public TabHorizontalGridView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
     }
 
     public TabHorizontalGridView(Context context, AttributeSet attrs, int defStyle) {
@@ -62,8 +63,7 @@ public class TabHorizontalGridView extends HorizontalGridView {
                         if (getVisibility() != View.VISIBLE) {
                             setVisibility(View.VISIBLE);
                         }
-                        requestFocus();
-                        scrollToPosition(Constants.TAG_FEATURE_POSITION);
+                        setSelectedPositionSmooth(Constants.TAG_FEATURE_POSITION);
                         return true;
                     }
                 case KeyEvent.KEYCODE_DPAD_DOWN:
