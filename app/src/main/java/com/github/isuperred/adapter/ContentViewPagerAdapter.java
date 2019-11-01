@@ -4,8 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.github.isuperred.adapter.SmartFragmentStatePagerAdapter;
-import com.github.isuperred.content.ContentFragment;
+import com.github.isuperred.fragment.ContentFragment;
 import com.github.isuperred.bean.Title;
 
 import java.util.List;

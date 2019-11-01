@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:focusable="true"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="120dp"
+    android:layout_height="120dp">
+
+    <ImageView
+        android:id="@+id/iv_app_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:background="#000000"
+        android:textColor="@color/lb_tv_white"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

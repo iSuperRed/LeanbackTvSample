@@ -1,4 +1,4 @@
-package com.github.isuperred.main;
+package com.github.isuperred.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -34,7 +34,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.github.isuperred.R;
 import com.github.isuperred.adapter.ContentViewPagerAdapter;
 import com.github.isuperred.bean.Title;
-import com.github.isuperred.content.ContentFragment;
+import com.github.isuperred.fragment.ContentFragment;
 import com.github.isuperred.presenter.TitlePresenter;
 import com.github.isuperred.utils.Constants;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cl_search:
+                startActivity(new Intent(this,AppInstalledActivity.class));
                 Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_history:

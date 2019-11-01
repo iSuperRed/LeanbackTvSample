@@ -1,4 +1,4 @@
-package com.github.isuperred.content;
+package com.github.isuperred.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,8 +25,9 @@ import com.bumptech.glide.Glide;
 import com.github.isuperred.R;
 import com.github.isuperred.base.BaseLazyLoadFragment;
 import com.github.isuperred.bean.Content;
-import com.github.isuperred.main.MainActivity;
+import com.github.isuperred.activity.MainActivity;
 import com.github.isuperred.bean.Footer;
+import com.github.isuperred.content.ContentPresenterSelector;
 import com.github.isuperred.presenter.TypeFiveContentPresenter;
 import com.github.isuperred.presenter.TypeFourContentPresenter;
 import com.github.isuperred.presenter.TypeOneContentPresenter;

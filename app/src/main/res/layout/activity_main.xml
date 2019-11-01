@@ -7,7 +7,7 @@
     android:background="@drawable/bg_gradient_home"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context="com.github.isuperred.main.MainActivity">
+    tools:context="com.github.isuperred.activity.MainActivity">
 
 
     <com.github.isuperred.widgets.TabHorizontalGridView

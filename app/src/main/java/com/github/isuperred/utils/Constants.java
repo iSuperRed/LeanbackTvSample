@@ -25,4 +25,6 @@ public class Constants {
     public static final int TYPE_ELEVEN = 111;
     public static final int TYPE_TWELVE = 112;
 
+    public static final int DEFAULT_ERROR_VALUE = -1;
+
 }

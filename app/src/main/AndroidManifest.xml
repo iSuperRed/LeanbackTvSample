@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.isuperred">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <!--如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；设置为ture的话你的应用只可以在使用Leanback的设备上。-->
-    <uses-feature android:name="android.software.leanback"
+    <!-- 如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；
+    设置为ture的话你的应用只可以在使用Leanback的设备上。 -->
+    <uses-feature
+        android:name="android.software.leanback"
         android:required="false" />
-    <!--声明Touchscreen属性，这个看个人需要，主要是声明你的app需不需要支持触摸屏输入。值得注意的是，如果你的应用打算在googleplay上架，必须在你的manifest添加此段代码，否则不予上架。-->
-    <uses-feature android:name="android.hardware.touchscreen"
+    <!-- 声明Touchscreen属性，这个看个人需要，主要是声明你的app需不需要支持触摸屏输入。
+        值得注意的是，如果你的应用打算在googleplay上架，必须在你的manifest添加此段代码，否则不予上架。 -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
         android:required="false" />
 
     <application
@@ -24,8 +28,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.github.isuperred.main.MainActivity">
+        <activity android:name=".activity.AppInstalledActivity"></activity>
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
