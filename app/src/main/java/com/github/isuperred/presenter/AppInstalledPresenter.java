@@ -32,6 +32,12 @@ public class AppInstalledPresenter extends Presenter {
             mContext = parent.getContext();
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_app_installed, parent, false);
+        view.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                v.findViewById(R.id.tv_app_name).setSelected(hasFocus);
+            }
+        });
         return new ViewHolder(view);
     }
 
@@ -40,7 +46,7 @@ public class AppInstalledPresenter extends Presenter {
         if (item instanceof AppInfo) {
             ViewHolder vh = (ViewHolder) viewHolder;
             if (((AppInfo) item).icon != null) {
-                BitmapDrawable btDrawable = (BitmapDrawable) ((AppInfo) item).icon ;
+                BitmapDrawable btDrawable = (BitmapDrawable) ((AppInfo) item).icon;
                 Bitmap bitmap = btDrawable.getBitmap();
                 RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(mContext.getResources(), bitmap);
                 drawable.setCornerRadius(mContext.getResources().getDimension(R.dimen.px20));
