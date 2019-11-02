@@ -1,6 +1,7 @@
 package com.github.isuperred.widgets.focus;
 
 import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.ObjectAdapter;
@@ -18,9 +19,19 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getOnItemViewClickedListener().onItemClicked(viewHolder.getViewHolder(),
+                    getOnItemViewClickedListener().onItemClicked(v, viewHolder.getViewHolder(),
                             viewHolder.getItem());
 
+                }
+            });
+            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (getOnItemViewLongClickedListener() != null) {
+                        return getOnItemViewLongClickedListener().onItemLongClicked(v, viewHolder.getViewHolder(),
+                                viewHolder.getItem());
+                    }
+                    return true;
                 }
             });
         }
@@ -31,13 +42,19 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
     protected void onUnbind(ViewHolder viewHolder) {
         super.onUnbind(viewHolder);
         viewHolder.itemView.setOnClickListener(null);
-
     }
 
     public abstract OnItemViewClickedListener getOnItemViewClickedListener();
 
-    public interface OnItemViewClickedListener{
-        void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item);
+    public OnItemViewLongClickedListener getOnItemViewLongClickedListener() {
+        return null;
     }
 
+    public interface OnItemViewClickedListener {
+        void onItemClicked(View focusView, Presenter.ViewHolder itemViewHolder, Object item);
+    }
+
+    public interface OnItemViewLongClickedListener {
+        boolean onItemLongClicked(View focusView, Presenter.ViewHolder itemViewHolder, Object item);
+    }
 }

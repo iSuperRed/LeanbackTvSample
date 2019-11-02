@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/px30"
         android:layout_marginEnd="@dimen/px140"
-        android:text="长按确定卸载选中应用(功能暂未完成)"
+        android:text="长按确定删除选中应用"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/px28"
         app:layout_constraintRight_toRightOf="parent"

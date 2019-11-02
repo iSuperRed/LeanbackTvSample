@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,13 +57,18 @@ public class AppInstalledActivity extends AppCompatActivity {
             public MyItemBridgeAdapter.OnItemViewClickedListener getOnItemViewClickedListener() {
                 return new OnItemViewClickedListener() {
                     @Override
-                    public void onItemClicked(Presenter.ViewHolder itemViewHolder, Object item) {
+                    public void onItemClicked(View focusView,
+                                              Presenter.ViewHolder itemViewHolder,
+                                              Object item) {
                         if (item instanceof AppInfo) {
+
                             try {
                                 PackageManager packageManager = getPackageManager();
-                                Intent intent = packageManager.getLaunchIntentForPackage(((AppInfo) item).packageName);
+                                Intent intent = packageManager
+                                        .getLaunchIntentForPackage(((AppInfo) item).packageName);
                                 if (intent == null) {
-                                    Toast.makeText(AppInstalledActivity.this, ((AppInfo) item).name + "未安装",
+                                    Toast.makeText(AppInstalledActivity.this,
+                                            ((AppInfo) item).name + "未安装",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     startActivity(intent);
@@ -70,6 +78,24 @@ public class AppInstalledActivity extends AppCompatActivity {
                             }
 
                         }
+                    }
+                };
+            }
+
+            @Override
+            public OnItemViewLongClickedListener getOnItemViewLongClickedListener() {
+                return new OnItemViewLongClickedListener() {
+                    @Override
+                    public boolean onItemLongClicked(View focusView,
+                                                     Presenter.ViewHolder itemViewHolder,
+                                                     Object item) {
+                        if (item instanceof AppInfo && !TextUtils.isEmpty(((AppInfo) item).packageName)) {
+                            Uri packageURI = Uri.parse("package:" + ((AppInfo) item).packageName);
+                            Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
+                            uninstallIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(uninstallIntent);
+                        }
+                        return true;
                     }
                 };
             }
