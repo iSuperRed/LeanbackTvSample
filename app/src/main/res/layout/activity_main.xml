@@ -52,7 +52,7 @@
             android:paddingTop="@dimen/px10"
             android:paddingEnd="@dimen/px20"
             android:paddingBottom="@dimen/px10"
-            android:text="搜索"
+            android:text="已安装应用"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/px26"
             app:layout_constraintLeft_toLeftOf="parent"

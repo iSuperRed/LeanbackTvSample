@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 import androidx.leanback.widget.ArrayObjectAdapter;
@@ -33,6 +32,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.github.isuperred.R;
 import com.github.isuperred.adapter.ContentViewPagerAdapter;
+import com.github.isuperred.base.BaseActivity;
 import com.github.isuperred.bean.Title;
 import com.github.isuperred.fragment.ContentFragment;
 import com.github.isuperred.presenter.TitlePresenter;
@@ -43,7 +43,7 @@ import com.github.isuperred.widgets.ScaleTextView;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ContentFragment.OnFragmentInteractionListener,
+public class MainActivity extends BaseActivity implements ContentFragment.OnFragmentInteractionListener,
         ViewTreeObserver.OnGlobalFocusChangeListener, View.OnKeyListener, View.OnClickListener {
 
     private static final String TAG = "MainActivity";
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements ContentFragment.O
         switch (v.getId()) {
             case R.id.cl_search:
                 startActivity(new Intent(this,AppInstalledActivity.class));
-                Toast.makeText(this, "搜索", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "已安装应用", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_history:
                 Toast.makeText(this, "历史", Toast.LENGTH_SHORT).show();

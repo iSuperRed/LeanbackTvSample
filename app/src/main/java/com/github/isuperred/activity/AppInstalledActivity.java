@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.FocusHighlight;
 import androidx.leanback.widget.FocusHighlightHelper;
@@ -21,6 +20,7 @@ import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.Presenter;
 
 import com.github.isuperred.R;
+import com.github.isuperred.base.BaseActivity;
 import com.github.isuperred.bean.AppInfo;
 import com.github.isuperred.presenter.AppInstalledPresenter;
 import com.github.isuperred.widgets.AppVerticalGridView;
@@ -29,7 +29,7 @@ import com.github.isuperred.widgets.focus.MyItemBridgeAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppInstalledActivity extends AppCompatActivity {
+public class AppInstalledActivity extends BaseActivity {
 
     private static final String TAG = "AppInstalledActivity";
     private ArrayObjectAdapter mAdapter;
@@ -60,7 +60,8 @@ public class AppInstalledActivity extends AppCompatActivity {
                     public void onItemClicked(View focusView,
                                               Presenter.ViewHolder itemViewHolder,
                                               Object item) {
-                        if (item instanceof AppInfo) {
+                        if (focusView.hasFocus()
+                                && item instanceof AppInfo) {
 
                             try {
                                 PackageManager packageManager = getPackageManager();
@@ -89,7 +90,9 @@ public class AppInstalledActivity extends AppCompatActivity {
                     public boolean onItemLongClicked(View focusView,
                                                      Presenter.ViewHolder itemViewHolder,
                                                      Object item) {
-                        if (item instanceof AppInfo && !TextUtils.isEmpty(((AppInfo) item).packageName)) {
+                        if (focusView.hasFocus()
+                                && item instanceof AppInfo
+                                && !TextUtils.isEmpty(((AppInfo) item).packageName)) {
                             Uri packageURI = Uri.parse("package:" + ((AppInfo) item).packageName);
                             Intent uninstallIntent = new Intent(Intent.ACTION_DELETE, packageURI);
                             uninstallIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
