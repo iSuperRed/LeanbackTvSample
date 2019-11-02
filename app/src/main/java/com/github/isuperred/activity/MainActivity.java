@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -52,7 +53,6 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
     private TextView mOldTitle;
     private ImageView mIvNetwork;
     private ArrayObjectAdapter mArrayObjectAdapter;
-    private ContentViewPagerAdapter mViewPagerAdapter;
 
     private int mCurrentPageIndex = 0;
     private boolean isSkipTabFromViewPager = false;
@@ -318,7 +318,6 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
     private void initListener() {
         getWindow().getDecorView().getViewTreeObserver().addOnGlobalFocusChangeListener(this);
         mHorizontalGridView.addOnChildViewHolderSelectedListener(onChildViewHolderSelectedListener);
-
         mClSearch.setOnClickListener(this);
         mClHistory.setOnClickListener(this);
         mClLogin.setOnClickListener(this);
@@ -344,9 +343,9 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
 
     private void initViewPager(List<Title.DataBean> dataBeans) {
 
-        mViewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
-        mViewPagerAdapter.setData(dataBeans);
-        mViewPager.setAdapter(mViewPagerAdapter);
+        ContentViewPagerAdapter viewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.setData(dataBeans);
+        mViewPager.setAdapter(viewPagerAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
