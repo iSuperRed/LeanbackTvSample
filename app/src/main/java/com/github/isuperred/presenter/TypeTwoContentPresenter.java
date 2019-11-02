@@ -37,7 +37,7 @@ public class TypeTwoContentPresenter extends Presenter {
                             .centerCrop()
                             .override((int) mContext.getResources().getDimension(R.dimen.px544),
                                     (int) mContext.getResources().getDimension(R.dimen.px372))
-                            .placeholder(R.drawable.shape_default))
+                            .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvTypeTwoPoster);
         }
     }

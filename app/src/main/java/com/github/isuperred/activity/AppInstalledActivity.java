@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +16,11 @@ import androidx.leanback.widget.FocusHighlight;
 import androidx.leanback.widget.FocusHighlightHelper;
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.Presenter;
-import androidx.leanback.widget.VerticalGridView;
 
 import com.github.isuperred.R;
 import com.github.isuperred.bean.AppInfo;
 import com.github.isuperred.presenter.AppInstalledPresenter;
+import com.github.isuperred.widgets.AppVerticalGridView;
 import com.github.isuperred.widgets.focus.MyItemBridgeAdapter;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class AppInstalledActivity extends AppCompatActivity {
 
     private static final String TAG = "AppInstalledActivity";
     private ArrayObjectAdapter mAdapter;
+    private AppVerticalGridView mVgAppInstalled;
+    private TextView mTvAppNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,11 @@ public class AppInstalledActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        VerticalGridView vgAppInstalled = findViewById(R.id.vg_app_installed);
-        vgAppInstalled.setNumColumns(6);
+        mVgAppInstalled = findViewById(R.id.vg_app_installed);
+        mTvAppNumber = findViewById(R.id.tv_app_installed_number);
+        mVgAppInstalled.setColumnNumbers(6);
+        mVgAppInstalled.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px106));
+        mVgAppInstalled.setVerticalSpacing((int) getResources().getDimension(R.dimen.px40));
         mAdapter = new ArrayObjectAdapter(new AppInstalledPresenter());
         ItemBridgeAdapter itemBridgeAdapter = new MyItemBridgeAdapter(mAdapter) {
 
@@ -68,13 +74,18 @@ public class AppInstalledActivity extends AppCompatActivity {
                 };
             }
         };
-        vgAppInstalled.setAdapter(itemBridgeAdapter);
+        mVgAppInstalled.setAdapter(itemBridgeAdapter);
         FocusHighlightHelper.setupBrowseItemFocusHighlight(itemBridgeAdapter,
                 FocusHighlight.ZOOM_FACTOR_MEDIUM, false);
     }
 
     private void initData() {
-        mAdapter.addAll(0, getInstallApps(getApplicationContext()));
+        List<AppInfo> appInfos = getInstallApps(getApplicationContext());
+        if (appInfos == null) {
+            return;
+        }
+        mTvAppNumber.setText(String.valueOf(appInfos.size()));
+        mAdapter.addAll(0, appInfos);
     }
 
     public List<AppInfo> getInstallApps(Context context) {
@@ -101,7 +112,7 @@ public class AppInstalledActivity extends AppCompatActivity {
                     .FLAG_EXTERNAL_STORAGE;
             info.isUser = (flags & ApplicationInfo.FLAG_SYSTEM) != ApplicationInfo
                     .FLAG_SYSTEM;
-            Log.e(TAG, "getInstallApps: " + info.toString());
+//            Log.e(TAG, "getInstallApps: " + info.toString());
             list.add(info);
         }
         Log.e(TAG, "getInstallApps1: ");

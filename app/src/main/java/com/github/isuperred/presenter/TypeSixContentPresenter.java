@@ -54,7 +54,7 @@ public class TypeSixContentPresenter extends Presenter {
                     .apply(new RequestOptions()
                             .override((int) mContext.getResources().getDimension(R.dimen.px248),
                                     (int) mContext.getResources().getDimension(R.dimen.px372))
-                            .placeholder(R.drawable.shape_default))
+                            .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvPoster);
             String desc = ((Content.DataBean.WidgetsBean) item).getDesc();
             if (!TextUtils.isEmpty(desc)) {

@@ -40,7 +40,7 @@ public class TypeFiveContentPresenter extends Presenter {
                             .centerCrop()
                             .override((int) mContext.getResources().getDimension(R.dimen.px544),
                                     (int) mContext.getResources().getDimension(R.dimen.px248))
-                            .placeholder(R.drawable.shape_default))
+                            .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvTypeFivePoster);
             if (!TextUtils.isEmpty(((Content.DataBean.WidgetsBean) item).getName())) {
                 vh.mIvTypeFiveName.setText(((Content.DataBean.WidgetsBean) item).getName());

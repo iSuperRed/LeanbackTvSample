@@ -34,17 +34,8 @@ public class AppInstalledPresenter extends Presenter {
     public void onBindViewHolder(Presenter.ViewHolder viewHolder, Object item) {
         if (item instanceof AppInfo) {
             ViewHolder vh = (ViewHolder) viewHolder;
-//            RequestOptions options = new RequestOptions()
-//                    .placeholder(R.drawable.shape_default)
-//                    .error(R.drawable.shape_default);
-            Log.e(TAG, "onBindViewHolder: " + (((AppInfo) item).icon != null) + " " + vh.mIvAppIcon);
             if (((AppInfo) item).icon != null) {
-                Glide.with(mContext)
-                        .load("")
-                        .apply(new RequestOptions()
-                                .error(((AppInfo) item).icon)
-                                .placeholder(((AppInfo) item).icon))
-                        .into(vh.mIvAppIcon);
+                vh.mIvAppIcon.setImageDrawable(((AppInfo) item).icon);
             }
             if (!TextUtils.isEmpty(((AppInfo) item).name)) {
                 vh.mTvAppName.setText(((AppInfo) item).name);

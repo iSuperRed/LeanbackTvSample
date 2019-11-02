@@ -40,7 +40,7 @@ public class TypeFourContentPresenter extends Presenter {
                             .centerCrop()
                             .override((int) mContext.getResources().getDimension(R.dimen.px400),
                                     (int) mContext.getResources().getDimension(R.dimen.px222))
-                            .placeholder(R.drawable.shape_default))
+                            .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvTypeFourPoster);
             if (!TextUtils.isEmpty(((Content.DataBean.WidgetsBean) item).getName())) {
                 vh.mIvTypeFourName.setText(((Content.DataBean.WidgetsBean) item).getName());
