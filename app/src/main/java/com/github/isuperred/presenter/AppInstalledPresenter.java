@@ -1,6 +1,9 @@
 package com.github.isuperred.presenter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.leanback.widget.Presenter;
 
 import com.bumptech.glide.Glide;
@@ -35,7 +40,11 @@ public class AppInstalledPresenter extends Presenter {
         if (item instanceof AppInfo) {
             ViewHolder vh = (ViewHolder) viewHolder;
             if (((AppInfo) item).icon != null) {
-                vh.mIvAppIcon.setImageDrawable(((AppInfo) item).icon);
+                BitmapDrawable btDrawable = (BitmapDrawable) ((AppInfo) item).icon ;
+                Bitmap bitmap = btDrawable.getBitmap();
+                RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(mContext.getResources(), bitmap);
+                drawable.setCornerRadius(mContext.getResources().getDimension(R.dimen.px20));
+                vh.mIvAppIcon.setImageDrawable(drawable);
             }
             if (!TextUtils.isEmpty(((AppInfo) item).name)) {
                 vh.mTvAppName.setText(((AppInfo) item).name);
