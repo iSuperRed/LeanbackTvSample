@@ -4,6 +4,7 @@ import androidx.leanback.widget.ListRow;
 
 import com.github.isuperred.base.BasePresenterSelector;
 import com.github.isuperred.bean.Footer;
+import com.github.isuperred.bean.TypeSeven;
 import com.github.isuperred.presenter.ContentListRowPresenter;
 import com.github.isuperred.presenter.ImageRowHeaderPresenter;
 import com.github.isuperred.presenter.TypeFiveContentPresenter;
@@ -11,6 +12,7 @@ import com.github.isuperred.presenter.TypeFiveListRowPresenter;
 import com.github.isuperred.presenter.TypeFooterPresenter;
 import com.github.isuperred.presenter.TypeFourContentPresenter;
 import com.github.isuperred.presenter.TypeOneContentPresenter;
+import com.github.isuperred.presenter.TypeSevenPresenter;
 import com.github.isuperred.presenter.TypeSixContentPresenter;
 import com.github.isuperred.presenter.TypeThreeContentPresenter;
 import com.github.isuperred.presenter.TypeTwoContentPresenter;
@@ -47,6 +49,8 @@ public class ContentPresenterSelector extends BasePresenterSelector {
         addClassPresenter(ListRow.class, listRowPresenterOne, TypeSixContentPresenter.class);
 
         addClassPresenter(Footer.class, new TypeFooterPresenter());
+
+        addClassPresenter(TypeSeven.class, new TypeSevenPresenter());
 
     }
 

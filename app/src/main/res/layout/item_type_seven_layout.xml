@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.isuperred.widgets.ImgConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FocusStyle"
+    android:id="@+id/cl_type_seven"
+    android:layout_width="@dimen/px396"
+    android:layout_height="@dimen/px222">
+
+    <ImageView
+        android:id="@+id/iv_type_seven_poster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription" />
+
+</com.github.isuperred.widgets.ImgConstraintLayout>

@@ -171,6 +171,7 @@ public class Content implements Parcelable {
             private String name;
             private String desc;
             private String url;
+            private boolean isBigPic;
 
             protected WidgetsBean(Parcel in) {
                 id = in.readInt();
@@ -178,6 +179,7 @@ public class Content implements Parcelable {
                 name = in.readString();
                 desc = in.readString();
                 url = in.readString();
+                isBigPic = in.readByte() != 0;
             }
 
             public static final Creator<WidgetsBean> CREATOR = new Creator<WidgetsBean>() {
@@ -232,6 +234,14 @@ public class Content implements Parcelable {
                 this.url = url;
             }
 
+            public boolean isBigPic() {
+                return isBigPic;
+            }
+
+            public void setBigPic(boolean bigPic) {
+                isBigPic = bigPic;
+            }
+
             @Override
             public int describeContents() {
                 return 0;
@@ -244,6 +254,7 @@ public class Content implements Parcelable {
                 dest.writeString(name);
                 dest.writeString(desc);
                 dest.writeString(url);
+                dest.writeByte((byte) (isBigPic ? 1 : 0));
             }
         }
     }

@@ -36,7 +36,7 @@ public class TypeOneContentPresenter extends Presenter {
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
                             .centerCrop()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px400),
+                            .override((int) mContext.getResources().getDimension(R.dimen.px396),
                                     (int) mContext.getResources().getDimension(R.dimen.px222))
                             .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvTypeTwoPoster);

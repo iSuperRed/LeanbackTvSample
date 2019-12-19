@@ -27,6 +27,7 @@ import com.github.isuperred.base.BaseLazyLoadFragment;
 import com.github.isuperred.bean.Content;
 import com.github.isuperred.activity.MainActivity;
 import com.github.isuperred.bean.Footer;
+import com.github.isuperred.bean.TypeSeven;
 import com.github.isuperred.content.ContentPresenterSelector;
 import com.github.isuperred.presenter.TypeFiveContentPresenter;
 import com.github.isuperred.presenter.TypeFourContentPresenter;
@@ -301,7 +302,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
             b.putParcelable(MSG_BUNDLE_KEY_ADD_ITEM, content);
             msg.setData(b);
             //延迟1秒模拟加载数据过程
-            mHandler.sendMessageDelayed(msg,1000);
+            mHandler.sendMessageDelayed(msg, 1000);
 
         }
     });
@@ -450,14 +451,17 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(listRowSix);
                 break;
             case Constants.TYPE_SEVEN:
-                ArrayObjectAdapter arrayObjectAdapterSeven = new ArrayObjectAdapter(new TypeSixContentPresenter());
-                HeaderItem headerItemSeven = new HeaderItem("大闹天宫");
-                ListRow listRowSeven = new ListRow(8, headerItemSeven,
-                        arrayObjectAdapterSeven);
-//                    headerItem.setContentDescription("大闹天宫");
-
-                arrayObjectAdapterSeven.addAll(0, dataBean.getWidgets());
-                addWithTryCatch(listRowSeven);
+                TypeSeven typeSeven = new TypeSeven();
+                List<Content.DataBean.WidgetsBean> listSeven = dataBean.getWidgets();
+                if (listSeven == null) {
+                    return;
+                }
+                if (listSeven.size() > 5) {
+                    listSeven = listSeven.subList(0, 5);
+                }
+                listSeven.get(0).setBigPic(true);
+                typeSeven.setWidgetsBeanList(listSeven);
+                addWithTryCatch(typeSeven);
                 break;
             case Constants.TYPE_EIGHT:
                 ArrayObjectAdapter arrayObjectAdapterEight = new ArrayObjectAdapter(new TypeSixContentPresenter());

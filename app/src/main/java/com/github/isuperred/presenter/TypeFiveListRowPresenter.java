@@ -1,5 +1,6 @@
 package com.github.isuperred.presenter;
 
+import android.annotation.SuppressLint;
 import android.widget.Toast;
 
 import androidx.leanback.widget.BaseOnItemViewClickedListener;
@@ -13,6 +14,7 @@ import com.github.isuperred.bean.Content;
 
 
 public class TypeFiveListRowPresenter extends BaseListRowPresenter {
+    @SuppressLint("RestrictedApi")
     @Override
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);

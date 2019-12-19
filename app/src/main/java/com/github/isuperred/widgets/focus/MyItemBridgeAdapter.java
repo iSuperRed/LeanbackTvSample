@@ -35,6 +35,15 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
                 }
             });
         }
+        if (getOnItemFocusChangedListener() != null) {
+            viewHolder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    getOnItemFocusChangedListener().onItemFocusChanged(v, viewHolder.getViewHolder(),
+                            viewHolder.getItem(), hasFocus);
+                }
+            });
+        }
         super.onBind(viewHolder);
     }
 
@@ -42,11 +51,18 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
     protected void onUnbind(ViewHolder viewHolder) {
         super.onUnbind(viewHolder);
         viewHolder.itemView.setOnClickListener(null);
+        if (getOnItemFocusChangedListener() != null) {
+            viewHolder.itemView.setOnFocusChangeListener(null);
+        }
     }
 
     public abstract OnItemViewClickedListener getOnItemViewClickedListener();
 
     public OnItemViewLongClickedListener getOnItemViewLongClickedListener() {
+        return null;
+    }
+
+    public OnItemFocusChangedListener getOnItemFocusChangedListener() {
         return null;
     }
 
@@ -56,5 +72,9 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
 
     public interface OnItemViewLongClickedListener {
         boolean onItemLongClicked(View focusView, Presenter.ViewHolder itemViewHolder, Object item);
+    }
+
+    public interface OnItemFocusChangedListener {
+        void onItemFocusChanged(View focusView, Presenter.ViewHolder itemViewHolder, Object item, boolean hasFocus);
     }
 }
