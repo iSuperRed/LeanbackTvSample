@@ -38,6 +38,7 @@ import com.github.isuperred.bean.Title;
 import com.github.isuperred.fragment.ContentFragment;
 import com.github.isuperred.presenter.TitlePresenter;
 import com.github.isuperred.utils.Constants;
+import com.github.isuperred.utils.FontDisplayUtil;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.widgets.ScaleTextView;
 
@@ -301,7 +302,7 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
         mTvAd = findViewById(R.id.tv_ad);
 
         mViewPager.setOffscreenPageLimit(2);
-        mHorizontalGridView.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px20));
+        mHorizontalGridView.setHorizontalSpacing(FontDisplayUtil.dip2px(this, 10));
         mArrayObjectAdapter = new ArrayObjectAdapter(new TitlePresenter());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayObjectAdapter);
         mHorizontalGridView.setAdapter(itemBridgeAdapter);

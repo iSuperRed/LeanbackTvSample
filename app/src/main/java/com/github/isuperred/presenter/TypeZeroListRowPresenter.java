@@ -1,5 +1,6 @@
 package com.github.isuperred.presenter;
 
+import android.annotation.SuppressLint;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,19 +13,21 @@ import androidx.leanback.widget.RowPresenter;
 import com.github.isuperred.R;
 import com.github.isuperred.base.BaseListRowPresenter;
 import com.github.isuperred.bean.Content;
+import com.github.isuperred.utils.FontDisplayUtil;
 
 
 public class TypeZeroListRowPresenter extends BaseListRowPresenter {
+    @SuppressLint("RestrictedApi")
     @Override
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);
         final ViewHolder rowViewHolder = (ViewHolder) holder;
 
-        rowViewHolder.getGridView().setHorizontalSpacing((int) rowViewHolder.getGridView().getResources().getDimension(R.dimen.px48));
+        rowViewHolder.getGridView().setHorizontalSpacing(FontDisplayUtil.dip2px(rowViewHolder.getGridView().getContext(), 24));
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
         RowHeaderPresenter.ViewHolder vh = rowViewHolder.getHeaderViewHolder();
         TextView textView = vh.view.findViewById(R.id.row_header);
-        textView.setTextSize(textView.getContext().getResources().getDimensionPixelSize(R.dimen.px30));
+        textView.setTextSize(FontDisplayUtil.dip2px(textView.getContext(), 15));
         textView.setTextColor(textView.getContext().getResources().getColor(R.color.colorWhite));
         textView.setPadding(0, 0, 0, 20);
         setOnItemViewClickedListener(new BaseOnItemViewClickedListener() {

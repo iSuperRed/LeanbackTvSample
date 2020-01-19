@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/FocusStyle"
-    android:layout_width="@dimen/px544"
-    android:layout_height="@dimen/px248">
+    android:layout_width="272dp"
+    android:layout_height="124dp">
 
     <ImageView
         android:id="@+id/iv_type_five_poster"
@@ -17,12 +17,12 @@
         android:id="@+id/tv_type_five_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/px83"
+        android:layout_marginBottom="42dp"
         android:gravity="center|start"
-        android:paddingStart="@dimen/px34"
-        android:paddingEnd="@dimen/px34"
+        android:paddingStart="17dp"
+        android:paddingEnd="17dp"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/px28"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -30,11 +30,11 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="@dimen/px239"
-        android:layout_height="@dimen/px1"
-        android:layout_marginStart="@dimen/px34"
+        android:layout_width="120dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="17dp"
         android:background="@color/colorWhite"
-        android:layout_marginTop="@dimen/px10"
+        android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="@+id/tv_type_five_name"
         app:layout_constraintTop_toBottomOf="@+id/tv_type_five_name" />
 
@@ -44,10 +44,10 @@
         android:layout_height="wrap_content"
         tools:text="一家人在一起最开心"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/px24"
-        android:paddingStart="@dimen/px34"
-        android:paddingEnd="@dimen/px34"
-        android:layout_marginTop="@dimen/px8"
+        android:textSize="12sp"
+        android:paddingStart="17dp"
+        android:paddingEnd="17dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"/>
 

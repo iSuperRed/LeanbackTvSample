@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.github.isuperred.R;
 import com.github.isuperred.bean.Content;
 import com.github.isuperred.bean.TypeSeven;
+import com.github.isuperred.utils.FontDisplayUtil;
 import com.github.isuperred.widgets.focus.MyFocusHighlightHelper;
 import com.github.isuperred.widgets.focus.MyItemBridgeAdapter;
 
@@ -87,28 +88,28 @@ public class TypeSevenPresenter extends Presenter {
                     if (childAdapterPosition == 0) {
                         outRect.set(0,
                                 0,
-                                (int) view.getContext().getResources().getDimension(R.dimen.px48),
+                                FontDisplayUtil.dip2px(view.getContext(), 24),
                                 0);
                     } else if (childAdapterPosition == childCount - 1) {
                         outRect.set(0,
-                                (int) view.getContext().getResources().getDimension(R.dimen.px24),
+                                FontDisplayUtil.dip2px(view.getContext(), 12),
                                 0,
                                 0);
                     } else if (childAdapterPosition == childCount - 2) {
                         outRect.set(0,
                                 0, 0,
-                                (int) view.getContext().getResources().getDimension(R.dimen.px24));
+                                FontDisplayUtil.dip2px(view.getContext(), 12));
                     } else {
                         if (childAdapterPosition % 2 == 0) {
                             outRect.set(0,
-                                    (int) view.getContext().getResources().getDimension(R.dimen.px24),
-                                    (int) view.getContext().getResources().getDimension(R.dimen.px48),
+                                    FontDisplayUtil.dip2px(view.getContext(), 12),
+                                    FontDisplayUtil.dip2px(view.getContext(), 24),
                                     0);
                         } else {
                             outRect.set(0,
                                     0,
-                                    (int) view.getContext().getResources().getDimension(R.dimen.px48),
-                                    (int) view.getContext().getResources().getDimension(R.dimen.px24));
+                                    FontDisplayUtil.dip2px(view.getContext(), 24),
+                                    FontDisplayUtil.dip2px(view.getContext(), 12));
                         }
                     }
                 }

@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.github.isuperred.R;
 import com.github.isuperred.bean.Content;
+import com.github.isuperred.utils.FontDisplayUtil;
 
 
 public class TypeSixContentPresenter extends Presenter {
@@ -52,8 +53,8 @@ public class TypeSixContentPresenter extends Presenter {
             Glide.with(mContext)
                     .load(((Content.DataBean.WidgetsBean) item).getUrl())
                     .apply(new RequestOptions()
-                            .override((int) mContext.getResources().getDimension(R.dimen.px248),
-                                    (int) mContext.getResources().getDimension(R.dimen.px372))
+                            .override(FontDisplayUtil.dip2px(mContext, 124),
+                                    FontDisplayUtil.dip2px(mContext, 207))
                             .placeholder(R.drawable.bg_shape_default))
                     .into(vh.mIvPoster);
             String desc = ((Content.DataBean.WidgetsBean) item).getDesc();

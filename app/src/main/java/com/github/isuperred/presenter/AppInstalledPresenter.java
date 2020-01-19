@@ -18,6 +18,7 @@ import androidx.leanback.widget.Presenter;
 
 import com.github.isuperred.R;
 import com.github.isuperred.bean.AppInfo;
+import com.github.isuperred.utils.FontDisplayUtil;
 
 public class AppInstalledPresenter extends Presenter {
     private Context mContext;
@@ -46,7 +47,7 @@ public class AppInstalledPresenter extends Presenter {
             if (((AppInfo) item).icon != null) {
                 Bitmap bitmap = getBitmapFromDrawable(((AppInfo) item).icon);//适配Android 8.0
                 RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(mContext.getResources(), bitmap);
-                drawable.setCornerRadius(mContext.getResources().getDimension(R.dimen.px20));
+                drawable.setCornerRadius(FontDisplayUtil.dip2px(mContext, 10));
                 vh.mIvAppIcon.setImageDrawable(drawable);
             }
             if (!TextUtils.isEmpty(((AppInfo) item).name)) {

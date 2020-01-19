@@ -23,6 +23,7 @@ import com.github.isuperred.R;
 import com.github.isuperred.base.BaseActivity;
 import com.github.isuperred.bean.AppInfo;
 import com.github.isuperred.presenter.AppInstalledPresenter;
+import com.github.isuperred.utils.FontDisplayUtil;
 import com.github.isuperred.widgets.AppVerticalGridView;
 import com.github.isuperred.widgets.focus.MyItemBridgeAdapter;
 
@@ -48,8 +49,8 @@ public class AppInstalledActivity extends BaseActivity {
         mVgAppInstalled = findViewById(R.id.vg_app_installed);
         mTvAppNumber = findViewById(R.id.tv_app_installed_number);
         mVgAppInstalled.setColumnNumbers(6);
-        mVgAppInstalled.setHorizontalSpacing((int) getResources().getDimension(R.dimen.px106));
-        mVgAppInstalled.setVerticalSpacing((int) getResources().getDimension(R.dimen.px40));
+        mVgAppInstalled.setHorizontalSpacing(FontDisplayUtil.dip2px(this, 53));
+        mVgAppInstalled.setVerticalSpacing(FontDisplayUtil.dip2px(this, 20));
         mAdapter = new ArrayObjectAdapter(new AppInstalledPresenter());
         ItemBridgeAdapter itemBridgeAdapter = new MyItemBridgeAdapter(mAdapter) {
 

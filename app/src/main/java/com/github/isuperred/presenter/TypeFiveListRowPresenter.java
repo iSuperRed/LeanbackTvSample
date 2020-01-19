@@ -11,6 +11,7 @@ import androidx.leanback.widget.RowPresenter;
 import com.github.isuperred.R;
 import com.github.isuperred.base.BaseListRowPresenter;
 import com.github.isuperred.bean.Content;
+import com.github.isuperred.utils.FontDisplayUtil;
 
 
 public class TypeFiveListRowPresenter extends BaseListRowPresenter {
@@ -19,8 +20,7 @@ public class TypeFiveListRowPresenter extends BaseListRowPresenter {
     protected void initializeRowViewHolder(RowPresenter.ViewHolder holder) {
         super.initializeRowViewHolder(holder);
         final ViewHolder rowViewHolder = (ViewHolder) holder;
-
-        rowViewHolder.getGridView().setHorizontalSpacing((int) rowViewHolder.getGridView().getResources().getDimension(R.dimen.px48));
+        rowViewHolder.getGridView().setHorizontalSpacing(FontDisplayUtil.dip2px(rowViewHolder.getGridView().getContext(), 24));
         rowViewHolder.getGridView().setFocusScrollStrategy(HorizontalGridView.FOCUS_SCROLL_ITEM);
 
         setOnItemViewClickedListener(new BaseOnItemViewClickedListener() {

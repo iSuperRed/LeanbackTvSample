@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/px182"
-    android:layout_height="@dimen/px246"
+    android:layout_width="91dp"
+    android:layout_height="123dp"
     android:clickable="true"
     android:clipChildren="false"
     android:clipToPadding="false"
@@ -12,10 +12,10 @@
 
     <ImageView
         android:id="@+id/iv_app_icon"
-        android:layout_width="@dimen/px182"
-        android:layout_height="@dimen/px182"
+        android:layout_width="91dp"
+        android:layout_height="91dp"
         android:scaleType="fitXY"
-        android:padding="@dimen/px3"
+        android:padding="2dp"
         android:duplicateParentState="true"
         android:background="@drawable/bg_app_selector"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -26,13 +26,13 @@
     <TextView
         android:id="@+id/tv_app_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/px64"
+        android:layout_height="32dp"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="1"
         android:gravity="center"
         android:singleLine="true"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/px24"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 

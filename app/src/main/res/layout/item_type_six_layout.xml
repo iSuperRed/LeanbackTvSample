@@ -2,14 +2,14 @@
 <com.github.isuperred.widgets.ImgConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/px248"
-    android:layout_height="@dimen/px414"
+    android:layout_width="124dp"
+    android:layout_height="207dp"
     android:focusable="true">
 
     <ImageView
         android:id="@+id/iv_poster"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/px372"
+        android:layout_height="186dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
@@ -18,12 +18,12 @@
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/px42"
-        android:paddingTop="@dimen/px10"
+        android:layout_height="21dp"
+        android:paddingTop="5dp"
         android:duplicateParentState="true"
         android:gravity="center|start"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/px24"
+        android:textSize="12sp"
         android:background="@drawable/selector_text_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="诛仙" />

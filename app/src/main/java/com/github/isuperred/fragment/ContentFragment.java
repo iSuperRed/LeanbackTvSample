@@ -37,6 +37,7 @@ import com.github.isuperred.presenter.TypeThreeContentPresenter;
 import com.github.isuperred.presenter.TypeTwoContentPresenter;
 import com.github.isuperred.presenter.TypeZeroContentPresenter;
 import com.github.isuperred.utils.Constants;
+import com.github.isuperred.utils.FontDisplayUtil;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.widgets.TabVerticalGridView;
 
@@ -173,7 +174,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
         mVerticalGridView = mRootView.findViewById(R.id.hg_content);
         mVerticalGridView.setTabView(mActivity.getHorizontalGridView());
         mVerticalGridView.setGroup(mActivity.getGroup());
-        mVerticalGridView.setVerticalSpacing((int) getResources().getDimension(R.dimen.px48));
+        mVerticalGridView.setVerticalSpacing(FontDisplayUtil.dip2px(mActivity, 24));
         ContentPresenterSelector presenterSelector = new ContentPresenterSelector();
         mAdapter = new ArrayObjectAdapter(presenterSelector);
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mAdapter);

@@ -3,12 +3,12 @@
     android:id="@+id/tv_main_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/px20"
-    android:paddingEnd="@dimen/px20"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
     android:textColor="@color/colorWhite"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:gravity="center"
     android:clickable="true"
     android:background="@drawable/selector_button_bg"
-    android:textSize="@dimen/px40" />
+    android:textSize="20dp" />

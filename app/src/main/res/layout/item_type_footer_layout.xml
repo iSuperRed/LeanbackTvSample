@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/px292">
+    android:layout_height="146dp">
 
     <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_back_to_top"
-        android:layout_width="@dimen/px262"
-        android:layout_height="@dimen/px60"
-        android:layout_marginTop="@dimen/px60"
+        android:layout_width="131dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
         android:background="@drawable/selector_focus_bg_corner24"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -33,7 +33,7 @@
             android:gravity="center"
             android:text="回到顶部"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/px30"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,9 +42,9 @@
 
     <com.github.isuperred.widgets.ScaleConstraintLayout
         android:id="@+id/cl_look_around"
-        android:layout_width="@dimen/px262"
-        android:layout_height="@dimen/px60"
-        android:layout_marginStart="@dimen/px20"
+        android:layout_width="131dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
         android:background="@drawable/selector_focus_bg_corner24"
         app:layout_constraintLeft_toRightOf="@+id/cl_back_to_top"
@@ -68,7 +68,7 @@
             android:gravity="center"
             android:text="随心看"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/px30"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/px94"
+        android:layout_marginBottom="47dp"
         android:text="没有找到想看的？试试随心看吧"
         android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"

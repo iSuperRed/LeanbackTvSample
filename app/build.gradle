@@ -39,6 +39,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.9.0") {
         exclude group: "com.android.support"
     }
+    implementation 'me.jessyan:autosize:1.1.2'
     implementation 'com.tencent.bugly:crashreport:3.1.0'
     implementation 'com.tencent.bugly:nativecrashreport:3.7.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

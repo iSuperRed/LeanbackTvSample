@@ -10,16 +10,16 @@
         android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingStart="@dimen/px96"
-        android:paddingTop="@dimen/px222"
-        android:paddingEnd="@dimen/px96"
+        android:paddingStart="48dp"
+        android:paddingTop="111dp"
+        android:paddingEnd="48dp"
         app:focusOutEnd="true"
         app:focusOutFront="true" />
 
     <ProgressBar
         android:id="@+id/pb_loading"
-        android:layout_width="@dimen/px80"
-        android:layout_height="@dimen/px80"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

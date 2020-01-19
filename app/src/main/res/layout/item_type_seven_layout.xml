@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/FocusStyle"
     android:id="@+id/cl_type_seven"
-    android:layout_width="@dimen/px396"
-    android:layout_height="@dimen/px222">
+    android:layout_width="198dp"
+    android:layout_height="111dp">
 
     <ImageView
         android:id="@+id/iv_type_seven_poster"

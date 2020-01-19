@@ -2,8 +2,8 @@
 <com.github.isuperred.widgets.ImgConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/FocusStyle"
-    android:layout_width="@dimen/px248"
-    android:layout_height="@dimen/px372">
+    android:layout_width="124dp"
+    android:layout_height="186dp">
 
     <ImageView
         android:id="@+id/iv_type_three_poster"
