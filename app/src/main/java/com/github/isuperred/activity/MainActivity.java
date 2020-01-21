@@ -140,7 +140,6 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
                 Toast.makeText(this, "已安装应用", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_history:
-                startActivity(new Intent(this, VideoDetailActivity.class));
                 Toast.makeText(this, "历史", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_login:

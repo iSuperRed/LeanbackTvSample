@@ -1,6 +1,7 @@
 package com.github.isuperred.presenter.row;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import androidx.leanback.widget.RowHeaderPresenter;
 import androidx.leanback.widget.RowPresenter;
 
 import com.github.isuperred.R;
+import com.github.isuperred.activity.VideoDetailActivity;
 import com.github.isuperred.base.BaseListRowPresenter;
 import com.github.isuperred.bean.Content;
 import com.github.isuperred.utils.FontDisplayUtil;
@@ -40,9 +42,8 @@ public class ContentListRowPresenter extends BaseListRowPresenter {
             public void onItemClicked(Presenter.ViewHolder itemViewHolder,
                                       Object item, RowPresenter.ViewHolder rowViewHolder, Object row) {
                 if (item instanceof Content.DataBean.WidgetsBean) {
-                    Toast.makeText(tv.getContext(),
-                            "位置:" + ((ViewHolder) rowViewHolder).getGridView().getSelectedPosition(),
-                            Toast.LENGTH_SHORT).show();
+                    tv.getContext().startActivity(new Intent(tv.getContext(), VideoDetailActivity.class));
+
                 }
 
             }
