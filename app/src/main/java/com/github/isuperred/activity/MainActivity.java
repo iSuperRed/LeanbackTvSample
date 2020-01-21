@@ -136,10 +136,11 @@ public class MainActivity extends BaseActivity implements ContentFragment.OnFrag
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cl_search:
-                startActivity(new Intent(this,AppInstalledActivity.class));
+                startActivity(new Intent(this, AppInstalledActivity.class));
                 Toast.makeText(this, "已安装应用", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_history:
+                startActivity(new Intent(this, VideoDetailActivity.class));
                 Toast.makeText(this, "历史", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cl_login:

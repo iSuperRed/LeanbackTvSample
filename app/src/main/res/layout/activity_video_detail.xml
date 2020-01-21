@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".activity.VideoDetailActivity">
+
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+        android:id="@+id/video_player"
+        android:layout_width="420dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="74dp"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="2dp"
+        android:background="@drawable/bg_focus_border_radius3_no_solid"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_video_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="74dp"
+        android:gravity="center"
+        android:text="精英律师"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/video_player"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_director"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="导演：刘进"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_video_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_video_name" />
+
+    <TextView
+        android:id="@+id/tv_video_actors"
+        android:layout_width="419dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:singleLine="true"
+        android:text="主演：靳东,蓝盈莹,孙淳,田雨,刘敏涛,朱珠,代旭,王鸥,邬君梅,海一天,王阳,许娣,袁泉,蒋欣,凌潇"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_video_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_director" />
+
+    <TextView
+        android:id="@+id/tv_video_introduction"
+        android:layout_width="419dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:gravity="start"
+        android:text="简介：新丽传媒都市律政情感剧《精英律师》讲述了罗槟是全景律师事务所资深合伙人，戴曦为了闺蜜的一场官司去律所找罗槟理论，误打误撞，机缘巧合成了罗槟的助理。在共事过程中，俩人因在为人处世上的见解差异，频发冲突。同时，出于对律师这个职业的热爱，戴曦把过多的时间和精力投入到工作上，最终引起男友的不满，二人分手。在经过几个项目上的相互协作后，戴曦和罗槟对对方都有了更多的了解，戴曦由最初讨厌罗槟，逐渐对他产生尊敬，而罗槟也受戴曦感染，不仅在关心输赢，也变得去关爱他人。历经磨炼，戴曦最终成长为一个优秀富有正义感的律师，在工作上，和罗槟也有了更多的默契，两人成了一对颇得业界认可，所向披靡的最佳搭档。"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_video_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_video_actors" />
+
+    <TextView
+        android:id="@+id/tv_full_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/selector_focus_bg_corner15_with_default_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="全屏"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/video_player"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_video_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_video_introduction" />
+
+    <TextView
+        android:id="@+id/tv_open_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/selector_focus_bg_corner15_with_default_bg"
+        android:clickable="true"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="开通VIP"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toRightOf="@+id/tv_full_screen"
+        app:layout_constraintTop_toTopOf="@+id/tv_full_screen" />
+
+    <TextView
+        android:id="@+id/tv_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/selector_focus_bg_corner15_with_default_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="收藏"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toRightOf="@+id/tv_open_vip"
+        app:layout_constraintTop_toTopOf="@+id/tv_open_vip" />
+
+    <TextView
+        android:id="@+id/tv_more_introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/selector_focus_bg_corner15_with_default_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:text="更多简介"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintLeft_toRightOf="@+id/tv_favourite"
+        app:layout_constraintTop_toTopOf="@+id/tv_favourite" />
+
+    <TextView
+        android:id="@+id/tv_episode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="剧集列表"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="@+id/video_player"
+        app:layout_constraintTop_toBottomOf="@+id/video_player" />
+
+    <androidx.leanback.widget.HorizontalGridView
+        android:id="@+id/hg_episode_content"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="13dp"
+        app:focusOutEnd="true"
+        app:focusOutFront="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintLeft_toLeftOf="@+id/video_player"
+        app:layout_constraintTop_toBottomOf="@+id/tv_episode" />
+
+    <androidx.leanback.widget.HorizontalGridView
+        android:id="@+id/hg_episode_group"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="5dp"
+        app:focusOutEnd="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:focusOutFront="true"
+        app:layout_constraintLeft_toLeftOf="@+id/video_player"
+        app:layout_constraintTop_toBottomOf="@+id/hg_episode_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

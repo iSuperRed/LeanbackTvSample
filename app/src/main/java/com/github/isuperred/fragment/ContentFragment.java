@@ -1,5 +1,6 @@
 package com.github.isuperred.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
@@ -51,54 +52,51 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     private static final String BUNDLE_KEY_POSITION = "bundleKeyPosition";
     private static final String BUNDLE_KEY_TAB_CODE = "bundleKeyTabCode";
-    private static final int MSG_ADD_ITEM = 100;
+
     private static final String MSG_BUNDLE_KEY_ADD_ITEM = "msgBundleKeyItem";
 
+    private static final int MSG_ADD_ITEM = 100;
+    private static final int MSG_REMOVE_LOADING = 101;
+
     private TabVerticalGridView mVerticalGridView;
+    private MainActivity mActivity;
+    private View mRootView;
+    private Handler mHandler;
+    private ProgressBar mPbLoading;
+    private ArrayObjectAdapter mAdapter;
 
     private int mCurrentTabPosition;
     private String mCurrentTabCode;
 
-    private MainActivity mActivity;
-    private View mRootView;
-    private Handler mHandler;
-    public ProgressBar mPbLoading;
-    private ArrayObjectAdapter mAdapter;
-//    public static final int MSG_ADD_ITEM = 100;
-
+    @SuppressLint("HandlerLeak")
     private class MyHandler extends Handler {
 
-        private final WeakReference<Activity> mActivity;
-
-        MyHandler(Activity activity) {
-            mActivity = new WeakReference<>(activity);
-        }
 
         @Override
         public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_ADD_ITEM:
 
-            MainActivity activity = (MainActivity) mActivity.get();
-            if (activity != null) {
-                switch (msg.what) {
-                    case MSG_ADD_ITEM:
-
-                        Content content = msg.getData().getParcelable(MSG_BUNDLE_KEY_ADD_ITEM);
-                        if (content == null) {
-                            break;
-                        }
-                        List<Content.DataBean> dataBeans = content.getData();
-                        for (int i = 0; i < dataBeans.size(); i++) {
-                            Content.DataBean dataBean = dataBeans.get(i);
-                            addItem(dataBean);
-                        }
-                        addFooter();
-                        mPbLoading.setVisibility(View.GONE);
-                        mVerticalGridView.setVisibility(View.VISIBLE);
+                    Content content = msg.getData().getParcelable(MSG_BUNDLE_KEY_ADD_ITEM);
+                    if (content == null) {
                         break;
-                    default:
-                        break;
-                }
+                    }
+                    List<Content.DataBean> dataBeans = content.getData();
+                    for (int i = 0; i < dataBeans.size(); i++) {
+                        Content.DataBean dataBean = dataBeans.get(i);
+                        addItem(dataBean);
+                    }
+                    addFooter();
+                    mPbLoading.setVisibility(View.GONE);
+                    mVerticalGridView.setVisibility(View.VISIBLE);
+                    break;
+                case MSG_REMOVE_LOADING:
+                    mPbLoading.setVisibility(View.GONE);
+                    break;
+                default:
+                    break;
             }
+
         }
     }
 
@@ -131,7 +129,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
                     + " must implement OnFragmentInteractionListener");
         }
         mActivity = (MainActivity) context;
-        mHandler = new MyHandler(mActivity);
+        mHandler = new MyHandler();
 
     }
 
@@ -182,7 +180,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
     }
 
-    protected void initListener() {
+    private void initListener() {
         mVerticalGridView.addOnScrollListener(onScrollListener);
         mVerticalGridView.addOnChildViewHolderSelectedListener(onSelectedListener);
     }
@@ -218,14 +216,9 @@ public class ContentFragment extends BaseLazyLoadFragment {
     private final Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
-            if (getActivity() == null) {
-                mPbLoading.setVisibility(View.GONE);
-                return;
-            }
-
             String json = null;
             if (mCurrentTabCode == null) {
-                mPbLoading.setVisibility(View.GONE);
+                mHandler.sendEmptyMessage(MSG_REMOVE_LOADING);
                 return;
             }
             switch (mCurrentTabCode) {

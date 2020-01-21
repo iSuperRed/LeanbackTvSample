@@ -5,10 +5,10 @@ import androidx.leanback.widget.ListRow;
 import com.github.isuperred.base.BasePresenterSelector;
 import com.github.isuperred.bean.Footer;
 import com.github.isuperred.bean.TypeSeven;
-import com.github.isuperred.presenter.ContentListRowPresenter;
+import com.github.isuperred.presenter.row.ContentListRowPresenter;
 import com.github.isuperred.presenter.ImageRowHeaderPresenter;
 import com.github.isuperred.presenter.TypeFiveContentPresenter;
-import com.github.isuperred.presenter.TypeFiveListRowPresenter;
+import com.github.isuperred.presenter.row.TypeFiveListRowPresenter;
 import com.github.isuperred.presenter.TypeFooterPresenter;
 import com.github.isuperred.presenter.TypeFourContentPresenter;
 import com.github.isuperred.presenter.TypeOneContentPresenter;
@@ -17,7 +17,7 @@ import com.github.isuperred.presenter.TypeSixContentPresenter;
 import com.github.isuperred.presenter.TypeThreeContentPresenter;
 import com.github.isuperred.presenter.TypeTwoContentPresenter;
 import com.github.isuperred.presenter.TypeZeroContentPresenter;
-import com.github.isuperred.presenter.TypeZeroListRowPresenter;
+import com.github.isuperred.presenter.row.TypeZeroListRowPresenter;
 
 
 public class ContentPresenterSelector extends BasePresenterSelector {

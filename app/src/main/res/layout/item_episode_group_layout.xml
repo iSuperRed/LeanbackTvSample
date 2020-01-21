@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_episode_group"
+    android:layout_width="81dp"
+    android:layout_height="27dp"
+    android:gravity="center"
+    android:focusable="true"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:textColor="@color/colorWhite"
+    android:background="@drawable/selector_focus_bg_corner3_with_default_bg"
+    android:orientation="vertical"
+    tools:text="1-10" />

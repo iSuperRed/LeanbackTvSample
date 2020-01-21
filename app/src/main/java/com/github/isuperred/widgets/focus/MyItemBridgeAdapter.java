@@ -40,7 +40,7 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     getOnItemFocusChangedListener().onItemFocusChanged(v, viewHolder.getViewHolder(),
-                            viewHolder.getItem(), hasFocus);
+                            viewHolder.getItem(), hasFocus, viewHolder.getAdapterPosition());
                 }
             });
         }
@@ -75,6 +75,6 @@ public abstract class MyItemBridgeAdapter extends ItemBridgeAdapter {
     }
 
     public interface OnItemFocusChangedListener {
-        void onItemFocusChanged(View focusView, Presenter.ViewHolder itemViewHolder, Object item, boolean hasFocus);
+        void onItemFocusChanged(View focusView, Presenter.ViewHolder itemViewHolder, Object item, boolean hasFocus, int pos);
     }
 }

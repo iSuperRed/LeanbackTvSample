@@ -10,7 +10,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
-        android:background="@drawable/selector_focus_bg_corner24"
+        android:background="@drawable/selector_focus_bg_corner15_without_default_bg"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/cl_look_around"
@@ -46,7 +46,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
         app:scale_mode="ZOOM_FACTOR_MEDIUM"
-        android:background="@drawable/selector_focus_bg_corner24"
+        android:background="@drawable/selector_focus_bg_corner15_without_default_bg"
         app:layout_constraintLeft_toRightOf="@+id/cl_back_to_top"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cl_back_to_top">

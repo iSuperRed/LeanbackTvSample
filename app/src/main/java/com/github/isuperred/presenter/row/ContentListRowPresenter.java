@@ -1,4 +1,4 @@
-package com.github.isuperred.presenter;
+package com.github.isuperred.presenter.row;
 
 import android.annotation.SuppressLint;
 import android.widget.TextView;

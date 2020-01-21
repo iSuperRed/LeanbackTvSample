@@ -10,15 +10,20 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS"
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
         tools:ignore="ProtectedPermissions" />
-    <!-- 如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；
-    设置为ture的话你的应用只可以在使用Leanback的设备上。 -->
+    <!--
+ 如果你的应用打算在各个设备(手机、可穿戴、tv)，将leanback的required的值设置为false；
+    设置为ture的话你的应用只可以在使用Leanback的设备上。
+    -->
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
-    <!-- 声明Touchscreen属性，这个看个人需要，主要是声明你的app需不需要支持触摸屏输入。
-        值得注意的是，如果你的应用打算在googleplay上架，必须在你的manifest添加此段代码，否则不予上架。 -->
+    <!--
+ 声明Touchscreen属性，这个看个人需要，主要是声明你的app需不需要支持触摸屏输入。
+        值得注意的是，如果你的应用打算在googleplay上架，必须在你的manifest添加此段代码，否则不予上架。
+    -->
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
@@ -30,7 +35,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+        <activity android:name=".activity.VideoDetailActivity" />
+        <activity android:name=".activity.VideoPlayActivity" />
         <activity
             android:name=".activity.AppInstalledActivity"
             android:screenOrientation="landscape" />
