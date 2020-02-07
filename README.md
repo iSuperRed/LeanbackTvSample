@@ -3,7 +3,10 @@ LeanbackTvSample
 
 [![简书](https://img.shields.io/badge/%E7%AE%80%E4%B9%A6-iSuperRed-brightgreen.svg)](http://www.jianshu.com/u/c2e31017da0e)
 | [简体中文文档][1] 
+
 LeanbackTvSample is a smart TV desktop application based on the Android platform written by Google's open source framework Leanback.
+
+![](logo/leanback_logo.png)
 ## 博客地址
 [使用Leanback写国内UI风格的TV应用](https://www.jianshu.com/p/b286e087b074)
 ## 效果图
