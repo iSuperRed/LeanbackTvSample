@@ -1,7 +1,6 @@
 package com.github.isuperred.fragment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -42,7 +41,6 @@ import com.github.isuperred.utils.FontDisplayUtil;
 import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.widgets.TabVerticalGridView;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 
@@ -223,7 +221,7 @@ public class ContentFragment extends BaseLazyLoadFragment {
             }
             switch (mCurrentTabCode) {
                 case "c40248cac1f44c278f8bd23a0bba8b4f":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Mine.json");
+                    json = LocalJsonResolutionUtil.getJson(getActivity(), "My.json");
                     break;
                 case "7359d189a049468d9d4e280fd1ec15c5":
                     json = LocalJsonResolutionUtil.getJson(getActivity(), "WatchTv.json");
