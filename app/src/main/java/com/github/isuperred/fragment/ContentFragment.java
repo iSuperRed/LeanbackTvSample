@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HeaderItem;
 import androidx.leanback.widget.ItemBridgeAdapter;
@@ -219,69 +220,73 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 mHandler.sendEmptyMessage(MSG_REMOVE_LOADING);
                 return;
             }
+            FragmentActivity activity = getActivity();
+            if (activity == null) {
+                return;
+            }
             switch (mCurrentTabCode) {
                 case "c40248cac1f44c278f8bd23a0bba8b4f":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "My.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "My.json");
                     break;
                 case "7359d189a049468d9d4e280fd1ec15c5":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "WatchTv.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "WatchTv.json");
                     break;
                 case "1b14cb1608d3449c83585b48d47b53c1":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Clear4k.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Clear4k.json");
                     break;
                 case "5f6874e8106e41a680e05fe49fe4a198":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Children.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Children.json");
                     break;
                 case "50e4dfe685a84f929ba08952d6081877":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Featured.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Featured.json");
                     break;
                 case "dae28835ebac4f629cc610b4d5a8df25":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Years70.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Years70.json");
                     break;
                 case "5e1958d0cf9341589db884d83aca79e3":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Everything.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Everything.json");
                     break;
                 case "c4a72503d2374b188cf74767f2276220":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "VIP.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "VIP.json");
                     break;
                 case "8146c5ff88a245b9af2ce7d2bf301b27":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "TVSeries.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "TVSeries.json");
                     break;
                 case "7412804a6aa24ca9be25fd8cd26f1995":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Movie.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Movie.json");
                     break;
                 case "d179143bacc948d28748338562a94648":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Variety.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Variety.json");
                     break;
                 case "9c58bbdacc1449a4bb84ad6af16ba20d":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Classroom.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Classroom.json");
                     break;
                 case "c33db6793aba48bea06b075c35c8be5a":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Anime.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Anime.json");
                     break;
                 case "65504aa451fb4b159bbfeb7161750411":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Basketball.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Basketball.json");
                     break;
                 case "a4c28944cb0448579007c6c20c037127":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Physical.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Physical.json");
                     break;
                 case "d971d4585bd14e6fadab1aa2d27b71d6":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Game.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Game.json");
                     break;
                 case "a868db298ef84dcbb22d919d02f473cb":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Documentary.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Documentary.json");
                     break;
                 case "634e89b44aeb4b2a99e9a1bb449daf8b":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Life.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Life.json");
                     break;
                 case "9a5fd09ddfa64c4b95b3dc02b27c7576":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "OrientalTheatre.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "OrientalTheatre.json");
                     break;
                 case "695ed6a510934a93a9593b034a99fc01":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Car.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Car.json");
                     break;
                 case "b9c9229ef6534682919d7af67438e4d6":
-                    json = LocalJsonResolutionUtil.getJson(getActivity(), "Funny.json");
+                    json = LocalJsonResolutionUtil.getJson(activity, "Funny.json");
                     break;
             }
             if (json == null) {
