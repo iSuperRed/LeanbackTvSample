@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.github.isuperred.widgets.ImgConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/FocusStyle"
     android:layout_width="124dp"
     android:layout_height="186dp">
@@ -11,4 +12,14 @@
         android:layout_height="match_parent"
         tools:ignore="ContentDescription" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_focus_selector"
+        android:duplicateParentState="true"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 </com.github.isuperred.widgets.ImgConstraintLayout>

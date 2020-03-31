@@ -53,7 +53,7 @@
             android:paddingBottom="5dp"
             android:text="已安装应用"
             android:textColor="@color/colorWhite"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +91,7 @@
             android:paddingBottom="5dp"
             android:text="历史"
             android:textColor="@color/colorWhite"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -129,7 +129,7 @@
             android:paddingBottom="5dp"
             android:text="登录"
             android:textColor="@color/colorWhite"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="1"
-            android:maxWidth="305dp"
+            android:maxWidth="280dp"
             android:paddingStart="30dp"
             android:paddingTop="5dp"
             android:paddingEnd="10dp"
@@ -172,7 +172,7 @@
             android:singleLine="true"
             android:text="开通VIP   燃爆九月，会员首月仅16元 点击开通"
             android:textColor="@color/colorWhite"
-            android:textSize="13dp"
+            android:textSize="13sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -219,7 +219,7 @@
         android:layout_marginEnd="10dp"
         android:format12Hour="hh:mm"
         android:textColor="@color/colorWhite"
-        android:textSize="13dp"
+        android:textSize="13sp"
         android:theme="@style/MyTimePicker"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/view"
@@ -252,7 +252,7 @@
         android:paddingBottom="5dp"
         android:text="新人礼包"
         android:textColor="@color/colorWhite"
-        android:textSize="13dp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/iv_network"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
