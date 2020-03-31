@@ -23,6 +23,7 @@ import androidx.leanback.widget.Presenter;
 import com.github.isuperred.R;
 import com.github.isuperred.base.BaseActivity;
 import com.github.isuperred.bean.Video;
+import com.github.isuperred.player.SuperRedVideoPlayer;
 import com.github.isuperred.presenter.EpisodeContentPresenter;
 import com.github.isuperred.presenter.EpisodeGroupPresenter;
 import com.github.isuperred.utils.FontDisplayUtil;
@@ -30,7 +31,6 @@ import com.github.isuperred.utils.LocalJsonResolutionUtil;
 import com.github.isuperred.widgets.focus.MyItemBridgeAdapter;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class VideoDetailActivity extends BaseActivity implements View.OnClickLis
     private static final int MSG_ADD_EPISODE = 10010;
     private static final int MSG_ADD_EPISODE_CONTENT = 10011;
     private static final String MSG_BUNDLE_KEY_VIDEO = "msgBundleKeyVideo";
-    private StandardGSYVideoPlayer videoPlayer;
+    private SuperRedVideoPlayer videoPlayer;
     private OrientationUtils orientationUtils;
 
     private HorizontalGridView mHgEpisodeContent;
@@ -54,7 +54,6 @@ public class VideoDetailActivity extends BaseActivity implements View.OnClickLis
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            super.handleMessage(msg);
             switch (msg.what) {
                 case MSG_ADD_EPISODE:
                     Video video = (Video) msg.obj;
@@ -74,7 +73,6 @@ public class VideoDetailActivity extends BaseActivity implements View.OnClickLis
                         mEpisodeGroupAdapter.addAll(0, episodeBeans);
                     }
                     addEpisodeContent(episodeBeans.get(mCurrentGroupPosition));
-
                     break;
                 case MSG_ADD_EPISODE_CONTENT:
                     addEpisodeContent((Video.DataBean.EpisodeBean) msg.obj);
@@ -111,7 +109,7 @@ public class VideoDetailActivity extends BaseActivity implements View.OnClickLis
         videoPlayer = findViewById(R.id.video_player);
 
         String source1 = "http://cn7.kankia.com/hls/20191221/e7008a3a456befc61b60720103b216af/1576895692/index.m3u8";
-        videoPlayer.setUp(source1, true, "测试视频");
+        videoPlayer.setUp(source1, true, "");
 
         //增加封面
         ImageView imageView = new ImageView(this);
@@ -168,7 +166,8 @@ public class VideoDetailActivity extends BaseActivity implements View.OnClickLis
                             Video.DataBean.EpisodeBean.GroupDetailBean groupDetailBean = (Video.DataBean.EpisodeBean.GroupDetailBean) item;
                             String sourceURL = groupDetailBean.getUrl();
                             if (!TextUtils.isEmpty(sourceURL)) {
-                                videoPlayer.setUp(sourceURL, true, "测试视频");
+                                String number = groupDetailBean.getNumber();
+                                videoPlayer.setUp(sourceURL, true, "");
                                 videoPlayer.startPlayLogic();
                             }
                             Toast.makeText(VideoDetailActivity.this, groupDetailBean.getNumber(), Toast.LENGTH_SHORT).show();

@@ -8,7 +8,7 @@
     android:clipToPadding="false"
     tools:context=".activity.VideoDetailActivity">
 
-    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+    <com.github.isuperred.player.SuperRedVideoPlayer
         android:id="@+id/video_player"
         android:layout_width="420dp"
         android:layout_height="237dp"
